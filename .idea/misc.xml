@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/MovieLite/app/src/main/res/drawable/ic_connection_error.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/MovieLite/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/MovieLite/app/src/main/res/layout/fragment_overview.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
