@@ -24,7 +24,7 @@ class OverviewFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_overview, container, false)
         // Giving the binding access to the OverviewViewModel
-        viewModel.getMarsPhotos().observe(viewLifecycleOwner, {
+        viewModel.getMovieImage("en").observe(viewLifecycleOwner, {
             binding.showText.text = it
         })
         return binding.root
