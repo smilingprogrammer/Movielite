@@ -14,6 +14,7 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
+//calling the api
 interface MovieApiService {
     @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
     suspend fun getImage(
