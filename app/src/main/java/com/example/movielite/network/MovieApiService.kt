@@ -16,7 +16,7 @@ private val retrofit = Retrofit.Builder()
 
 //calling the api
 interface MovieApiService {
-    @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
+    @GET("{lang?}/API/Images/k_749nmmqz/tt1375666")
     suspend fun getImage(
         @Path("lang") lang: String) : Deferred<ModelImage>
 
