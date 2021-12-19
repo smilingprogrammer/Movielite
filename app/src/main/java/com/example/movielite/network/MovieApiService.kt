@@ -25,7 +25,7 @@ private val retrofit = Retrofit.Builder()
 interface MovieApiService {
 
     @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
-    suspend fun getPhotos() : List<ModelImage>
+    suspend fun getImages(@Query("")) : List<ModelImage>
 //    @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
 //    suspend fun getImage(
 //        @Path("lang") lang: String) : Deferred<ModelImage>
