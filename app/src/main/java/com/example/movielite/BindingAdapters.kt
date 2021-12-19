@@ -1,14 +1,20 @@
 package com.example.movielite
 
-import android.widget.ImageView
-import androidx.core.net.toUri
-import androidx.databinding.BindingAdapter
-import coil.load
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
-@BindingAdapter("imageUrl")
-fun bindImage(imgView: ImageView, imgUrl: String?) {
-    imgUrl?.let {
-        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        imgView.load(imgUri)
+
+class BindingAdapters(): RecyclerView.Adapter<BindingAdapters> {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingAdapters {
+        TODO("Not yet implemented")
+    }
+
+    override fun onBindViewHolder(holder: BindingAdapters, position: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getItemCount(): Int {
+        TODO("Not yet implemented")
     }
 }

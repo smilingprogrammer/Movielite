@@ -24,6 +24,7 @@ android {
         }
     }
     buildFeatures {
+        viewBinding true
         dataBinding true
     }
     compileOptions {
@@ -68,4 +69,7 @@ dependencies {
 
     // Coil
     implementation "io.coil-kt:coil:1.1.1"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
 }
