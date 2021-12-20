@@ -2,14 +2,10 @@ package com.example.movielite.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import kotlinx.coroutines.Deferred
-import retrofit2.Call
 import retrofit2.Retrofit
 //import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.create
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://imdb-api.com/"
@@ -24,8 +20,8 @@ private val retrofit = Retrofit.Builder()
 //calling the api
 interface MovieApiService {
 
-    @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
-    suspend fun getImages(@Query("")) : List<ModelImage>
+    @GET("movie/popular")
+    suspend fun getPopularMovies(@Query("api_key") apiKey: String) : MovieResponse
 //    @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
 //    suspend fun getImage(
 //        @Path("lang") lang: String) : Deferred<ModelImage>
