@@ -21,7 +21,11 @@ private val retrofit = Retrofit.Builder()
 interface MovieApiService {
 
     @GET("movie/popular")
-    suspend fun getPopularMovies(@Query("api_key") apiKey: String) : MovieResponse
+    suspend fun getPopularMovies(@Query("api_key") apiKey: String,
+    @Query("language") language: String,
+    @Query("page") page: Int,
+    @Query("region") region: String,
+    @Query("with_release_type") releaseType: String) : MovieResponse
 //    @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
 //    suspend fun getImage(
 //        @Path("lang") lang: String) : Deferred<ModelImage>
