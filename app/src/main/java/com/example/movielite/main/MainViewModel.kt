@@ -12,6 +12,7 @@ import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
 import kotlinx.coroutines.launch
 
+const val TMDB_API_KEY = "b7c2120334a858f18ce8ddd09946c6ad"
 class MainViewModel(private val movieRepository: MovieRepository): ViewModel() {
 
     private val TAG = MainViewModel::class.java.simpleName
@@ -25,7 +26,7 @@ class MainViewModel(private val movieRepository: MovieRepository): ViewModel() {
     private fun getPopularMovies() {
         viewModelScope.launch {
             try {
-                _popularMoviesLiveData.value = movieRepository.getPopularMovies("api_Key").movie
+                _popularMoviesLiveData.value = movieRepository.getPopularMovies(TMDB_API_KEY, ).movie
                 Log.d(TAG, "${_popularMoviesLiveData.value}")
             } catch (e: Exception) {
                 Log.d(TAG, e.message.toString())
