@@ -4,8 +4,10 @@ import com.squareup.moshi.Json
 
 data class Movie(
     @Json(name = "api_key")
-    val Title: String,
+    val title: String,
     @Json(name = "")
-    val Image: String
+    val image: String,
+    @Json(name = "")
+    val releaseType: String
     )
 

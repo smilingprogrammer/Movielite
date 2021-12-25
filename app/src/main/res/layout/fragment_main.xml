@@ -6,10 +6,18 @@
     tools:context=".MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ImageView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/show"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/region"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </FrameLayout>
