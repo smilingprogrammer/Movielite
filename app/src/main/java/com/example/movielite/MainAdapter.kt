@@ -24,8 +24,9 @@ class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAda
     inner class MainViewHolder(private val binding: FragmentMainBinding) :
         RecyclerView.ViewHolder(binding.root){
         fun bind(movie: Movie) {
-            binding.region.text = movie.releaseType
-            binding.image.load(movie.image)
+            binding.region.text = movie.title
+            binding.image.text = movie.originalTitle
+            /*binding.image.load(movie.image)*/
         }
     }
 

@@ -26,7 +26,7 @@ class MainViewModel(private val movieRepository: MovieRepository): ViewModel() {
     private fun getPopularMovies() {
         viewModelScope.launch {
             try {
-                _popularMoviesLiveData.value = movieRepository.getPopularMovies(TMDB_API_KEY, ).movie
+                _popularMoviesLiveData.value = movieRepository.getPopularMovies().movie
                 Log.d(TAG, "${_popularMoviesLiveData.value}")
             } catch (e: Exception) {
                 Log.d(TAG, e.message.toString())

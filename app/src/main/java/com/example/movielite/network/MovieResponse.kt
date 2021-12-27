@@ -1,5 +1,13 @@
 package com.example.movielite.network
 
+import com.squareup.moshi.Json
+
 data class MovieResponse(
-    val movie: List<Movie>
+    @Json(name = "total_pages")
+    var totalPages: Int = 0,
+    @Json(name = "page")
+    var page: Int = 0,
+    @Json(name = "results")
+    var movie: List<Movie>
+//    val movie: List<Movie>
 )
