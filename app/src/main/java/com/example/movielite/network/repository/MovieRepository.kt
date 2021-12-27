@@ -7,5 +7,5 @@ class MovieRepository(private val movieApiService: MovieApiService) {
 
     suspend fun getPopularMovies(apiKey: String) = movieApiService.getPopularMovies(
         TMDB_API_KEY, "en-US",
-    0, "US", "2|3")
+    1, "US", "2|3")
 }
