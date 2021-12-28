@@ -1,5 +1,6 @@
 package com.example.movielite.network
 
+import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 
 data class MovieResponse(

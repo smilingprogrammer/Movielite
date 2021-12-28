@@ -5,7 +5,7 @@ import com.example.movielite.network.MovieApiService
 
 class MovieRepository(private val movieApiService: MovieApiService) {
 
-    suspend fun getPopularMovies() = movieApiService.getPopularMovies(
-        TMDB_API_KEY, "en-US",
-    1)
+    suspend fun getPopularMovies(apikey: String, language: String, page:Int) = movieApiService.getPopularMovies(
+        apikey, language, page
+    )
 }

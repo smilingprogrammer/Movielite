@@ -25,7 +25,7 @@ class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAda
         RecyclerView.ViewHolder(binding.root){
         fun bind(movie: Movie) {
             binding.region.text = movie.title
-            binding.image.text = movie.originalTitle
+            binding.image.text = movie.overview
             /*binding.image.load(movie.image)*/
         }
     }
