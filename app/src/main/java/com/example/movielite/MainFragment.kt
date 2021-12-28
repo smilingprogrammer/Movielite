@@ -16,7 +16,9 @@ import com.example.movielite.network.repository.MovieRepository
 
 class MainFragment : Fragment() {
 
-    private var binding: FragmentMainBinding? = null
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var adapter: MainAdapter
 
     private var movies = mutableListOf<Movie>()
     private val viewModel: MainViewModel by lazy {
@@ -27,20 +29,21 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentMainBinding.inflate(layoutInflater)
-        return binding?.root
+    ): View {
+        _binding = FragmentMainBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.popularMoviesLiveData.observe(/*this*/viewLifecycleOwner, {
             movies.addAll(it)
+            val adapter = MainAdapter(movies)
+            binding.show.layoutManager =
+                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            binding.show.adapter = adapter
+            adapter.notifyDataSetChanged()
         })
-        val adapter = MainAdapter(movies)
-        binding?.show?.layoutManager =
-            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        binding?.show?.adapter = adapter
     }
 
 }

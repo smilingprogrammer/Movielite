@@ -12,7 +12,8 @@ import com.example.movielite.network.Movie
 class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        return MainViewHolder(FragmentMainBinding.inflate(
+        return MainViewHolder(
+            GridViewItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         ))
     }
@@ -21,16 +22,16 @@ class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAda
         holder.bind(movies[position])
     }
 
-    inner class MainViewHolder(private val binding: FragmentMainBinding) :
+    inner class MainViewHolder(private val binding: GridViewItemBinding) :
         RecyclerView.ViewHolder(binding.root){
         fun bind(movie: Movie) {
             binding.region.text = movie.title
-            binding.image.text = movie.overview
+            binding.marsImage.load(movie.posterPath)
             /*binding.image.load(movie.image)*/
         }
     }
 
     override fun getItemCount(): Int {
-        return 0
+        return movies.size
     }
 }
