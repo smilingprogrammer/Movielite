@@ -25,8 +25,8 @@ class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAda
     inner class MainViewHolder(private val binding: GridViewItemBinding) :
         RecyclerView.ViewHolder(binding.root){
         fun bind(movie: Movie) {
+            binding.marsImage.load(movie.backdropPath)
             binding.region.text = movie.title
-            binding.marsImage.load(movie.posterPath)
             /*binding.image.load(movie.image)*/
         }
     }
