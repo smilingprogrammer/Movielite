@@ -11,7 +11,7 @@ import com.example.movielite.databinding.GridViewItemBinding
 import com.example.movielite.network.Movie
 
 
-class MainAdapter(private val context: Context, private val movies: List<Movie>): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(
@@ -28,13 +28,9 @@ class MainAdapter(private val context: Context, private val movies: List<Movie>)
     inner class MainViewHolder(private val binding: GridViewItemBinding) :
         RecyclerView.ViewHolder(binding.root){
         fun bind(movie: Movie) {
-            Glide.with(context)
-                .load(movie.backdropPath)
-                .into(binding.marsImage)
-            binding.marsImage.load(movie.backdropPath)
+            binding.marsImage.load("https://image.tmdb.org/t/p/w342${movie.backdropPath}")
             binding.region.text = movie.title
             binding.rating.rating = movie.voteAverage!!.div(2)
-            /*binding.image.load(movie.image)*/
         }
     }
 
