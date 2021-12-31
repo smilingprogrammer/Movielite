@@ -1,17 +1,17 @@
 package com.example.movielite
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.bumptech.glide.Glide
 import com.bumptech.glide.annotation.GlideModule
-import com.example.movielite.databinding.FragmentMainBinding
 import com.example.movielite.databinding.GridViewItemBinding
 import com.example.movielite.network.Movie
 
 
-class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class MainAdapter(private val context: Context, private val movies: List<Movie>): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(
@@ -28,7 +28,7 @@ class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAda
     inner class MainViewHolder(private val binding: GridViewItemBinding) :
         RecyclerView.ViewHolder(binding.root){
         fun bind(movie: Movie) {
-            Glide.with(itemView)
+            Glide.with(context)
                 .load(movie.backdropPath)
                 .into(binding.marsImage)
             binding.marsImage.load(movie.backdropPath)

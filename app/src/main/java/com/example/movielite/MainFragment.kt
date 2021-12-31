@@ -38,7 +38,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.popularMoviesLiveData.observe(/*this*/viewLifecycleOwner, {
             movies.addAll(it)
-            val adapter = MainAdapter(movies)
+            val adapter = MainAdapter(requireContext(), movies)
             binding.show.layoutManager =
                 StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             binding.show.adapter = adapter
