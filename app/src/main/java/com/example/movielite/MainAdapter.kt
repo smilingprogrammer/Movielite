@@ -28,9 +28,11 @@ class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAda
     inner class MainViewHolder(private val binding: GridViewItemBinding) :
         RecyclerView.ViewHolder(binding.root){
         fun bind(movie: Movie) {
-            binding.marsImage.load("https://image.tmdb.org/t/p/w342${movie.backdropPath}")
-            binding.region.text = movie.title
-            binding.rating.rating = movie.voteAverage!!.div(2)
+            binding.imageViewPoster.load("https://image.tmdb.org/t/p/w342${movie.backdropPath}")
+            binding.textViewTitle.text = movie.title
+            binding.textViewReleaseDate.text = movie.releaseDate
+            binding.textViewTotalVotes.text = movie.voteCount.toString()
+//            binding.rating.rating = movie.voteAverage!!.div(2)
         }
     }
 

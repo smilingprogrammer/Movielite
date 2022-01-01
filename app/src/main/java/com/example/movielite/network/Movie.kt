@@ -37,8 +37,8 @@ data class Movie(
     var adult: Boolean? = null,
     @Json(name = "overview")
     var overview: String? = null,
-//    @Json(name = "release_date")
-//    var releaseDate: String? = null,
+    @Json(name = "release_date")
+    var releaseDate: String? = null
 //    var genreString: String = "",
 //    var contentType: Int = SyncStateContract.Constants.CONTENT_MOVIE,
 //    var tableName: Int? = null
