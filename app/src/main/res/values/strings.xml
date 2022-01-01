@@ -2,4 +2,7 @@
     <string name="app_name">MovieLite</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="over_view">Overview</string>
+    <string name="top_rated_movies">Top Rated Movies</string>
+    <string name="image_back_btn_desc">Back button</string>
 </resources>

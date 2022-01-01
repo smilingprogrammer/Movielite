@@ -40,7 +40,7 @@ class MainFragment : Fragment() {
             movies.addAll(it)
             val adapter = MainAdapter(movies)
             binding.show.layoutManager =
-                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL)
             binding.show.adapter = adapter
             adapter.notifyDataSetChanged()
         })

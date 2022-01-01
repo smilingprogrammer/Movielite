@@ -1,12 +1,11 @@
 package com.example.movielite
 
-import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.bumptech.glide.Glide
-import com.bumptech.glide.annotation.GlideModule
+import com.example.movielite.databinding.FragmentMovieDetailBinding
 import com.example.movielite.databinding.GridViewItemBinding
 import com.example.movielite.network.Movie
 
@@ -24,17 +23,18 @@ class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAda
         holder.bind(movies[position])
     }
 
-    @GlideModule
     inner class MainViewHolder(private val binding: GridViewItemBinding) :
-        RecyclerView.ViewHolder(binding.root){
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             binding.imageViewPoster.load("https://image.tmdb.org/t/p/w342${movie.backdropPath}")
             binding.textViewTitle.text = movie.title
             binding.textViewReleaseDate.text = movie.releaseDate
             binding.textViewTotalVotes.text = movie.voteCount.toString()
+            binding.cardViewMovieDetails.setOnClickListener(R.id.overview)
 //            binding.rating.rating = movie.voteAverage!!.div(2)
         }
     }
+
 
     override fun getItemCount(): Int {
         return movies.size
