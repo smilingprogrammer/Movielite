@@ -10,7 +10,8 @@ import com.example.movielite.databinding.GridViewItemBinding
 import com.example.movielite.network.Movie
 
 
-class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class MainAdapter(private val movies: List<Movie>, private val listener: (Movie) -> Unit
+        ): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(
@@ -30,8 +31,9 @@ class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAda
             binding.textViewTitle.text = movie.title
             binding.textViewReleaseDate.text = movie.releaseDate
             binding.textViewTotalVotes.text = movie.voteCount.toString()
-            binding.cardViewMovieDetails.setOnClickListener{
-                movies.get()
+
+            binding.cardViewMovieDetails.setOnClickListener {
+                listener.invoke(movie)
             }
 //            binding.rating.rating = movie.voteAverage!!.div(2)
         }

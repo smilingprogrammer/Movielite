@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.movielite.databinding.FragmentMainBinding
 import com.example.movielite.main.MainViewModel
@@ -38,12 +40,19 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.popularMoviesLiveData.observe(/*this*/viewLifecycleOwner, {
             movies.addAll(it)
-            val adapter = MainAdapter(movies)
+            val adapter = MainAdapter(movies){
+                requireView().findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,
+                bundleOf(ID_ARGS to it.id))
+            }
             binding.show.layoutManager =
                 StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL)
             binding.show.adapter = adapter
             adapter.notifyDataSetChanged()
         })
+    }
+
+    companion object {
+        val ID_ARGS = MainFragment::class.java.simpleName + "Movie-id"
     }
 
 }
