@@ -30,7 +30,9 @@ class MainAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MainAda
             binding.textViewTitle.text = movie.title
             binding.textViewReleaseDate.text = movie.releaseDate
             binding.textViewTotalVotes.text = movie.voteCount.toString()
-            binding.cardViewMovieDetails.setOnClickListener(R.id.overview)
+            binding.cardViewMovieDetails.setOnClickListener{
+                movies.get()
+            }
 //            binding.rating.rating = movie.voteAverage!!.div(2)
         }
     }
