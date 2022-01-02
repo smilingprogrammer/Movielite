@@ -27,7 +27,7 @@ class MainAdapter(private val movies: List<Movie>, private val listener: (Movie)
     inner class MainViewHolder(private val binding: GridViewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
-            binding.imageViewPoster.load("https://image.tmdb.org/t/p/w342${movie.backdropPath}")
+            binding.imageViewPoster.load("https://image.tmdb.org/t/p/w342${movie.posterPath}")
             binding.textViewTitle.text = movie.title
             binding.textViewReleaseDate.text = movie.releaseDate
             binding.textViewTotalVotes.text = movie.voteCount.toString()

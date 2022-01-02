@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import coil.load
+import com.example.movielite.MainFragment.Companion.ID_ARGS
 import com.example.movielite.databinding.FragmentMovieDetailBinding
 import com.example.movielite.main.MainViewModel
 import com.example.movielite.main.MainViewModelFactory
+import com.example.movielite.network.Movie
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
 
@@ -25,6 +29,7 @@ private const val ARG_PARAM2 = "param2"
 class MovieDetailFragment : Fragment() {
 
     private var binding: FragmentMovieDetailBinding? = null
+    private val movieDetail = mutableListOf<Movie>()
 
     private val viewModel: MovieDetailFragmentViewModel by lazy {
         ViewModelProvider(this, MovieDetailViewModelFactory(MovieRepository(MovieApi.retrofitService)))
@@ -42,5 +47,16 @@ class MovieDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var id = 0
+        arguments?.let {
+            id = it.getInt(ID_ARGS).toInt()
+        }
+        viewModel.getPopularMovieDetail(id)
+        viewModel.popularMoviesDetailLiveData.observe(/*this*/viewLifecycleOwner, Observer {
+            movieDetail.addAll(it)
+        })
+        binding?.imageViewBackdrop.load("https://image.tmdb.org/t/p/w342${movieDetail[0].backdropPath}")
+        binding?.textViewOverView?.text = movieDetail[0].overview
+        binding?.textViewRunTime?.text = movieDetail[0].
     }
 }
