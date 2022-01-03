@@ -55,8 +55,8 @@ class MovieDetailFragment : Fragment() {
         viewModel.popularMoviesDetailLiveData.observe(/*this*/viewLifecycleOwner, Observer {
             movieDetail.addAll(it)
         })
-        binding?.imageViewBackdrop.load("https://image.tmdb.org/t/p/w342${movieDetail[0].backdropPath}")
+        binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w342${movieDetail[0].backdropPath}")
         binding?.textViewOverView?.text = movieDetail[0].overview
-        binding?.textViewRunTime?.text = movieDetail[0].
+        activity?.title = movieDetail[0].title
     }
 }

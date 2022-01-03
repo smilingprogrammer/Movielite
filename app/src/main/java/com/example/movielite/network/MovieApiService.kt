@@ -24,6 +24,11 @@ interface MovieApiService {
     suspend fun getPopularMovies(@Query("api_key") apiKey: String,
     @Query("language") language: String,
     @Query("page") page: Int) : MovieResponse
+
+
+    @GET("movie/{movie_id}")
+    suspend fun getMovieDetails(@Query("api_key") apiKey: String,
+    @Query("language") language: String)
 //    @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
 //    suspend fun getImage(
 //        @Path("lang") lang: String) : Deferred<ModelImage>
