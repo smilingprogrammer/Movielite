@@ -14,6 +14,7 @@ import com.example.movielite.main.MainViewModel
 import com.example.movielite.main.MainViewModelFactory
 import com.example.movielite.network.Movie
 import com.example.movielite.network.MovieApi
+import com.example.movielite.network.repository.MovieDetailRepository
 import com.example.movielite.network.repository.MovieRepository
 
 // TODO: Rename parameter arguments, choose names that match
@@ -32,7 +33,7 @@ class MovieDetailFragment : Fragment() {
     private val movieDetail = mutableListOf<Movie>()
 
     private val viewModel: MovieDetailFragmentViewModel by lazy {
-        ViewModelProvider(this, MovieDetailViewModelFactory(MovieRepository(MovieApi.retrofitService)))
+        ViewModelProvider(this, MovieDetailViewModelFactory(MovieDetailRepository(MovieApi.retrofitService)))
             .get(MovieDetailFragmentViewModel::class.java)
     }
 
@@ -51,7 +52,7 @@ class MovieDetailFragment : Fragment() {
         arguments?.let {
             id = it.getInt(ID_ARGS).toInt()
         }
-        viewModel.getPopularMovieDetail(id)
+        viewModel.getPopularMovieDetails(id)
         viewModel.popularMoviesDetailLiveData.observe(/*this*/viewLifecycleOwner, Observer {
             movieDetail.addAll(it)
         })

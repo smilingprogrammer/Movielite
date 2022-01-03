@@ -7,6 +7,7 @@ import retrofit2.Retrofit
 //import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://api.themoviedb.org/3/"
@@ -28,9 +29,10 @@ interface MovieApiService {
 
 
     @GET("movie/{movie_id}")
-    suspend fun getMovieDetails(@Query("api_key") apiKey: String,
-    @Query("language") language: String,
-    @Query("append_to_response") response: String) : MovieDetail
+    suspend fun getMovieDetails(@Path("movieId") movieId: String,
+                                @Query("api_key") apiKey: String,
+                                @Query("language") language: String,
+                                @Query("append_to_response") response: String) : MovieDetail
 //    @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
 //    suspend fun getImage(
 //        @Path("lang") lang: String) : Deferred<ModelImage>
