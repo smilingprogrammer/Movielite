@@ -52,7 +52,7 @@ class MainFragment : Fragment() {
     }
 
     companion object {
-        val ID_ARGS = MainFragment::class.java.simpleName + "Movie-id"
+        val ID_ARGS: String = MainFragment::class.java.simpleName + "Movie-id"
     }
 
 }

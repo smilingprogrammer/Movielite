@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 
 data class MovieDetail(
+    @Json(name = "id")
+    var id: String? = null,
     @Json(name = "homepage")
     var homePage: String? = null,
     @Json(name = "imdb_id")
@@ -19,6 +21,12 @@ data class MovieDetail(
     var tagLine: String? = null,
     @Json(name = "budget")
     var budget: Int = 0,
+    @Json(name = "overview")
+    var overview: String? = null,
+    @Json(name = "backdrop_path")
+    var backdropPath: String? = null,
+    @Json(name = "title")
+    var title: String? = null
     //@Json(name = "videos")
     //var videosResult: MovieVideosRequest? = null
 )

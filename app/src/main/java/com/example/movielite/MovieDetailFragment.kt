@@ -10,9 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.movielite.MainFragment.Companion.ID_ARGS
 import com.example.movielite.databinding.FragmentMovieDetailBinding
-import com.example.movielite.main.MainViewModel
-import com.example.movielite.main.MainViewModelFactory
-import com.example.movielite.network.Movie
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieDetailRepository
 import com.example.movielite.network.repository.MovieRepository
@@ -30,7 +27,7 @@ private const val ARG_PARAM2 = "param2"
 class MovieDetailFragment : Fragment() {
 
     private var binding: FragmentMovieDetailBinding? = null
-    private val movieDetail = mutableListOf<Movie>()
+    private val movieDetail = mutableListOf<MovieDetail>()
 
     private val viewModel: MovieDetailFragmentViewModel by lazy {
         ViewModelProvider(this, MovieDetailViewModelFactory(MovieDetailRepository(MovieApi.retrofitService)))
@@ -48,9 +45,9 @@ class MovieDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var id = 0
+        var id = ""
         arguments?.let {
-            id = it.getInt(ID_ARGS).toInt()
+            id = it.getString(ID_ARGS).toString()
         }
         viewModel.getPopularMovieDetails(id)
         viewModel.popularMoviesDetailLiveData.observe(/*this*/viewLifecycleOwner, Observer {

@@ -1,6 +1,7 @@
 package com.example.movielite.network
 
 import com.example.movielite.MovieDetail
+import com.example.movielite.network.repository.MovieDetailResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -29,10 +30,9 @@ interface MovieApiService {
 
 
     @GET("movie/{movie_id}")
-    suspend fun getMovieDetails(@Path("movieId") movieId: String,
-                                @Query("api_key") apiKey: String,
+    suspend fun getMovieDetails(@Query("api_key") apiKey: String,
                                 @Query("language") language: String,
-                                @Query("append_to_response") response: String) : MovieDetail
+                                @Query("append_to_response") response: String) : MovieDetailResponse
 //    @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
 //    suspend fun getImage(
 //        @Path("lang") lang: String) : Deferred<ModelImage>
