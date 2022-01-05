@@ -34,6 +34,7 @@ interface MovieApiService {
                                 @Query("language") language: String,
                                 @Query("append_to_response") response: String) : MovieDetailResponse
 //    @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
+
 //    suspend fun getImage(
 //        @Path("lang") lang: String) : Deferred<ModelImage>
 //
