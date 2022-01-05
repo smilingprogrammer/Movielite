@@ -14,16 +14,7 @@ import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieDetailRepository
 import com.example.movielite.network.repository.MovieRepository
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MovieDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MovieDetailFragment : Fragment() {
 
     private var binding: FragmentMovieDetailBinding? = null
@@ -45,14 +36,15 @@ class MovieDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var id = ""
-        arguments?.let {
-            id = it.getString(ID_ARGS).toString()
-        }
-        viewModel.getPopularMovieDetails(id)
-        viewModel.popularMoviesDetailLiveData.observe(/*this*/viewLifecycleOwner, Observer {
-            movieDetail.addAll(it)
-        })
+        val extras = intent.extras
+//        var id = ""
+//        arguments?.let {
+//            id = it.getString(ID_ARGS).toString()
+//        }
+//        viewModel.getPopularMovieDetails(id)
+//        viewModel.popularMoviesDetailLiveData.observe(/*this*/viewLifecycleOwner, Observer {
+//            movieDetail.addAll(it)
+//        })
         binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w342${movieDetail[0].backdropPath}")
         binding?.textViewOverView?.text = movieDetail[0].overview
         activity?.title = movieDetail[0].title
