@@ -15,5 +15,7 @@ class MainActivity : AppCompatActivity() {
                 .add(R.id.fragment_container, fragment, null)
                 .commit()
         }
+
+        val extras = intent.extras
     }
 }

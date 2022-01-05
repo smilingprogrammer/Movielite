@@ -1,5 +1,6 @@
 package com.example.movielite
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,15 +37,14 @@ class MovieDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val extras = intent.extras
-//        var id = ""
-//        arguments?.let {
-//            id = it.getString(ID_ARGS).toString()
-//        }
-//        viewModel.getPopularMovieDetails(id)
-//        viewModel.popularMoviesDetailLiveData.observe(/*this*/viewLifecycleOwner, Observer {
-//            movieDetail.addAll(it)
-//        })
+        var id = ""
+        arguments?.let {
+            id = it.getString(ID_ARGS).toString()
+        }
+        viewModel.getPopularMovieDetails(id)
+        viewModel.popularMoviesDetailLiveData.observe(/*this*/viewLifecycleOwner, Observer {
+            movieDetail.addAll(it)
+        })
         binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w342${movieDetail[0].backdropPath}")
         binding?.textViewOverView?.text = movieDetail[0].overview
         activity?.title = movieDetail[0].title
