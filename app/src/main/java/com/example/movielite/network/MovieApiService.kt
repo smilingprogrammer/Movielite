@@ -30,9 +30,8 @@ interface MovieApiService {
 
 
     @GET("movie/{movie_id}")
-    suspend fun getMovieDetails(@Query("api_key") apiKey: String,
-                                @Query("language") language: String,
-                                @Query("append_to_response") response: String) : MovieDetailResponse
+    suspend fun getMovieDetails(@Path("movie_Id") movieId: Int,
+        @Query("api_key") apiKey: String) : MovieDetailResponse
 //    @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
 
 //    suspend fun getImage(

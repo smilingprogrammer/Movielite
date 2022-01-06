@@ -18,11 +18,11 @@ class MovieDetailFragmentViewModel(private val movieDetailRepository: MovieDetai
     private val _popularMoviesDetailLiveData = MutableLiveData<List<MovieDetail>>()
     val popularMoviesDetailLiveData: LiveData<List<MovieDetail>>
         get() = _popularMoviesDetailLiveData
-    fun getPopularMovieDetails(id: String) {
+    fun getPopularMovieDetails(movieId: Int) {
 
         try {
             viewModelScope.launch {
-                _popularMoviesDetailLiveData.value = movieDetailRepository.getMovieDetails(TMDB_API_KEY, "en-US", "image").movieDetail
+                _popularMoviesDetailLiveData.value = movieDetailRepository.getMovieDetails(movieId, TMDB_API_KEY).movieDetail
             }
         } catch (e: Exception) {
             Log.e(TAG, e.message.toString())
