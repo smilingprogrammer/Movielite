@@ -20,7 +20,7 @@ class MovieDetailFragment : Fragment() {
 
     private var binding: FragmentMovieDetailBinding? = null
     private val movieDetail = mutableListOf<MovieDetail>()
-    private var movieId: Int = 0
+    private var movieId: Int? = null
 
     private val viewModel: MovieDetailFragmentViewModel by lazy {
         ViewModelProvider(this, MovieDetailViewModelFactory(MovieDetailRepository(MovieApi.retrofitService)))
@@ -38,11 +38,10 @@ class MovieDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var id = ""
-        arguments?.let {
-            id = it.getString(ID_ARGS).toString()
-        }
-        viewModel.getPopularMovieDetails(movieId)
+//        arguments?.let {
+//            movieId = it.getInt(ID_ARGS)!!
+//        }
+        movieId?.let { viewModel.getPopularMovieDetails(it) }
         viewModel.popularMoviesDetailLiveData.observe(/*this*/viewLifecycleOwner, Observer {
             movieDetail.addAll(it)
         })
