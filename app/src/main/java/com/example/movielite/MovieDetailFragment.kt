@@ -39,9 +39,9 @@ class MovieDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let {
-            movieId = it.getInt(ID_ARGS)!!
+            movieId = it.getInt(ID_ARGS)
         }
-        movieId?.let { viewModel.getPopularMovieDetails(it) }
+//        movieId?.let { viewModel.getPopularMovieDetails(it) }
         viewModel.popularMoviesDetailLiveData.observe(/*this*/viewLifecycleOwner, Observer {
             movieDetail.addAll(it)
         })

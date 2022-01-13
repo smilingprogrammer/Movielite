@@ -15,6 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        val binding = ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+
         val fragment = MainFragment()
         if (savedInstanceState == null) {
             supportFragmentManager
@@ -22,10 +25,15 @@ class MainActivity : AppCompatActivity() {
                 .add(R.id.fragment_container, fragment, null)
                 .commit()
         }
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.fragment_container) as NavHostFragment
-        navController = navHostFragment.navController
+//        val navHostFragment = supportFragmentManager
+//            .findFragmentById(R.id.fragment_container) as NavHostFragment
+//        navController = navHostFragment.navController
 
-        setupActionBarWithNavController(navController)
+//        setupActionBarWithNavController(navController)
+
     }
+
+//    override fun onSupportNavigateUp(): Boolean {
+//        return navController.navigateUp() || super.onSupportNavigateUp()
+//    }
 }
