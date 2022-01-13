@@ -20,7 +20,7 @@ class MovieDetailFragment : Fragment() {
 
     private var binding: FragmentMovieDetailBinding? = null
     private val movieDetail = mutableListOf<MovieDetail>()
-    private var movieId: Int? = null
+    private var movieId: Int = 0
 
     private val viewModel: MovieDetailFragmentViewModel by lazy {
         ViewModelProvider(this, MovieDetailViewModelFactory(MovieDetailRepository(MovieApi.retrofitService)))
