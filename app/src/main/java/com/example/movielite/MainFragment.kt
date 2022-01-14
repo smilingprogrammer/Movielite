@@ -47,7 +47,7 @@ class MainFragment : Fragment() {
             binding.show.layoutManager =
                 StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL)
             binding.show.adapter = adapter
-            adapter.notifyDataSetChanged()
+//            adapter.notifyDataSetChanged()
         })
     }
 
