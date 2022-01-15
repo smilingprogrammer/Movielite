@@ -18,6 +18,9 @@ class MovieDetailFragmentViewModel(private val movieDetailRepository: MovieDetai
     private val _popularMoviesDetailLiveData = MutableLiveData<List<MovieDetail>>()
     val popularMoviesDetailLiveData: LiveData<List<MovieDetail>>
         get() = _popularMoviesDetailLiveData
+    init {
+        getPopularMovieDetails()
+    }
     fun getPopularMovieDetails(movieId: Int) {
 
         try {

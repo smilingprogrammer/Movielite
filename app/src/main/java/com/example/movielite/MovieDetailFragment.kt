@@ -42,7 +42,7 @@ class MovieDetailFragment : Fragment() {
             movieId = it.getInt(ID_ARGS)
         }
 //        movieId?.let { viewModel.getPopularMovieDetails(it) }
-        viewModel.movieDetail.observe(/*this*/viewLifecycleOwner, Observer {
+        viewModel.popularMoviesDetailLiveData.observe(/*this*/viewLifecycleOwner, Observer {
             movieDetail.addAll(it)
         })
         binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w342${movieDetail[0].backdropPath}")
