@@ -3,6 +3,7 @@ package com.example.movielite
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
+import java.io.Serializable
 
 data class MovieDetail(
     @Json(name = "id")
@@ -29,4 +30,4 @@ data class MovieDetail(
     var title: String? = null
     //@Json(name = "videos")
     //var videosResult: MovieVideosRequest? = null
-)
+): Serializable

@@ -11,7 +11,7 @@ class MovieDetailViewModelFactory(private val movieDetailRepository: MovieDetail
         if (modelClass.isAssignableFrom(MovieDetailFragmentViewModel::class.java)){
             return MovieDetailFragmentViewModel(movieDetailRepository) as T
         } else {
-            throw IllegalArgumentException("UNKNOWN")
+            throw IllegalArgumentException("UNKNOWN CLASS")
         }
     }
 
