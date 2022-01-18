@@ -45,8 +45,11 @@ class MovieDetailFragment : Fragment() {
         arguments?.let {
             movie = it.get(ID_ARGS) as Movie
         }
-        binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w342${movie.backdropPath}")
+        binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w780${movie.backdropPath}")
         binding?.textViewOverView?.text = movie.overview
+        binding?.textViewMovieTitleWithDate?.text = movie.title
+        binding?.textViewMovieReleaseStatus?.text = movie.releaseDate
         activity?.title = movie.title
+
     }
 }
