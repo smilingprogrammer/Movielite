@@ -28,6 +28,6 @@ data class MovieDetail(
     var backdropPath: String? = null,
     @Json(name = "title")
     var title: String? = null
-    //@Json(name = "videos")
-    //var videosResult: MovieVideosRequest? = null
+    @Json(name = "videos")
+    var videosResult: MovieVideosRequest? = null
 ): Serializable
