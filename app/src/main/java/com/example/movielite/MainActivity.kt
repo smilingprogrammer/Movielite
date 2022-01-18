@@ -19,12 +19,12 @@ class MainActivity : AppCompatActivity() {
 //        setContentView(binding.root)
 
         val fragment = MainFragment()
-        if (savedInstanceState == null) {
+        /*if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
                 .add(R.id.fragment_container, fragment, null)
                 .commit()
-        }
+        }*/
 //        val navHostFragment = supportFragmentManager
 //            .findFragmentById(R.id.fragment_container) as NavHostFragment
 //        navController = navHostFragment.navController

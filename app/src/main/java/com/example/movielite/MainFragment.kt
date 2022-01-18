@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.movielite.databinding.FragmentMainBinding
 import com.example.movielite.main.MainViewModel
@@ -21,6 +24,7 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: MainAdapter
+    private lateinit var navController: NavController
 
     private var movies = mutableListOf<Movie>()
     private val viewModel: MainViewModel by lazy {
@@ -41,8 +45,8 @@ class MainFragment : Fragment() {
         viewModel.popularMoviesLiveData.observe(/*this*/viewLifecycleOwner, {
             movies.addAll(it)
             val adapter = MainAdapter(movies){
-                requireView().findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,
-                bundleOf(ID_ARGS to it.id))
+                findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,
+                bundleOf(ID_ARGS to it))
             }
             binding.show.layoutManager =
                 StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL)

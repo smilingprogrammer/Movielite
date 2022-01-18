@@ -2,6 +2,7 @@ package com.example.movielite.network
 
 import android.provider.SyncStateContract
 import com.squareup.moshi.Json
+import java.io.Serializable
 
 data class Movie(
 //    @Json(name = "api_key")
@@ -42,5 +43,5 @@ data class Movie(
 //    var genreString: String = "",
 //    var contentType: Int = SyncStateContract.Constants.CONTENT_MOVIE,
 //    var tableName: Int? = null
-    )
+    ): Serializable
 
