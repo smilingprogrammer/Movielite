@@ -1,10 +1,12 @@
 package com.example.movielite
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.MediaController
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -24,7 +26,6 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: MainAdapter
-    private lateinit var navController: NavController
 
     private var movies = mutableListOf<Movie>()
     private val viewModel: MainViewModel by lazy {
@@ -51,6 +52,14 @@ class MainFragment : Fragment() {
             binding.show.layoutManager =
                 StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL)
             binding.show.adapter = adapter
+            val videoView = binding.comingSoonVideo
+            val mediaController = MediaController(this)
+            mediaController.setAnchorView(videoView)
+            val onlineUri = Uri.parse()
+            videoView.setMediaController(mediaController)
+            videoView.setVideoURI(onlineUri)
+            videoView.requestFocus()
+            videoView.start()
             adapter.notifyDataSetChanged()
         })
     }
