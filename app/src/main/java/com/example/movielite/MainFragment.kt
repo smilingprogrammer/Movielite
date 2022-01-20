@@ -53,7 +53,7 @@ class MainFragment : Fragment() {
                 StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL)
             binding.show.adapter = adapter
             val videoView = binding.comingSoonVideo
-            val onlineUri = Uri.parse("https://cdn.videvo.net/videvo_files/video/premium/video0227/large_watermarked/08_Den_Darina_maldiv_09_krugit_na_rukax_preview.mp4")
+            val onlineUri = Uri.parse("")
             videoView.setVideoURI(onlineUri)
             videoView.requestFocus()
             videoView.start()
