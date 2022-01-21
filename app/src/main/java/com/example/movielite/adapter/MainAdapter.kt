@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.movielite.databinding.GridViewItemBinding
+import com.example.movielite.databinding.HorizontalScrollViewBinding
 import com.example.movielite.network.Movie
 
 
@@ -13,7 +14,7 @@ class MainAdapter(private val movies: List<Movie>, private val listener: (Movie)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(
-            GridViewItemBinding.inflate(
+            HorizontalScrollViewBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         ))
     }
@@ -22,17 +23,17 @@ class MainAdapter(private val movies: List<Movie>, private val listener: (Movie)
         holder.bind(movies[position])
     }
 
-    inner class MainViewHolder(private val binding: GridViewItemBinding) :
+    inner class MainViewHolder(private val binding: HorizontalScrollViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
-            binding.imageViewPoster.load("https://image.tmdb.org/t/p/w342${movie.posterPath}")
-            binding.textViewTitle.text = movie.title
-            binding.textViewReleaseDate.text = movie.releaseDate
-            binding.textViewTotalVotes.text = movie.voteCount.toString()
-
-            binding.cardViewMovieDetails.setOnClickListener {
-                listener.invoke(movie)
-            }
+            binding.image.load("https://image.tmdb.org/t/p/w342${movie.posterPath}")
+//            binding.textViewTitle.text = movie.title
+//            binding.textViewReleaseDate.text = movie.releaseDate
+//            binding.textViewTotalVotes.text = movie.voteCount.toString()
+//
+//            binding.cardViewMovieDetails.setOnClickListener {
+//                listener.invoke(movie)
+//            }
 //            binding.rating.rating = movie.voteAverage!!.div(2)
         }
     }

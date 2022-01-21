@@ -49,7 +49,7 @@ class MainFragment : Fragment() {
                 bundleOf(ID_ARGS to it))
             }
             binding.show.layoutManager =
-                StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL)
+                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
             binding.show.adapter = adapter
             val videoView = binding.comingSoonVideo
             val onlineUri = Uri.parse("")

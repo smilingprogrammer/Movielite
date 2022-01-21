@@ -5,4 +5,6 @@
     <string name="over_view">Overview</string>
     <string name="top_rated_movies">Top Rated Movies</string>
     <string name="image_back_btn_desc">Back button</string>
+
+    <string name="trending">Trending</string>
 </resources>
