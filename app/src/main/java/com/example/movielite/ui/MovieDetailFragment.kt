@@ -1,21 +1,20 @@
-package com.example.movielite
+package com.example.movielite.ui
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import com.example.movielite.MainFragment.Companion.ID_ARGS
+import com.example.movielite.MovieDetail
+import com.example.movielite.viewmodel.MovieDetailFragmentViewModel
+import com.example.movielite.MovieDetailViewModelFactory
+import com.example.movielite.ui.MainFragment.Companion.ID_ARGS
 import com.example.movielite.databinding.FragmentMovieDetailBinding
 import com.example.movielite.network.Movie
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieDetailRepository
-import com.example.movielite.network.repository.MovieRepository
 
 
 class MovieDetailFragment : Fragment() {

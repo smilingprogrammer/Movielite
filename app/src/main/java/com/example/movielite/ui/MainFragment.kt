@@ -1,4 +1,4 @@
-package com.example.movielite
+package com.example.movielite.ui
 
 import android.net.Uri
 import android.os.Bundle
@@ -6,20 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.MediaController
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.movielite.R
+import com.example.movielite.adapter.MainAdapter
 import com.example.movielite.databinding.FragmentMainBinding
-import com.example.movielite.main.MainViewModel
 import com.example.movielite.main.MainViewModelFactory
 import com.example.movielite.network.Movie
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
+import com.example.movielite.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
 
@@ -46,7 +44,8 @@ class MainFragment : Fragment() {
         viewModel.popularMoviesLiveData.observe(/*this*/viewLifecycleOwner, {
             movies.addAll(it)
             val adapter = MainAdapter(movies){
-                findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,
+                findNavController().navigate(
+                    R.id.action_mainFragment_to_movieDetailFragment,
                 bundleOf(ID_ARGS to it))
             }
             binding.show.layoutManager =

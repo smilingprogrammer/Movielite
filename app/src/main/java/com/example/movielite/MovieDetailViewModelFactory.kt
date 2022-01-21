@@ -2,9 +2,8 @@ package com.example.movielite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.movielite.main.MainViewModel
 import com.example.movielite.network.repository.MovieDetailRepository
-import com.example.movielite.network.repository.MovieRepository
+import com.example.movielite.viewmodel.MovieDetailFragmentViewModel
 
 class MovieDetailViewModelFactory(private val movieDetailRepository: MovieDetailRepository): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

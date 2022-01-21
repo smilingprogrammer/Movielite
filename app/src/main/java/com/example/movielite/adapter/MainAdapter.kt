@@ -1,11 +1,9 @@
-package com.example.movielite
+package com.example.movielite.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.movielite.databinding.FragmentMovieDetailBinding
 import com.example.movielite.databinding.GridViewItemBinding
 import com.example.movielite.network.Movie
 

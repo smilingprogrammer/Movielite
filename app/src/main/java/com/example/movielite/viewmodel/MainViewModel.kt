@@ -1,4 +1,4 @@
-package com.example.movielite.main
+package com.example.movielite.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
