@@ -9,7 +9,10 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.movielite.R
 import com.example.movielite.adapter.MainAdapter
 import com.example.movielite.databinding.FragmentMainBinding
@@ -18,6 +21,7 @@ import com.example.movielite.network.Movie
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
 import com.example.movielite.viewmodel.MainViewModel
+import kotlin.math.abs
 
 class MainFragment : Fragment() {
 
@@ -51,6 +55,21 @@ class MainFragment : Fragment() {
             binding.show.layoutManager =
                 StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
             binding.show.adapter = adapter
+
+            binding.show.clipToPadding = false
+            binding.show.clipChildren = false
+            binding.show.setof = 3
+            binding.show.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+
+            val compositePageTransformer = CompositePageTransformer()
+            compositePageTransformer.addTransformer(MarginPageTransformer(20))
+            compositePageTransformer.addTransformer{ page, position ->
+                val r = 1 - abs(position)
+                page.scaleY = 0.85f + r * 0.25f
+            }
+            binding.show.setPageTransformer(compositePageTransformer)
+
+
             val videoView = binding.comingSoonVideo
             val onlineUri = Uri.parse("")
             videoView.setVideoURI(onlineUri)

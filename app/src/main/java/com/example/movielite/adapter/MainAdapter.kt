@@ -31,9 +31,9 @@ class MainAdapter(private val movies: List<Movie>, private val listener: (Movie)
 //            binding.textViewReleaseDate.text = movie.releaseDate
 //            binding.textViewTotalVotes.text = movie.voteCount.toString()
 //
-//            binding.cardViewMovieDetails.setOnClickListener {
-//                listener.invoke(movie)
-//            }
+            binding.image.setOnClickListener {
+                listener.invoke(movie)
+            }
 //            binding.rating.rating = movie.voteAverage!!.div(2)
         }
     }
