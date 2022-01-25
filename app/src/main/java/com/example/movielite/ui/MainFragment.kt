@@ -11,8 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.example.movielite.R
 import com.example.movielite.adapter.MainAdapter
 import com.example.movielite.databinding.FragmentMainBinding
@@ -25,6 +27,7 @@ import kotlin.math.abs
 
 class MainFragment : Fragment() {
 
+    private lateinit var viewPager2: ViewPager2
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: MainAdapter
@@ -52,14 +55,16 @@ class MainFragment : Fragment() {
                     R.id.action_mainFragment_to_movieDetailFragment,
                 bundleOf(ID_ARGS to it))
             }
-            binding.show.layoutManager =
-                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
-            binding.show.adapter = adapter
+            viewPager2 = binding.show
+//            binding.show.layoutManager =
+//                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
+//            binding.show.adapter = adapter
 
-            binding.show.clipToPadding = false
-            binding.show.clipChildren = false
-            binding.show.setof = 3
-            binding.show.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            viewPager2.clipToPadding = false
+            viewPager2.clipChildren = false
+            viewPager2.offscreenPageLimit = 3
+
+            viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
             val compositePageTransformer = CompositePageTransformer()
             compositePageTransformer.addTransformer(MarginPageTransformer(20))
@@ -67,7 +72,7 @@ class MainFragment : Fragment() {
                 val r = 1 - abs(position)
                 page.scaleY = 0.85f + r * 0.25f
             }
-            binding.show.setPageTransformer(compositePageTransformer)
+            viewPager2.setPageTransformer(compositePageTransformer)
 
 
             val videoView = binding.comingSoonVideo

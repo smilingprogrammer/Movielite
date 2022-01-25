@@ -3,6 +3,8 @@ package com.example.movielite.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import coil.load
 import com.example.movielite.databinding.GridViewItemBinding
 import com.example.movielite.databinding.HorizontalScrollViewBinding
