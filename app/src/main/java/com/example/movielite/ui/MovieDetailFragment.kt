@@ -18,9 +18,8 @@ import com.example.movielite.network.repository.MovieDetailRepository
 
 
 class MovieDetailFragment : Fragment() {
-
     private var binding: FragmentMovieDetailBinding? = null
-    private val movieDetail = mutableListOf<MovieDetail>()
+    private val movieDetail: MovieDetail? = null
     private var TAG = "Debug"
     private lateinit var movie:Movie
 
@@ -44,11 +43,25 @@ class MovieDetailFragment : Fragment() {
         arguments?.let {
             movie = it.get(ID_ARGS) as Movie
         }
-        binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w780${movie.backdropPath}")
-        binding?.textViewOverView?.text = movie.overview
-        binding?.textViewMovieTitleWithDate?.text = movie.title
-        binding?.textViewMovieReleaseStatus?.text = movie.releaseDate
+//        binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w780${movie.backdropPath}")
+//        binding?.textViewOverView?.text = movie.overview
+//        binding?.more?.setOnClickListener {
+//            binding?.textViewOverView?.ellipsize = null
+//            binding?.textViewOverView?.maxLines = Integer.MAX_VALUE
+//        }
+//        binding?.textViewMovieTitleWithDate?.text = movie.title
+//        binding?.textViewMovieReleaseStatus?.text = movie.releaseDate
         activity?.title = movie.title
+        viewModel.popularMoviesDetailLiveData.observe(requireActivity(),{
+            binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w780${it.backdrop_path}")
+            binding?.textViewOverView?.text = it.overview
+            binding?.more?.setOnClickListener {
+                binding?.textViewOverView?.ellipsize = null
+                binding?.textViewOverView?.maxLines = Integer.MAX_VALUE
+            }
+            binding?.textViewMovieTitleWithDate?.text = it.title
+        })
+        viewModel.getPopularMovieDetails(movie.id!!)
 
     }
 }

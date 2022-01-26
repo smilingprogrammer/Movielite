@@ -1,175 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black1"
+    android:animateLayoutChanges="true"
     tools:context=".ui.MovieDetailFragment">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="0dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        >
 
-        <ImageView
-            android:id="@+id/imageViewBackdrop"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/sample_backdrop_image" />
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-<!--            <TextView-->
-<!--                android:id="@+id/textViewRunTime"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:fontFamily="@font/karla_normal"-->
-<!--                android:textColor="@color/white_100"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textStyle="bold"-->
-<!--                tools:text="2h 5m"-->
-
-<!--                />-->
+            <ImageView
+                android:id="@+id/imageViewBackdrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/sample_backdrop_image" />
 
             <!--            <TextView-->
-<!--                android:id="@+id/textViewMovieTitleWithDate"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:fontFamily="@font/karla_normal"-->
-<!--                android:textColor="@color/white_100"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textStyle="bold"-->
-<!--                tools:text="Spirited Away" />-->
+            <!--                android:id="@+id/textViewRunTime"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="20dp"-->
+            <!--                android:fontFamily="@font/karla_normal"-->
+            <!--                android:textColor="@color/white_100"-->
+            <!--                android:textSize="20sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                tools:text="2h 5m"-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/textViewMovieReleaseStatus"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                android:fontFamily="@font/karla_normal"-->
-<!--                android:textColor="@color/white_100"-->
-<!--                android:textSize="14sp"-->
-<!--                android:textStyle="italic"-->
-<!--                tools:text="Released" />-->
+            <!--                />-->
 
+            <!--            <TextView-->
+            <!--                android:id="@+id/textViewMovieTitleWithDate"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="20dp"-->
+            <!--                android:fontFamily="@font/karla_normal"-->
+            <!--                android:textColor="@color/white_100"-->
+            <!--                android:textSize="20sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                tools:text="Spirited Away" />-->
 
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/textViewRunTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/karla_normal"
-        android:textColor="@color/white_100"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/frameLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="2h 5m" />
-
-    <TextView
-        android:id="@+id/textViewGenres"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/karla_normal"
-        android:textColor="@color/white_100"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frameLayout"
-        tools:text="Documentary, Music" />
-
-    <ImageView
-        android:id="@+id/add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_baseline_add_circle_outline_24"
-        app:layout_constraintEnd_toStartOf="@id/share"
-        app:layout_constraintTop_toBottomOf="@id/frameLayout" />
-
-    <ImageView
-        android:id="@+id/share"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_baseline_near_me_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frameLayout" />
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView2"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:fontFamily="@font/karla_normal"-->
-<!--                android:text="@string/over_view"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="22sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf=""-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/frameLayout" />-->
-    <TextView
-        android:id="@+id/textViewMovieTitleWithDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/karla_normal"
-        android:textColor="@color/white_100"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewGenres"
-        tools:text="Spirited Away" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/textViewMovieReleaseStatus"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="20dp"-->
+            <!--                android:layout_marginBottom="20dp"-->
+            <!--                android:fontFamily="@font/karla_normal"-->
+            <!--                android:textColor="@color/white_100"-->
+            <!--                android:textSize="14sp"-->
+            <!--                android:textStyle="italic"-->
+            <!--                tools:text="Released" />-->
 
 
-    <TextView
-        android:id="@+id/textViewOverView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/karla_normal"
-        android:padding="5dp"
-        android:textColor="@color/white_100"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewMovieTitleWithDate"
-        tools:text="A young girl, Chihiro, becomes trapped in a strange new world of spirits. When her parents undergo a mysterious transformation, she must call upon the courage she never knew she had to free her family." />
+        </FrameLayout>
 
-<!--            <TextView-->
-<!--                android:id="@+id/textViewRunTime"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:fontFamily="@font/karla_normal"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/textViewGenres"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/textViewOverView"-->
-<!--                tools:text="2h 5m" />-->
+        <TextView
+            android:id="@+id/textViewRunTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/karla_normal"
+            android:textColor="@color/white_100"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/frameLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="2h 5m" />
 
-    <Button
-        android:layout_width="180dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Watch Trailer"
-        app:layout_constraintTop_toBottomOf="@id/textViewOverView" />
+        <TextView
+            android:id="@+id/textViewGenres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/karla_normal"
+            android:textColor="@color/white_100"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frameLayout"
+            tools:text="Documentary, Music" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_baseline_add_circle_outline_24"
+            app:layout_constraintEnd_toStartOf="@id/share"
+            app:layout_constraintTop_toBottomOf="@id/frameLayout" />
+
+        <ImageView
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_baseline_near_me_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frameLayout" />
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/textView2"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:fontFamily="@font/karla_normal"-->
+        <!--                android:text="@string/over_view"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                android:textSize="22sp"-->
+        <!--                android:textStyle="bold"-->
+        <!--                app:layout_constraintStart_toStartOf=""-->
+        <!--                app:layout_constraintTop_toBottomOf="@+id/frameLayout" />-->
+        <TextView
+            android:id="@+id/textViewMovieTitleWithDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/karla_normal"
+            android:textColor="@color/white_100"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewGenres"
+            tools:text="Spirited Away" />
+
+
+        <TextView
+            android:id="@+id/textViewOverView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/karla_normal"
+            android:padding="5dp"
+            android:textColor="@color/white_100"
+            android:textSize="16sp"
+            android:maxLines="3"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewMovieTitleWithDate"
+            tools:text="A young girl, Chihiro, becomes trapped in a strange new world of spirits. When her parents undergo a mysterious transformation, she must call upon the courage she never knew she had to free her family." />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/more"
+            android:textColor="@color/red"
+            android:text="more"
+            app:layout_constraintStart_toStartOf="@id/textViewOverView"
+            app:layout_constraintTop_toBottomOf="@id/textViewOverView"/>
+        <!--            <TextView-->
+        <!--                android:id="@+id/textViewRunTime"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:fontFamily="@font/karla_normal"-->
+        <!--                app:layout_constraintStart_toStartOf="@+id/textViewGenres"-->
+        <!--                app:layout_constraintTop_toBottomOf="@+id/textViewOverView"-->
+        <!--                tools:text="2h 5m" />-->
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Watch Trailer"
+            app:layout_constraintTop_toBottomOf="@id/textViewOverView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

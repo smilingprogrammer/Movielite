@@ -1,6 +1,6 @@
 package com.example.movielite
 
-data class MovieDetail(
+data class MovieDetail1(
     val adult: Boolean?,
     val backdrop_path: String?,
     val belongs_to_collection: Any?,

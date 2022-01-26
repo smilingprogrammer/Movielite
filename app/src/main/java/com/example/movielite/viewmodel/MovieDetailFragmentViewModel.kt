@@ -13,17 +13,17 @@ class MovieDetailFragmentViewModel(private val movieDetailRepository: MovieDetai
 
     private val TAG = MovieDetailFragmentViewModel::class.java.simpleName
 
-    private val _popularMoviesDetailLiveData = MutableLiveData<List<MovieDetail>>()
-    val popularMoviesDetailLiveData: LiveData<List<MovieDetail>>
+    private val _popularMoviesDetailLiveData = MutableLiveData<MovieDetail>()
+    val popularMoviesDetailLiveData: LiveData<MovieDetail>
         get() = _popularMoviesDetailLiveData
 //    init {
 //        getPopularMovieDetails(movieId = id)
 //    }
-    fun getPopularMovieDetails(movieId: Int) {
 
+    fun getPopularMovieDetails(movieId: Int)  {
         try {
             viewModelScope.launch {
-                _popularMoviesDetailLiveData.value = movieDetailRepository.getMovieDetails(movieId, TMDB_API_KEY).movieDetail
+                _popularMoviesDetailLiveData.value = movieDetailRepository.getMovieDetails(movieId, TMDB_API_KEY, "en-US")
             }
         } catch (e: Exception) {
             Log.e(TAG, e.message.toString())
