@@ -4,6 +4,7 @@ import com.example.movielite.MovieDetail
 import com.example.movielite.network.repository.MovieDetailResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 //import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -28,18 +29,22 @@ interface MovieApiService {
     @Query("language") language: String,
     @Query("page") page: Int) : MovieResponse
 
-
     @GET("movie/{movie_id}")
-    suspend fun getMovieDetails(@Path("movie_Id") movieId: Int,
+    suspend fun getMovieDetails(@Path("movie_id") movieId: Int,
                                 @Query("api_key") apiKey: String,
     @Query("language") language: String) : MovieDetail
+
+    @GET("movie/{movie_id}")
+    suspend fun getMovieDetails(@Path("movie_id") movieId: Int,
+                                @Query("api_key") apiKey: String,
+                                @Query("language") language: String) : MovieDetail
 //    @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
 
 //    suspend fun getImage(
 //        @Path("lang") lang: String) : Deferred<ModelImage>
 //
 //    @GET("Images")
-//    suspend fun getNames() : Deferred<ModelImage>
+//   suspend fun getNames() : Deferred<ModelImage>
 }
 object MovieApi {
     val retrofitService : MovieApiService by lazy {
