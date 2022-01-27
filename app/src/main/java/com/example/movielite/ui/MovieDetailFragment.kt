@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import com.example.movielite.MovieDetail
+import com.example.movielite.response.MovieDetail
 import com.example.movielite.viewmodel.MovieDetailFragmentViewModel
-import com.example.movielite.MovieDetailViewModelFactory
+import com.example.movielite.ViewModelFactory.MovieDetailViewModelFactory
 import com.example.movielite.ui.MainFragment.Companion.ID_ARGS
 import com.example.movielite.databinding.FragmentMovieDetailBinding
-import com.example.movielite.network.Movie
+import com.example.movielite.response.Movie
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieDetailRepository
 
@@ -21,7 +21,7 @@ class MovieDetailFragment : Fragment() {
     private var binding: FragmentMovieDetailBinding? = null
     private val movieDetail: MovieDetail? = null
     private var TAG = "Debug"
-    private lateinit var movie:Movie
+    private lateinit var movie: Movie
 
 
     private val viewModel: MovieDetailFragmentViewModel by lazy {

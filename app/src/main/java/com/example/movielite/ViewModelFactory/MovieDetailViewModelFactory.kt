@@ -1,4 +1,4 @@
-package com.example.movielite
+package com.example.movielite.ViewModelFactory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

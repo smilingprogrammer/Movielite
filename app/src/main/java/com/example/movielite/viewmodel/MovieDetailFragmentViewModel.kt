@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.movielite.MovieDetail
+import com.example.movielite.response.MovieDetail
 import com.example.movielite.network.repository.MovieDetailRepository
 import kotlinx.coroutines.launch
 

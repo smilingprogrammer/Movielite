@@ -10,16 +10,14 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.movielite.R
 import com.example.movielite.adapter.MainAdapter
 import com.example.movielite.databinding.FragmentMainBinding
-import com.example.movielite.main.MainViewModelFactory
-import com.example.movielite.network.Movie
+import com.example.movielite.ViewModelFactory.MainViewModelFactory
+import com.example.movielite.response.Movie
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
 import com.example.movielite.viewmodel.MainViewModel
@@ -50,32 +48,28 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.popularMoviesLiveData.observe(/*this*/viewLifecycleOwner, {
             movies.addAll(it)
-            val adapter = MainAdapter(movies){
+            val adapter = MainAdapter(movies, viewPager2){
                 findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,
                 bundleOf(ID_ARGS to it))
             }
-            binding.show.layoutManager =
-                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
-            binding.show.adapter = adapter
-//            viewPager2 = binding.show
 //            binding.show.layoutManager =
 //                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
 //            binding.show.adapter = adapter
+            viewPager2 = binding.show
 
-//            viewPager2.clipToPadding = false
-//            viewPager2.clipChildren = false
-//            viewPager2.offscreenPageLimit = 3
-//
-//            viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-//
-//            val compositePageTransformer = CompositePageTransformer()
-//            compositePageTransformer.addTransformer(MarginPageTransformer(20))
-//            compositePageTransformer.addTransformer{ page, position ->
-//                val r = 1 - abs(position)
-//                page.scaleY = 0.85f + r * 0.25f
-//            }
-//            viewPager2.setPageTransformer(compositePageTransformer)
+            viewPager2.clipToPadding = false
+            viewPager2.clipChildren = false
+            viewPager2.offscreenPageLimit = 3
 
+            viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+
+            val compositePageTransformer = CompositePageTransformer()
+            compositePageTransformer.addTransformer(MarginPageTransformer(20))
+            compositePageTransformer.addTransformer{ page, position ->
+                val r = 1 - abs(position)
+                page.scaleY = 0.85f + r * 0.25f
+            }
+            viewPager2.setPageTransformer(compositePageTransformer)
 
             val videoView = binding.comingSoonVideo
             val onlineUri = Uri.parse("")

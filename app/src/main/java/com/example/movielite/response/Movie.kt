@@ -1,4 +1,4 @@
-package com.example.movielite.network
+package com.example.movielite.response
 
 import android.provider.SyncStateContract
 import com.squareup.moshi.Json
