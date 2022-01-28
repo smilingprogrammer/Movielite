@@ -1,4 +1,4 @@
-package com.example.movielite.response
+package com.example.movielite.response.moviedetailresponse
 
 data class SpokenLanguage(
     val english_name: String?,

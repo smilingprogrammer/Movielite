@@ -66,16 +66,17 @@
                 tools:text="Jan 26, 2019" />
 
             <TextView
-                android:id="@+id/textViewTotalVotes"
+                android:id="@+id/textViewGenres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawablePadding="10dp"
-                android:gravity="center"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/karla_normal"
-                android:textSize="14sp"
-                tools:text="216"
-                app:drawableStartCompat="@drawable/ic_vote" />
+                android:textColor="@color/black1"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/frameLayout"
+                tools:text="Documentary, Music" />
 
         </LinearLayout>
 

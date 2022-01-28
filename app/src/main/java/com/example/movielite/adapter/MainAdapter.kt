@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import coil.load
 import com.example.movielite.databinding.HorizontalScrollViewBinding
-import com.example.movielite.response.Movie
+import com.example.movielite.response.popularresponse.Movie
 
 
 class MainAdapter internal constructor(movies: MutableList<Movie>,

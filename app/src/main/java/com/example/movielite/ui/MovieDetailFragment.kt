@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import com.example.movielite.response.MovieDetail
+import com.example.movielite.response.moviedetailresponse.MovieDetail
 import com.example.movielite.viewmodel.MovieDetailFragmentViewModel
 import com.example.movielite.ViewModelFactory.MovieDetailViewModelFactory
 import com.example.movielite.ui.MainFragment.Companion.ID_ARGS
 import com.example.movielite.databinding.FragmentMovieDetailBinding
-import com.example.movielite.response.Movie
+import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieDetailRepository
 

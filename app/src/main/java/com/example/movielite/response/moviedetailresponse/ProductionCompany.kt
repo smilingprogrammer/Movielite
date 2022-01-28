@@ -1,4 +1,4 @@
-package com.example.movielite.response
+package com.example.movielite.response.moviedetailresponse
 
 data class ProductionCompany(
     val id: Int?,

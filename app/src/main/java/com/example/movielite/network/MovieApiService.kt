@@ -1,7 +1,10 @@
 package com.example.movielite.network
 
-import com.example.movielite.response.MovieDetail
-import com.example.movielite.response.MovieResponse
+import com.example.movielite.response.moviedetailresponse.MovieDetail
+import com.example.movielite.response.popularresponse.MovieResponse
+import com.example.movielite.response.recomendedresponse.RecommendedResponse
+import com.example.movielite.response.toprated.TopRated
+import com.example.movielite.response.toprated.TopRatedResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -30,20 +33,15 @@ interface MovieApiService {
 
     @GET("movie/{movie_id}")
     suspend fun getMovieDetails(@Path("movie_id") movieId: Int,
-                                @Query("api_key") apiKey: String,
+    @Query("api_key") apiKey: String,
     @Query("language") language: String) : MovieDetail
 
-//    @GET("movie/{movie_id}")
-//    suspend fun getMovieDetails(@Path("movie_id") movieId: Int,
-//                                @Query("api_key") apiKey: String,
-//                                @Query("language") language: String) : MovieDetail
-//    @GET("{lang}/API/Images/k_749nmmqz/tt1375666")
+    @GET("movie/{movie_id}/recommendations")
+    suspend fun getRecommendedMovies(
+    @Query("api_key") apiKey: String,
+    @Query("language") language: String,
+    @Query("page") page: Int) : TopRatedResponse
 
-//    suspend fun getImage(
-//        @Path("lang") lang: String) : Deferred<ModelImage>
-//
-//    @GET("Images")
-//   suspend fun getNames() : Deferred<ModelImage>
 }
 object MovieApi {
     val retrofitService : MovieApiService by lazy {

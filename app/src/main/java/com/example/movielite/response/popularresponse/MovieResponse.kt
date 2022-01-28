@@ -1,6 +1,6 @@
-package com.example.movielite.response
+package com.example.movielite.response.popularresponse
 
-import com.example.movielite.response.Movie
+import com.example.movielite.response.popularresponse.Movie
 import com.squareup.moshi.Json
 
 data class MovieResponse(

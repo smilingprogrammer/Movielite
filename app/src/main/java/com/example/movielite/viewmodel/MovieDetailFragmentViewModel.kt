@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.movielite.response.MovieDetail
+import com.example.movielite.response.moviedetailresponse.MovieDetail
 import com.example.movielite.network.repository.MovieDetailRepository
 import kotlinx.coroutines.launch
 
@@ -23,7 +23,8 @@ class MovieDetailFragmentViewModel(private val movieDetailRepository: MovieDetai
     fun getPopularMovieDetails(movieId: Int)  {
         try {
             viewModelScope.launch {
-                _popularMoviesDetailLiveData.value = movieDetailRepository.getMovieDetails(movieId, TMDB_API_KEY, "en-US")
+                _popularMoviesDetailLiveData.value = movieDetailRepository.getMovieDetails(
+                    movieId, TMDB_API_KEY, "en-US")
             }
         } catch (e: Exception) {
             Log.e(TAG, e.message.toString())

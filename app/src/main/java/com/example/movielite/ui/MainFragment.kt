@@ -17,7 +17,7 @@ import com.example.movielite.R
 import com.example.movielite.adapter.MainAdapter
 import com.example.movielite.databinding.FragmentMainBinding
 import com.example.movielite.ViewModelFactory.MainViewModelFactory
-import com.example.movielite.response.Movie
+import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
 import com.example.movielite.viewmodel.MainViewModel
