@@ -33,6 +33,16 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
+        <TextView
+            android:id="@+id/popularTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popular_artist"
+            android:text="Top Artist"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/popular_movies"
             android:layout_width="match_parent"
@@ -40,7 +50,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="@+id/artist"
-            app:layout_constraintTop_toBottomOf="@id/popular_artist">
+            app:layout_constraintTop_toBottomOf="@id/popular_artist"
+            tools:listitem="@layout/horizontal_scroll_view">
 
         </androidx.recyclerview.widget.RecyclerView>
 

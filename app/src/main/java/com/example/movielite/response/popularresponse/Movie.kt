@@ -5,19 +5,12 @@ import com.squareup.moshi.Json
 import java.io.Serializable
 
 data class Movie(
-//    @Json(name = "api_key")
-//    val title: String,
-//    @Json(name = "")
-//    val image: String,
-//    @Json(name = "")
-//    val releaseType: String
-
     @Json(name = "vote_count")
     var voteCount: Int? = null,
     @Json(name = "id")
     var id: Int? = null,
-//    @Json(name = "video")
-//    var video: Boolean? = null,
+    @Json(name = "video")
+    var video: Boolean? = null,
     @Json(name = "vote_average")
     var voteAverage: Float? = null,
     @Json(name = "title")

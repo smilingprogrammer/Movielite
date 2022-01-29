@@ -24,7 +24,7 @@ class TopRatedViewModel(private val topRatedRepository: TopRatedRepository) : Vi
     private fun getRecommendedMovies() {
         viewModelScope.launch {
             try {
-                _topRatedLiveData.value = topRatedRepository.getRecommendedMovies(
+                _topRatedLiveData.value = topRatedRepository.getTopRatedMovies(
                     TMDB_API_KEY, "en-US", 1).topRated
                 Log.d(TAG, "${_topRatedLiveData.value}")
             }

@@ -4,7 +4,7 @@ import com.example.movielite.network.MovieApiService
 
 class TopRatedRepository(private val movieApiService: MovieApiService) {
 
-    suspend fun getRecommendedMovies(apiKey: String, language: String, page: Int) = movieApiService.getRecommendedMovies(
+    suspend fun getTopRatedMovies(apiKey: String, language: String, page: Int) = movieApiService.getTopRatedMovies(
         apiKey, language, page
     )
 }

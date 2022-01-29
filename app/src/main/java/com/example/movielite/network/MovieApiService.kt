@@ -36,11 +36,17 @@ interface MovieApiService {
     @Query("api_key") apiKey: String,
     @Query("language") language: String) : MovieDetail
 
-    @GET("movie/{movie_id}/recommendations")
-    suspend fun getRecommendedMovies(
+    @GET("movie/top_rated")
+    suspend fun getTopRatedMovies(
     @Query("api_key") apiKey: String,
     @Query("language") language: String,
     @Query("page") page: Int) : TopRatedResponse
+
+    @GET("person/popular")
+    suspend fun getPopularArtist(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: Int) : TopRatedResponse
 
 }
 object MovieApi {

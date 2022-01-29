@@ -70,12 +70,12 @@ class MainFragment : Fragment() {
                 page.scaleY = 0.85f + r * 0.25f
             }
             viewPager2.setPageTransformer(compositePageTransformer)
-
-            val videoView = binding.comingSoonVideo
-            val onlineUri = Uri.parse("")
-            videoView.setVideoURI(onlineUri)
-            videoView.requestFocus()
-            videoView.start()
+//
+//            val videoView = binding.comingSoonVideo
+//            val onlineUri = Uri.parse("")
+//            videoView.setVideoURI(onlineUri)
+//            videoView.requestFocus()
+//            videoView.start()
             adapter.notifyDataSetChanged()
         })
     }
