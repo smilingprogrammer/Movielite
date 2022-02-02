@@ -5,6 +5,7 @@ import com.example.movielite.response.popularresponse.MovieResponse
 import com.example.movielite.response.recomendedresponse.RecommendedResponse
 import com.example.movielite.response.toprated.TopRated
 import com.example.movielite.response.toprated.TopRatedResponse
+import com.example.movielite.response.upcoming.UpcomingResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -47,6 +48,12 @@ interface MovieApiService {
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("page") page: Int) : TopRatedResponse
+
+    @GET("/movie/upcoming")
+    suspend fun getUpcomingMovies(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: Int) : UpcomingResponse
 
 }
 object MovieApi {
