@@ -1,29 +1,31 @@
 package com.example.movielite.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.core.view.doOnPreDraw
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.SnapHelper
+import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.movielite.R
+import com.example.movielite.ViewModelFactory.MainViewModelFactory
 import com.example.movielite.adapter.MainAdapter
 import com.example.movielite.databinding.FragmentMainBinding
-import com.example.movielite.ViewModelFactory.MainViewModelFactory
-import com.example.movielite.adapter.BoundsOffsetDecoration
-import com.example.movielite.adapter.LinearHorizontalSpacingDecoration
-import com.example.movielite.adapter.ProminentLayoutManager
-import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
+import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.viewmodel.MainViewModel
+import com.google.android.material.tabs.TabLayout
 
 class MainFragment : Fragment() {
+
+    private var tabLayout: TabLayout? = null
+    private var viewPager: ViewPager? = null
 
     private lateinit var viewPager2: ViewPager2
     private var _binding: FragmentMainBinding? = null
@@ -58,16 +60,22 @@ class MainFragment : Fragment() {
 //                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
 //            binding.show.adapter = adapter
 
-            snapHelper = PagerSnapHelper()
-            layoutManager = ProminentLayoutManager(this)
+            tabLayout = binding.tabLayout
+            viewPager = binding.viewPager
 
-            val spacing = resources.getDimensionPixelSize(R.dimen.carousel_spacing)
-            addItemDecoration(LinearHorizontalSpacingDecoration(spacing))
-            addItemDecoration(BoundsOffsetDecoration())
+            tabLayout!!.setupWithViewPager(viewPager)
 
-            snapHelper.attachToRecyclerView(binding.show)
 
-            initRecyclerViewPosition(position)
+//            snapHelper = PagerSnapHelper()
+//            layoutManager = ProminentLayoutManager(this)
+//
+//            val spacing = resources.getDimensionPixelSize(R.dimen.carousel_spacing)
+//            addItemDecoration(LinearHorizontalSpacingDecoration(spacing))
+//            addItemDecoration(BoundsOffsetDecoration())
+//
+//            snapHelper.attachToRecyclerView(binding.show)
+//
+//            initRecyclerViewPosition(position)
 //
 //            val videoView = binding.comingSoonVideo
 //            val onlineUri = Uri.parse("")
@@ -79,20 +87,20 @@ class MainFragment : Fragment() {
 
     }
 
-    private fun initRecyclerViewPosition(position: Int) {
-        // This initial scroll will be slightly off because it doesn't respect the SnapHelper.
-        // Do it anyway so that the target view is laid out, then adjust onPreDraw.
-        layoutManager.scrollToPosition(position)
-
-        binding.show.doOnPreDraw {
-            val targetView = layoutManager.findViewByPosition(position) ?: return@doOnPreDraw
-            val distanceToFinalSnap =
-                snapHelper.calculateDistanceToFinalSnap(layoutManager, targetView)
-                    ?: return@doOnPreDraw
-
-            layoutManager.scrollToPositionWithOffset(position, -distanceToFinalSnap[0])
-        }
-    }
+//    private fun initRecyclerViewPosition(position: Int) {
+//        // This initial scroll will be slightly off because it doesn't respect the SnapHelper.
+//        // Do it anyway so that the target view is laid out, then adjust onPreDraw.
+//        layoutManager.scrollToPosition(position)
+//
+//        binding.show.doOnPreDraw {
+//            val targetView = layoutManager.findViewByPosition(position) ?: return@doOnPreDraw
+//            val distanceToFinalSnap =
+//                snapHelper.calculateDistanceToFinalSnap(layoutManager, targetView)
+//                    ?: return@doOnPreDraw
+//
+//            layoutManager.scrollToPositionWithOffset(position, -distanceToFinalSnap[0])
+//        }
+//    }
 
     companion object {
         val ID_ARGS = MainFragment::class.java.simpleName
