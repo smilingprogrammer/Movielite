@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +15,9 @@ import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.movielite.R
 import com.example.movielite.ViewModelFactory.MainViewModelFactory
+import com.example.movielite.adapter.FinalFragment
 import com.example.movielite.adapter.MainAdapter
+import com.example.movielite.adapter.VPAdapter
 import com.example.movielite.databinding.FragmentMainBinding
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
@@ -64,6 +67,14 @@ class MainFragment : Fragment() {
             viewPager = binding.viewPager
 
             tabLayout!!.setupWithViewPager(viewPager)
+            val vpAdapter = VPAdapter(
+                getSupportFragmentManager(),
+                FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+            )
+            vpAdapter.addFragment(MainFragment(), "Home")
+            vpAdapter.addFragment(TopRatedFragment(), "Top Rated")
+            vpAdapter.addFragment(FinalFragment(), "Wednesday")
+            viewPager!!.adapter = vpAdapter
 
 
 //            snapHelper = PagerSnapHelper()
