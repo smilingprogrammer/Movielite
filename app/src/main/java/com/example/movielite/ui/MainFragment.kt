@@ -27,15 +27,8 @@ import com.google.android.material.tabs.TabLayout
 
 class MainFragment : Fragment() {
 
-    private var tabLayout: TabLayout? = null
-    private var viewPager: ViewPager? = null
-
-    private lateinit var viewPager2: ViewPager2
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private lateinit var layoutManager: LinearLayoutManager
-    private lateinit var snapHelper: SnapHelper
-    private lateinit var adapter: MainAdapter
 
     private var movies = mutableListOf<Movie>()
     private val viewModel: MainViewModel by lazy {
@@ -63,31 +56,6 @@ class MainFragment : Fragment() {
 //                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
 //            binding.show.adapter = adapter
 
-            tabLayout = binding.tabLayout
-            viewPager = binding.viewPager
-
-            tabLayout!!.setupWithViewPager(viewPager)
-            val vpAdapter = VPAdapter(
-                getSupportFragmentManager(),
-                FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
-            )
-            vpAdapter.addFragment(MainFragment(), "Home")
-            vpAdapter.addFragment(TopRatedFragment(), "Top Rated")
-            vpAdapter.addFragment(FinalFragment(), "Wednesday")
-            viewPager!!.adapter = vpAdapter
-
-
-//            snapHelper = PagerSnapHelper()
-//            layoutManager = ProminentLayoutManager(this)
-//
-//            val spacing = resources.getDimensionPixelSize(R.dimen.carousel_spacing)
-//            addItemDecoration(LinearHorizontalSpacingDecoration(spacing))
-//            addItemDecoration(BoundsOffsetDecoration())
-//
-//            snapHelper.attachToRecyclerView(binding.show)
-//
-//            initRecyclerViewPosition(position)
-//
 //            val videoView = binding.comingSoonVideo
 //            val onlineUri = Uri.parse("")
 //            videoView.setVideoURI(onlineUri)
@@ -98,20 +66,6 @@ class MainFragment : Fragment() {
 
     }
 
-//    private fun initRecyclerViewPosition(position: Int) {
-//        // This initial scroll will be slightly off because it doesn't respect the SnapHelper.
-//        // Do it anyway so that the target view is laid out, then adjust onPreDraw.
-//        layoutManager.scrollToPosition(position)
-//
-//        binding.show.doOnPreDraw {
-//            val targetView = layoutManager.findViewByPosition(position) ?: return@doOnPreDraw
-//            val distanceToFinalSnap =
-//                snapHelper.calculateDistanceToFinalSnap(layoutManager, targetView)
-//                    ?: return@doOnPreDraw
-//
-//            layoutManager.scrollToPositionWithOffset(position, -distanceToFinalSnap[0])
-//        }
-//    }
 
     companion object {
         val ID_ARGS = MainFragment::class.java.simpleName
