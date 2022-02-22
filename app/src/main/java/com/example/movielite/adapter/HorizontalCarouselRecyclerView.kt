@@ -14,10 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movielite.R
 
-class HorizontalCarouselRecyclerView(
-    context: Context,
-    attrs: AttributeSet
-) : RecyclerView(context, attrs) {
+class HorizontalCarouselRecyclerView(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs) {
 
     private val activeColor by lazy { ContextCompat.getColor(context, R.color.blue) }
     private val inactiveColor by lazy { ContextCompat.getColor(context, R.color.gray_900) }
