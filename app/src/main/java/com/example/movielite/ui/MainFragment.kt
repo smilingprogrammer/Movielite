@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout.HORIZONTAL
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
@@ -56,6 +58,7 @@ class MainFragment : Fragment() {
 //                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
 //            binding.show.adapter = adapter
 
+
 //            val videoView = binding.comingSoonVideo
 //            val onlineUri = Uri.parse("")
 //            videoView.setVideoURI(onlineUri)
@@ -63,10 +66,7 @@ class MainFragment : Fragment() {
 //            videoView.start()
             adapter.notifyDataSetChanged()
         })
-
     }
-
-
     companion object {
         val ID_ARGS = MainFragment::class.java.simpleName
     }
