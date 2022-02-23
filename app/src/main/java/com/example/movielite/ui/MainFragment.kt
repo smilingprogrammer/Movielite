@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.movielite.R
@@ -31,6 +32,7 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+    private lateinit var adapter: MainAdapter
 
     private var movies = mutableListOf<Movie>()
     private val viewModel: MainViewModel by lazy {
@@ -54,21 +56,21 @@ class MainFragment : Fragment() {
                 findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,
                 bundleOf(ID_ARGS to it))
             }
-//            binding.show.layoutManager =
-//                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
-//            binding.show.adapter = adapter
+            binding.show.layoutManager =
+                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
+            binding.show.adapter = adapter
 
 
-//            val videoView = binding.comingSoonVideo
-//            val onlineUri = Uri.parse("")
-//            videoView.setVideoURI(onlineUri)
-//            videoView.requestFocus()
-//            videoView.start()
+
             adapter.notifyDataSetChanged()
         })
     }
     companion object {
         val ID_ARGS = MainFragment::class.java.simpleName
+    }
+
+    private fun handlePlayer() {
+
     }
 
 }
