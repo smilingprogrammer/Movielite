@@ -31,6 +31,13 @@
                 android:scaleType="centerCrop"
                 tools:src="@drawable/sample_backdrop_image" />
 
+<!--            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView-->
+<!--                android:id="@+id/youtubePlayer"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"/>-->
+
         </FrameLayout>
 
         <TextView

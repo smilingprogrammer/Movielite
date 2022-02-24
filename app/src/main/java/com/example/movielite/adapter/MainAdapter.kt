@@ -1,26 +1,15 @@
 package com.example.movielite.adapter
 
-import android.content.Context
-import android.graphics.Rect
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.Px
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import coil.load
-import com.example.movielite.R
 import com.example.movielite.databinding.HorizontalScrollViewBinding
 import com.example.movielite.response.popularresponse.Movie
-import com.example.movielite.ui.MainFragment
-import java.lang.Math.abs
-import kotlin.math.roundToInt
 
 
-class MainAdapter (private val movies: List<Movie>, private val listener: (Movie) -> Unit
+class MainAdapter(private val movies: List<Movie>, private val listener: (Movie) -> Unit
         ): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(
@@ -47,6 +36,7 @@ class MainAdapter (private val movies: List<Movie>, private val listener: (Movie
 //            binding.rating.rating = movie.voteAverage!!.div(2)
         }
     }
+
 
     override fun getItemCount(): Int {
         return movies.size

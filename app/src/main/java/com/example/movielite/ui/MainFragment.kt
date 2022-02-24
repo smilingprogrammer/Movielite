@@ -1,35 +1,33 @@
 package com.example.movielite.ui
 
+import android.net.Uri
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout.HORIZONTAL
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SnapHelper
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.movielite.R
 import com.example.movielite.ViewModelFactory.MainViewModelFactory
-import com.example.movielite.adapter.FinalFragment
 import com.example.movielite.adapter.MainAdapter
-import com.example.movielite.adapter.VPAdapter
 import com.example.movielite.databinding.FragmentMainBinding
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
 import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.viewmodel.MainViewModel
-import com.google.android.material.tabs.TabLayout
+import kotlin.math.abs
 
 class MainFragment : Fragment() {
 
+    private lateinit var viewPager2: ViewPager2
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: MainAdapter
@@ -60,17 +58,12 @@ class MainFragment : Fragment() {
                 StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
             binding.show.adapter = adapter
 
-
-
             adapter.notifyDataSetChanged()
         })
     }
+
     companion object {
         val ID_ARGS = MainFragment::class.java.simpleName
-    }
-
-    private fun handlePlayer() {
-
     }
 
 }

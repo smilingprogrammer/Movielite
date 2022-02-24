@@ -4,7 +4,11 @@ import com.example.movielite.network.MovieApiService
 
 class MovieDetailRepository(private val movieApiService: MovieApiService) {
 
-    suspend fun getMovieDetails(movieId: Int, apiKey: String, language: String) = movieApiService.getMovieDetails(
-        movieId, apiKey, language
+    suspend fun getMovieDetails(
+        movieId: Int,
+        apiKey: String,
+        language: String,
+        appendToResponse: String) = movieApiService.getMovieDetails(
+        movieId, apiKey, language, appendToResponse
     )
 }

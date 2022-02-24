@@ -35,7 +35,8 @@ interface MovieApiService {
     @GET("movie/{movie_id}")
     suspend fun getMovieDetails(@Path("movie_id") movieId: Int,
     @Query("api_key") apiKey: String,
-    @Query("language") language: String) : MovieDetail
+    @Query("language") language: String,
+    @Query("append_to_response") appendToResponse: String) : MovieDetail
 
     @GET("movie/top_rated")
     suspend fun getTopRatedMovies(

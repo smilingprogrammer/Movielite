@@ -10,5 +10,4 @@ data class MovieResponse(
     var page: Int = 0,
     @Json(name = "results")
     var movie: List<Movie>
-//    val movie: List<Movie>
 )
