@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movielite.network.repository.TopRatedRepository
+import com.example.movielite.response.artistresponse.Artist
+import com.example.movielite.response.artistresponse.KnownFor
 import com.example.movielite.response.recomendedresponse.Recommended
 import com.example.movielite.response.toprated.TopRated
 import kotlinx.coroutines.launch
@@ -17,6 +19,10 @@ class TopRatedViewModel(private val topRatedRepository: TopRatedRepository) : Vi
     private val _topRatedLiveData = MutableLiveData<List<TopRated>?>()
     val topRatedLiveData: LiveData<List<TopRated>?>
     get() = _topRatedLiveData
+
+    private val _popularArtistData = MutableLiveData<List<KnownFor>?>()
+    val popularArtistData: LiveData<List<KnownFor>?>
+    get() = _popularArtistData
 
     init {
         getRecommendedMovies()
@@ -30,6 +36,18 @@ class TopRatedViewModel(private val topRatedRepository: TopRatedRepository) : Vi
             }
             catch (e: Exception) {
                 Log.d(TAG, e.message.toString())
+            }
+        }
+    }
+    private fun getPopularArtist() {
+        viewModelScope.launch {
+            try {
+                _popularArtistData.value = topRatedRepository.getPopularArtist(
+                    TMDB_API_KEY, "en-US", 1
+                ).known_for
+            }
+            catch (e: Exception) {
+                Log.d(TAG, "")
             }
         }
     }

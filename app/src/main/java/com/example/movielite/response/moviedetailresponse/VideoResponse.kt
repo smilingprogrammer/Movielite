@@ -1,6 +1,6 @@
-package com.example.movielite.response.videoresponse
+package com.example.movielite.response.moviedetailresponse
 
-data class Video(
+data class VideoResponse(
     val id: String?,
     val iso_3166_1: String?,
     val iso_639_1: String?,

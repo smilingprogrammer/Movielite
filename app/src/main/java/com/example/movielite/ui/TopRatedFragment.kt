@@ -69,24 +69,3 @@ class TopRatedFragment : Fragment() {
         })
     }
 }
-
-//            it.videoResponse.videos?.forEach { video ->
-//                when(video.name) {
-//                    "Official Main Trailer" -> {
-//                        video.key?.let { it1 -> handlePlayer(it1) }
-//                    }
-//                    else -> {
-//                        video.key?.let { it1 -> handlePlayer(it1) }
-//                    }
-//                }
-//            }
-//    private fun handlePlayer(key: String) {
-//        binding?.youtubePlayer
-//            ?.addYouTubePlayerListener(object : AbstractYouTubePlayerListener(){
-//                override fun onReady(youTubePlayer: YouTubePlayer) {
-//                    super.onReady(youTubePlayer)
-//                    youTubePlayer.cueVideo(key, 0f)
-//                    Timber.d("Player key $key")
-//                }
-//            })
-//    }
