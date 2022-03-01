@@ -23,6 +23,8 @@ import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
 import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.viewmodel.MainViewModel
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlin.math.abs
 
 class MainFragment : Fragment() {
@@ -48,6 +50,10 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
+        TabLayoutMediator(tabLayout, viewPager2){ tab, position ->
+            tab.text = "OBJECT ${(position +1)}"
+        }.attach()
         viewModel.popularMoviesLiveData.observe(/*this*/viewLifecycleOwner, {
             movies.addAll(it)
             val adapter = MainAdapter(movies){
