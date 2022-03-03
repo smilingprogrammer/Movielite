@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_topRatedFragment"
+            app:destination="@id/topRatedFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
@@ -24,6 +27,15 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_movieDetailFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topRatedFragment"
+        android:name="com.example.movielite.ui.TopRatedFragment"
+        android:label="fragment_top_rated"
+        tools:layout="@layout/fragment_top_rated" >
+        <action
+            android:id="@+id/action_topRatedFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 </navigation>
