@@ -26,10 +26,6 @@ import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 
 class MainFragment : Fragment() {
 
-    private lateinit var tabLayout: TabLayout
-    private lateinit var viewPager2: ViewPager2
-    private lateinit var adapter: FragmentAdapter
-
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
@@ -60,37 +56,6 @@ class MainFragment : Fragment() {
             binding.show.adapter = adapter
 
             adapter.notifyDataSetChanged()
-        })
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        tabLayout = binding.tabLayout
-        viewPager2 = binding.pager2
-
-        val fm: FragmentManager = getSupportFragmentManager()
-        adapter = FragmentAdapter(fm, lifecycle)
-        viewPager2.setAdapter(adapter)
-
-        tabLayout.addTab(tabLayout.newTab().setText("Movies"))
-        tabLayout.addTab(tabLayout.newTab().setText("Top Rated"))
-        tabLayout.addTab(tabLayout.newTab().setText("Final"))
-        tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-
-            }
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-
-            }
-            override fun onTabReselected(tab: TabLayout.Tab) {
-
-            }
-        })
-
-        viewPager2.registerOnPageChangeCallback(object : OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                tabLayout.selectTab(tabLayout.getTabAt(position))
-            }
         })
     }
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_mainFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_topRatedFragment"
-            app:destination="@id/topRatedFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
@@ -30,12 +27,26 @@
             app:destination="@id/mainFragment" />
     </fragment>
     <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.movielite.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment3_to_topRatedFragment3"
+            app:destination="@id/topRatedFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/topRatedFragment"
         android:name="com.example.movielite.ui.TopRatedFragment"
         android:label="fragment_top_rated"
         tools:layout="@layout/fragment_top_rated" >
         <action
-            android:id="@+id/action_topRatedFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_topRatedFragment3_to_finalFragment2"
+            app:destination="@id/finalFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/finalFragment"
+        android:name="com.example.movielite.adapter.FinalFragment"
+        android:label="fragment_final"
+        tools:layout="@layout/fragment_final" />
 </navigation>

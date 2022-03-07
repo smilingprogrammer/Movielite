@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/mainFragment"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
         android:title="Movies"/>
     <item
         android:id="@+id/topRatedFragment"
         android:icon="@drawable/ic_baseline_tv"
-        android:title="Top Rated"/>
+        android:title="TV Series"/>
     <item
-        android:id="@+id/Downloads"
+        android:id="@+id/finalFragment"
         android:icon="@drawable/ic_video"
-        android:title="Movies"/>
+        android:title="Downloads"/>
 
 </menu>

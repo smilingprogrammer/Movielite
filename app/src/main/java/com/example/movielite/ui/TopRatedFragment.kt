@@ -52,9 +52,7 @@ class TopRatedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.topRatedLiveData.observe(viewLifecycleOwner, {
-            if (it != null) {
-                topRated.addAll(it)
-            }
+            topRated.addAll(it!!)
             val adapter = TopRatedAdapter(topRated)
             binding.topRated.layoutManager =
                 StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)

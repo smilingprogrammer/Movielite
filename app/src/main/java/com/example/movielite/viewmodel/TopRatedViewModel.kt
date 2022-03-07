@@ -20,8 +20,8 @@ class TopRatedViewModel(private val topRatedRepository: TopRatedRepository) : Vi
     val topRatedLiveData: LiveData<List<TopRated>?>
     get() = _topRatedLiveData
 
-    private val _popularArtistData = MutableLiveData<List<KnownFor>?>()
-    val popularArtistData: LiveData<List<KnownFor>?>
+    private val _popularArtistData = MutableLiveData<List<Artist>?>()
+    val popularArtistData: LiveData<List<Artist>?>
     get() = _popularArtistData
 
     init {
@@ -44,10 +44,10 @@ class TopRatedViewModel(private val topRatedRepository: TopRatedRepository) : Vi
             try {
                 _popularArtistData.value = topRatedRepository.getPopularArtist(
                     TMDB_API_KEY, "en-US", 1
-                ).known_for
+                ).artists
             }
             catch (e: Exception) {
-                Log.d(TAG, "")
+                Log.d(TAG, e.message.toString())
             }
         }
     }
