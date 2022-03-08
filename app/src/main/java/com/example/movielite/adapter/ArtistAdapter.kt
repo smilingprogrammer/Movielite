@@ -8,15 +8,16 @@ import com.example.movielite.databinding.ArtistItemBinding
 import com.example.movielite.response.artistresponse.Artist
 import com.example.movielite.response.artistresponse.KnownFor
 
-class ArtistAdapter(private val knownFor: List<KnownFor>):
+class ArtistAdapter(private val artist: List<Artist>):
     RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>() {
 
     inner class ArtistViewHolder(private val binding: ArtistItemBinding):
             RecyclerView.ViewHolder(binding.root){
-                fun bind(knownFor: KnownFor) {
-                    binding.artistImage.load("https://image.tmdb.org/t/p/w342${knownFor.backdrop_path}")
-                    binding.artistName.text = knownFor.backdrop_path
-                    binding.artistRating.rating = knownFor.vote_average!!.div(2).toFloat()
+                fun bind(artist: Artist) {
+                    binding.artistImage.load("https://image.tmdb.org/t/p/w342${artist.known_for!![0].backdrop_path}")
+                    binding.artistName.text = artist.name
+                    binding.artistRating.rating = artist.popularity!!.toFloat()
+                    binding.artistAbout.text = artist.profile_path
                 }
             }
 
@@ -29,11 +30,11 @@ class ArtistAdapter(private val knownFor: List<KnownFor>):
     }
 
     override fun onBindViewHolder(holder: ArtistViewHolder, position: Int) {
-        holder.bind(knownFor[position])
+        holder.bind(artist[position])
     }
 
     override fun getItemCount(): Int {
-        return knownFor.size
+        return artist.size
     }
 
 }

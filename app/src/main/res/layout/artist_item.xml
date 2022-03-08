@@ -37,7 +37,7 @@
                 android:textColor="@color/black1"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                tools:text="Iron Man Universe"/>
+                tools:text="Alexander Isco"/>
 
             <RatingBar
                 android:layout_width="wrap_content"

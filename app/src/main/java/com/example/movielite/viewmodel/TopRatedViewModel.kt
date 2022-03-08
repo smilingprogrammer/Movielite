@@ -16,7 +16,7 @@ import java.lang.Exception
 class TopRatedViewModel(private val topRatedRepository: TopRatedRepository) : ViewModel() {
 
     private val TAG = TopRatedViewModel::class.java.simpleName
-    private val _topRatedLiveData = MutableLiveData<List<TopRated>?>()
+    private val _topRatedLiveData = MutableLiveData<List<TopRated>>()
     val topRatedLiveData: LiveData<List<TopRated>?>
     get() = _topRatedLiveData
 
@@ -26,6 +26,7 @@ class TopRatedViewModel(private val topRatedRepository: TopRatedRepository) : Vi
 
     init {
         getRecommendedMovies()
+        getPopularArtist()
     }
     private fun getRecommendedMovies() {
         viewModelScope.launch {
