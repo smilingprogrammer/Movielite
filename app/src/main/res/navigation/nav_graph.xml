@@ -6,30 +6,6 @@
     app:startDestination="@id/mainFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.movielite.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment3_to_topRatedFragment3"
-            app:destination="@id/topRatedFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/topRatedFragment"
-        android:name="com.example.movielite.ui.TopRatedFragment"
-        android:label="fragment_top_rated"
-        tools:layout="@layout/fragment_top_rated" >
-        <action
-            android:id="@+id/action_topRatedFragment3_to_finalFragment2"
-            app:destination="@id/finalFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/finalFragment"
-        android:name="com.example.movielite.adapter.FinalFragment"
-        android:label="fragment_final"
-        tools:layout="@layout/fragment_final" />
-
-    <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.movielite.ui.MainFragment"
         android:label="fragment_main"

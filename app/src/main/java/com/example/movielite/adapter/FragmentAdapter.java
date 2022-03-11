@@ -9,6 +9,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.movielite.ui.MainFragment;
 import com.example.movielite.ui.TopRatedFragment;
 import com.google.android.material.tabs.TabLayout;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 public class FragmentAdapter extends FragmentStateAdapter {
 
