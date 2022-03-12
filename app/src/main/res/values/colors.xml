@@ -14,4 +14,6 @@
     <color name="blue">#072AFF</color>
     <color name="black1">#0E0F15</color>
     <color name="red">#C62828</color>
+
+    <color name="colorDivider">#BDBDBD</color>
 </resources>

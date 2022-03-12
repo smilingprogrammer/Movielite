@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movielite.response.moviedetailresponse.MovieDetail
 import com.example.movielite.network.repository.MovieDetailRepository
+import com.example.movielite.response.artistresponse.ArtistInfo
 import kotlinx.coroutines.launch
 
 class MovieDetailFragmentViewModel(private val movieDetailRepository: MovieDetailRepository): ViewModel() {
@@ -17,6 +18,10 @@ class MovieDetailFragmentViewModel(private val movieDetailRepository: MovieDetai
     val popularMoviesDetailLiveData: LiveData<MovieDetail>
         get() = _popularMoviesDetailLiveData
 
+    private val _artistDetailsLiveData = MutableLiveData<ArtistInfo>()
+    val artistDetailsLiveData: LiveData<ArtistInfo>
+    get() = _artistDetailsLiveData
+
     fun getPopularMovieDetails(movieId: Int)  {
         try {
             viewModelScope.launch {
@@ -24,6 +29,18 @@ class MovieDetailFragmentViewModel(private val movieDetailRepository: MovieDetai
                     movieId, TMDB_API_KEY, "en-US", "images, reviews, credits, videos")
             }
         } catch (e: Exception) {
+            Log.e(TAG, e.message.toString())
+        }
+    }
+
+    fun getArtistDetails(personId: Int) {
+        try{
+            viewModelScope.launch {
+                _artistDetailsLiveData.value = movieDetailRepository.getArtistDetails(
+                        personId, TMDB_API_KEY
+                        )
+            }
+        } catch (e: java.lang.Exception){
             Log.e(TAG, e.message.toString())
         }
     }

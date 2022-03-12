@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_mainFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_tvseriesFragment2"
-            app:destination="@id/topSeriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
@@ -33,17 +30,15 @@
         android:id="@+id/discoverFragment"
         android:name="com.example.movielite.ui.DiscoverFragment"
         android:label="DiscoverFragment" >
-        <action
-            android:id="@+id/action_discoverFragment2_to_downloadsFragment"
-            app:destination="@id/downloadFragment" />
     </fragment>
     <fragment
         android:id="@+id/artistFragment"
         android:name="com.example.movielite.ui.ArtistFragment"
-        android:label="ArtistFragment" >
+        android:label="ArtistFragment"
+        tools:layout="@layout/fragment_artist">
         <action
-            android:id="@+id/action_artistFragment_to_discoverFragment"
-            app:destination="@id/discoverFragment" />
+            android:id="@+id/action_artistFragment_to_artistDetailFragment"
+            app:destination="@id/artistDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/downloadFragment"
@@ -53,8 +48,14 @@
         android:id="@+id/topSeriesFragment"
         android:name="com.example.movielite.ui.TvseriesFragment"
         android:label="TvseriesFragment" >
-        <action
-            android:id="@+id/action_tvseriesFragment2_to_artistFragment2"
-            app:destination="@id/artistFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistDetailFragment"
+        android:name="com.example.movielite.viewmodel.ArtistDetailFragment"
+        android:label="fragment_artist_detail"
+        tools:layout="@layout/fragment_artist_detail" >
+        <argument
+            android:name="personId"
+            app:argType="integer" />
     </fragment>
 </navigation>

@@ -22,7 +22,9 @@
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/MovieLite/app/src/main/res/layout/grid_view_item.xml" value="0.22" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/MovieLite/app/src/main/res/layout/horizontal_scroll_view.xml" value="0.22" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/MovieLite/app/src/main/res/layout/movie_detail_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/drawable-v24/ic_imdb.xml" value="0.136" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/drawable/ic_artists.xml" value="0.1275" />
+        <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.136" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/drawable/ic_explore.xml" value="0.1275" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/font/montserrat.xml" value="0.23076923076923078" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/font/montserrat_bold.xml" value="0.23076923076923078" />
@@ -30,6 +32,7 @@
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/artist_item.xml" value="0.1935185185185185" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/carousel_view.xml" value="0.1935185185185185" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/fragment_artist.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/fragment_artist_detail.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/fragment_discover.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/fragment_downloads.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />

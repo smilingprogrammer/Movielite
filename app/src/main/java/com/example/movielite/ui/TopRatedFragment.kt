@@ -70,12 +70,12 @@ class TopRatedFragment : Fragment() {
                 StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
             binding.popularMovies.adapter = adapter1
         })
-        viewModel.popularArtistData.observe(viewLifecycleOwner, {
-            artist.addAll(it!!)
-            val adapter = ArtistAdapter(artist)
-            binding.popularArtist.layoutManager =
-                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
-            binding.popularArtist.adapter = adapter
-        })
+//        viewModel.popularArtistData.observe(viewLifecycleOwner, {
+//            artist.addAll(it!!)
+//            val adapter = ArtistAdapter(artist)
+//            binding.popularArtist.layoutManager =
+//                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+//            binding.popularArtist.adapter = adapter
+//        })
     }
 }

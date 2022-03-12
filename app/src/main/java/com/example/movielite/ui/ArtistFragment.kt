@@ -1,20 +1,25 @@
 package com.example.movielite.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.movielite.R
 import com.example.movielite.ViewModelFactory.TopRatedViewModelFactory
 import com.example.movielite.adapter.ArtistAdapter
 import com.example.movielite.databinding.FragmentArtistBinding
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.TopRatedRepository
 import com.example.movielite.response.artistresponse.Artist
+import com.example.movielite.viewmodel.ArtistDetailFragment
 import com.example.movielite.viewmodel.TopRatedViewModel
 
 class ArtistFragment : Fragment() {
@@ -40,12 +45,21 @@ class ArtistFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.popularArtistData.observe(viewLifecycleOwner, {
+        viewModel.popularArtistData.observe(viewLifecycleOwner) {
             artist.addAll(it!!)
             binding.artists.layoutManager =
                 StaggeredGridLayoutManager(3, RecyclerView.VERTICAL)
-            val adapter = ArtistAdapter(artist)
+            val adapter = ArtistAdapter(artist) {
+                findNavController().navigate(R.id.action_artistFragment_to_artistDetailFragment,
+                    bundleOf(PID_ARGS to it))
+            }
             binding.artists.adapter = adapter
-        })
+
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    companion object {
+        val PID_ARGS = ArtistFragment::class.java.simpleName
     }
 }

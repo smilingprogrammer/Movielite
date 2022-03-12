@@ -1,5 +1,7 @@
 package com.example.movielite.response.artistresponse
 
+import java.io.Serializable
+
 data class Artist(
     val adult: Boolean?,
     val gender: Int?,
@@ -9,4 +11,4 @@ data class Artist(
     val name: String?,
     val popularity: Double?,
     val profile_path: String?
-)
+): Serializable

@@ -59,7 +59,6 @@ class MovieDetailFragment : Fragment() {
             lifecycle.addObserver(binding?.youTubePlayerView!!)
 //            binding?.textViewMovieTitleWithDate?.text = it.title
             it.videos?.videoResponses?.forEach { video ->
-                it.videos.videoResponses.forEach { video ->
                     when(video.name) {
                         "Official Main Trailler" -> {
                             handlePlayer(video.key!!)
@@ -69,7 +68,6 @@ class MovieDetailFragment : Fragment() {
                         }
                     }
                 }
-            }
         })
         viewModel.getPopularMovieDetails(movie.id!!)
 

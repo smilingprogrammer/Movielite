@@ -11,4 +11,10 @@ class MovieDetailRepository(private val movieApiService: MovieApiService) {
         appendToResponse: String) = movieApiService.getMovieDetails(
         movieId, apiKey, language, appendToResponse
     )
+
+    suspend fun getArtistDetails(
+        personId: Int,
+        apiKey: String) = movieApiService.getArtistDetails(
+        personId, apiKey
+    )
 }
