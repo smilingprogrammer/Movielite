@@ -7,9 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.movielite.R
 import com.example.movielite.ViewModelFactory.MainViewModelFactory
 import com.example.movielite.ViewModelFactory.TopRatedViewModelFactory
 import com.example.movielite.adapter.ArtistAdapter
@@ -76,7 +74,7 @@ class TopRatedFragment : Fragment() {
             artist.addAll(it!!)
             val adapter = ArtistAdapter(artist)
             binding.popularArtist.layoutManager =
-                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
+                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
             binding.popularArtist.adapter = adapter
         })
     }

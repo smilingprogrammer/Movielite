@@ -14,10 +14,8 @@ class ArtistAdapter(private val artist: List<Artist>):
     inner class ArtistViewHolder(private val binding: ArtistItemBinding):
             RecyclerView.ViewHolder(binding.root){
                 fun bind(artist: Artist) {
-                    binding.artistImage.load("https://image.tmdb.org/t/p/w342${artist.known_for!![0].backdrop_path}")
+                    binding.artistImage.load("https://image.tmdb.org/t/p/w342${artist.profile_path}")
                     binding.artistName.text = artist.name
-                    binding.artistRating.rating = artist.popularity!!.toFloat()
-                    binding.artistAbout.text = artist.profile_path
                 }
             }
 

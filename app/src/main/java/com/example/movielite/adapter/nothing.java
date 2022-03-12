@@ -16,7 +16,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 
 public class nothing extends AppCompatActivity {
 
-    FragmentAdapter adapter;
+//    FragmentAdapter adapter;
     ViewPager2 pager2;
     TabLayout tabLayout;
     private YouTubePlayerView youTubePlayerView;
@@ -24,8 +24,8 @@ public class nothing extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FragmentManager fm = getSupportFragmentManager();
-        adapter = new FragmentAdapter(fm, getLifecycle());
-        pager2.setAdapter(adapter);
+//        adapter = new FragmentAdapter(fm, getLifecycle());
+//        pager2.setAdapter(adapter);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

@@ -14,7 +14,6 @@ import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.movielite.R
 import com.example.movielite.ViewModelFactory.MainViewModelFactory
-import com.example.movielite.adapter.FragmentAdapter
 import com.example.movielite.adapter.MainAdapter
 import com.example.movielite.databinding.FragmentMainBinding
 import com.example.movielite.network.MovieApi

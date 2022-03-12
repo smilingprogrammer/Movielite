@@ -1,11 +1,8 @@
 package com.example.movielite.network
 
-import com.example.movielite.response.artistresponse.Artist
 import com.example.movielite.response.artistresponse.ArtistResponse
 import com.example.movielite.response.moviedetailresponse.MovieDetail
 import com.example.movielite.response.popularresponse.MovieResponse
-import com.example.movielite.response.recomendedresponse.RecommendedResponse
-import com.example.movielite.response.toprated.TopRated
 import com.example.movielite.response.toprated.TopRatedResponse
 import com.example.movielite.response.upcoming.UpcomingResponse
 import com.squareup.moshi.Moshi

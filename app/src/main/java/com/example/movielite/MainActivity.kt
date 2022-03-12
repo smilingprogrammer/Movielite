@@ -8,7 +8,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.movielite.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -21,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
             navController = Navigation.findNavController(this@MainActivity, R.id.fragment_container)
-//            supportActionBar?.hide()
+            supportActionBar?.hide()
             val navView = findViewById<BottomNavigationView>(R.id.nav_view)
 
             navView?.setupWithNavController(navController)
