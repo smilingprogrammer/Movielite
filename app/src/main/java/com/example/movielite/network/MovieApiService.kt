@@ -4,6 +4,8 @@ import com.example.movielite.response.artistresponse.ArtistInfo
 import com.example.movielite.response.artistresponse.ArtistResponse
 import com.example.movielite.response.moviedetailresponse.MovieDetail
 import com.example.movielite.response.popularresponse.MovieResponse
+import com.example.movielite.response.shows.Series
+import com.example.movielite.response.shows.SeriesResponse
 import com.example.movielite.response.toprated.TopRatedResponse
 import com.example.movielite.response.upcoming.UpcomingResponse
 import com.squareup.moshi.Moshi
@@ -44,24 +46,30 @@ interface MovieApiService {
     @Query("language") language: String,
     @Query("page") page: Int) : TopRatedResponse
 
-    @GET("person/popular")
-    suspend fun getPopularArtist(
-        @Query("api_key") apiKey: String,
-        @Query("language") language: String,
-        @Query("page") page: Int) : ArtistResponse
-
     @GET("/movie/upcoming")
     suspend fun getUpcomingMovies(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("page") page: Int) : UpcomingResponse
 
+    @GET("person/popular")
+    suspend fun getPopularArtist(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: Int) : ArtistResponse
+
     @GET("person/{person_id}")
     suspend fun getArtistDetails(
         @Path("person_id") personId: Int,
-        @Query("api_key") apiKey: String
-//        @Query("append_to_response") appendToResponse: String
+        @Query("api_key") apiKey: String,
+        @Query("append_to_response") appendToResponse: String
     ): ArtistInfo
+
+    @GET("tv/popular")
+    suspend fun getPopularSeries(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): SeriesResponse
 
 }
 object MovieApi {

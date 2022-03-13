@@ -7,12 +7,13 @@ import coil.load
 import com.example.movielite.databinding.HorizontalScrollViewBinding
 import com.example.movielite.response.popularresponse.Movie
 
-class PopularAdapter(private val popularMovie: List<Movie>): RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
+class PopularAdapter(private val popularMovie: List<Movie>)
+    : RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
 
     inner class PopularViewHolder(private val binding: HorizontalScrollViewBinding):
         RecyclerView.ViewHolder(binding.root){
             fun bind(popularMovie: Movie) {
-                binding.image.load("https://image.tmdb.org/t/p/w342${popularMovie.posterPath}")
+                binding.imageSlide.load("https://image.tmdb.org/t/p/w342${popularMovie.posterPath}")
             }
         }
 

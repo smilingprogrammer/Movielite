@@ -3,6 +3,7 @@ package com.example.movielite.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import coil.load
 import com.example.movielite.databinding.HorizontalScrollViewBinding
 import com.example.movielite.response.popularresponse.Movie
@@ -25,12 +26,12 @@ class MainAdapter(private val movies: List<Movie>, private val listener: (Movie)
     inner class MainViewHolder(private val binding: HorizontalScrollViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
-            binding.image.load("https://image.tmdb.org/t/p/w342${movie.posterPath}")
+            binding.imageSlide.load("https://image.tmdb.org/t/p/w342${movie.posterPath}")
 //            binding.textViewTitle.text = movie.title
 //            binding.textViewReleaseDate.text = movie.releaseDate
 //            binding.textViewTotalVotes.text = movie.voteCount.toString()
-//
-            binding.image.setOnClickListener {
+
+            binding.imageSlide.setOnClickListener {
                 listener.invoke(movie)
             }
 //            binding.rating.rating = movie.voteAverage!!.div(2)

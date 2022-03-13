@@ -14,7 +14,8 @@ class MovieDetailRepository(private val movieApiService: MovieApiService) {
 
     suspend fun getArtistDetails(
         personId: Int,
-        apiKey: String) = movieApiService.getArtistDetails(
-        personId, apiKey
+        apiKey: String,
+        appendToResponse: String) = movieApiService.getArtistDetails(
+        personId, apiKey, appendToResponse
     )
 }

@@ -37,7 +37,7 @@ class MovieDetailFragmentViewModel(private val movieDetailRepository: MovieDetai
         try{
             viewModelScope.launch {
                 _artistDetailsLiveData.value = movieDetailRepository.getArtistDetails(
-                        personId, TMDB_API_KEY
+                        personId, TMDB_API_KEY, "movie_credits,tv_credits,images,tagged_images"
                         )
             }
         } catch (e: java.lang.Exception){

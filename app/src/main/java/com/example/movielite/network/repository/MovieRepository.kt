@@ -7,4 +7,7 @@ class MovieRepository(private val movieApiService: MovieApiService) {
     suspend fun getPopularMovies(apikey: String, language: String, page:Int) = movieApiService.getPopularMovies(
         apikey, language, page
     )
+    suspend fun getPopularSeries(apikey: String, page: Int) = movieApiService.getPopularSeries(
+        apikey, page
+    )
 }
