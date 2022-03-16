@@ -1,6 +1,7 @@
 package com.example.movielite.ui
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.movielite.R
 import com.example.movielite.ViewModelFactory.MainViewModelFactory
 import com.example.movielite.adapter.MainAdapter
@@ -20,10 +22,12 @@ import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
 import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.viewmodel.MainViewModel
+import java.util.concurrent.Executor
 
 class MainFragment : Fragment() {
 
     private lateinit var viewPager2: ViewPager2
+    private val sliderHandler = Handler()
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
@@ -64,8 +68,18 @@ class MainFragment : Fragment() {
                 page.scaleY = 0.85f + r * 0.15f
             }
             viewPager2.setPageTransformer(compositePageTransformer)
+            viewPager2.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    sliderHandler.removeCallbacks(sliderRunnable)
+                    sliderHandler.postDelayed(sliderRunnable, 3000)
+                }
+            })
         }
     }
+
+    private val sliderRunnable =
+        Runnable { viewPager2.currentItem = viewPager2.currentItem + 1 }
 
     companion object {
         val ID_ARGS = MainFragment::class.java.simpleName

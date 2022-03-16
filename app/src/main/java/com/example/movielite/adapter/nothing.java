@@ -2,6 +2,7 @@ package com.example.movielite.adapter;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ public class nothing extends AppCompatActivity {
     ViewPager2 viewPager2;
     TabLayout tabLayout;
     private YouTubePlayerView youTubePlayerView;
+    private Handler sliderHandler = new Handler();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,15 @@ public class nothing extends AppCompatActivity {
             }
         });
         viewPager2.setPageTransformer(compositePageTransformer);
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                sliderHandler.removeCallbacks(sliderRunnable);
+                sliderHandler.postDelayed(sliderRunnable, 3000);
+            }
+        });
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -86,4 +97,10 @@ public class nothing extends AppCompatActivity {
             }
         });
     }
+    private Runnable sliderRunnable = new Runnable() {
+        @Override
+        public void run() {
+            viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+        }
+    };
 }

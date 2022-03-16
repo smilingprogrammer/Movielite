@@ -34,7 +34,6 @@ class TopRatedFragment : Fragment() {
 
     private var popularMovies = mutableListOf<Movie>()
     private var topRated = mutableListOf<TopRated>()
-    private var artist = mutableListOf<Artist>()
     private val viewModel1: MainViewModel by lazy {
         ViewModelProvider(this, MainViewModelFactory(MovieRepository(MovieApi.retrofitService)))
             .get(MainViewModel::class.java)
@@ -55,27 +54,20 @@ class TopRatedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.topRatedLiveData.observe(viewLifecycleOwner, {
+        viewModel.topRatedLiveData.observe(viewLifecycleOwner) {
             topRated.addAll(it!!)
             val adapter = TopRatedAdapter(topRated)
             binding.topRated.layoutManager =
                 StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
             binding.topRated.adapter = adapter
             Log.d(TAG, "toprated")
-        })
-        viewModel1.popularMoviesLiveData.observe(viewLifecycleOwner, {
+        }
+        viewModel1.popularMoviesLiveData.observe(viewLifecycleOwner) {
             popularMovies.addAll(it)
             val adapter1 = PopularAdapter(popularMovies)
             binding.popularMovies.layoutManager =
                 StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
             binding.popularMovies.adapter = adapter1
-        })
-//        viewModel.popularArtistData.observe(viewLifecycleOwner, {
-//            artist.addAll(it!!)
-//            val adapter = ArtistAdapter(artist)
-//            binding.popularArtist.layoutManager =
-//                StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
-//            binding.popularArtist.adapter = adapter
-//        })
+        }
     }
 }

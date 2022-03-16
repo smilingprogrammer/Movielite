@@ -22,37 +22,86 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="HardcodedText" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/searchInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            app:boxBackgroundColor="?attr/colorSurface"
-            app:boxCornerRadiusBottomEnd="32dp"
-            app:boxCornerRadiusBottomStart="32dp"
-            app:boxCornerRadiusTopEnd="32dp"
-            app:boxCornerRadiusTopStart="32dp"
-            app:endIconDrawable="@drawable/ic_search"
-            app:endIconMode="custom"
-            app:endIconTint="?attr/colorPrimary"
-            app:hintEnabled="false"
-            app:layout_constraintTop_toBottomOf="@id/titleTextView"
-            tools:ignore="HardcodedText">
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/searchInputLayout"-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            app:boxBackgroundColor="?attr/colorSurface"-->
+<!--            app:boxCornerRadiusBottomEnd="32dp"-->
+<!--            app:boxCornerRadiusBottomStart="32dp"-->
+<!--            app:boxCornerRadiusTopEnd="32dp"-->
+<!--            app:boxCornerRadiusTopStart="32dp"-->
+<!--            app:endIconDrawable="@drawable/ic_search"-->
+<!--            app:endIconMode="custom"-->
+<!--            app:endIconTint="?attr/colorPrimary"-->
+<!--            app:hintEnabled="false"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/titleTextView"-->
+<!--            tools:ignore="HardcodedText">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/searchEditText"
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/searchEditText"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Enter keywords here"-->
+<!--                android:imeOptions="actionSearch"-->
+<!--                android:inputType="text"-->
+<!--                android:longClickable="false"-->
+<!--                android:padding="16dp" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white_100"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Search Movies"
-                android:imeOptions="actionSearch"
-                android:inputType="text"
-                android:longClickable="false"
-                android:padding="16dp" />
+                android:layout_marginEnd="8dp"
+                android:focusable="false"
+                app:queryHint="@string/search"
+                app:iconifiedByDefault="false" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/results"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:spanCount="3"
+            tools:listitem="@layout/item_search" />
+
+        <TextView
+            android:id="@+id/searchDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:gravity="center"
+            android:fontFamily="@font/montserrat"
+            android:textColor="?colorOnBackground"
+            android:textSize="16sp"
+            android:text="@string/search_desc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

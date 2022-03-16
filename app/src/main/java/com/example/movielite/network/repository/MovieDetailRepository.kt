@@ -18,4 +18,12 @@ class MovieDetailRepository(private val movieApiService: MovieApiService) {
         appendToResponse: String) = movieApiService.getArtistDetails(
         personId, apiKey, appendToResponse
     )
+
+    suspend fun search(
+        apiKey: String,
+        query: String,
+        page: Int,
+        isAdult: Boolean) = movieApiService.search(
+            apiKey, query, page, isAdult
+        )
 }

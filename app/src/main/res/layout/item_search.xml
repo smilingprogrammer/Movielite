@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
-            name="series"
-            type="com.example.movielite.response.shows.Series" />
+            name="search"
+            type="com.example.movielite.response.search.SearchResult" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -21,9 +21,9 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/series_image"
+                android:id="@+id/search_image"
                 android:layout_width="0dp"
-                android:layout_height="180sp"
+                android:layout_height="130sp"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -32,29 +32,29 @@
                 tools:src="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/series_title"
+                android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/series_image"
-                app:layout_constraintTop_toBottomOf="@+id/series_image"
+                app:layout_constraintStart_toStartOf="@+id/search_image"
+                app:layout_constraintTop_toBottomOf="@+id/search_image"
                 tools:text="Title" />
 
             <TextView
-                android:id="@+id/series_airDate"
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/montserrat"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/series_title"
-                app:layout_constraintTop_toBottomOf="@+id/series_title"
+                app:layout_constraintStart_toStartOf="@+id/title"
+                app:layout_constraintTop_toBottomOf="@+id/title"
                 tools:text="TextView" />
 
             <ImageView
@@ -69,17 +69,25 @@
                 app:srcCompat="@drawable/ic_favorite" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/montserrat"
-                android:text="@{String.valueOf(series.voteAverage)}"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/textView"
                 tools:text="6.9" />
+
+<!--            <androidx.constraintlayout.widget.Group-->
+<!--                android:id="@+id/deathGroup"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:visibility="@{search.voteAverage != null ? android.view.View.VISIBLE : android.view.View.GONE}"-->
+<!--                app:constraint_referenced_ids="rating, imageView"-->
+<!--                tools:visibility="visible" />-->
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

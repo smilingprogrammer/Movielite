@@ -49,7 +49,7 @@ class MovieDetailFragment : Fragment() {
         }
 
         activity?.title = movie.title
-        viewModel.popularMoviesDetailLiveData.observe(requireActivity(), {
+        viewModel.popularMoviesDetailLiveData.observe(requireActivity()) {
 //            binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w780${it.backdrop_path}")
             binding?.textViewOverView?.text = it.overview
             binding?.more?.setOnClickListener {
@@ -59,16 +59,16 @@ class MovieDetailFragment : Fragment() {
             lifecycle.addObserver(binding?.youTubePlayerView!!)
 //            binding?.textViewMovieTitleWithDate?.text = it.title
             it.videos?.videoResponses?.forEach { video ->
-                    when(video.name) {
-                        "Official Main Trailler" -> {
-                            handlePlayer(video.key!!)
-                        }
-                        else -> {
-                            handlePlayer(video.key!!)
-                        }
+                when (video.name) {
+                    "Official Main Trailler" -> {
+                        handlePlayer(video.key!!)
+                    }
+                    else -> {
+                        handlePlayer(video.key!!)
                     }
                 }
-        })
+            }
+        }
         viewModel.getPopularMovieDetails(movie.id!!)
 
     }

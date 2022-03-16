@@ -4,6 +4,8 @@ import com.example.movielite.response.artistresponse.ArtistInfo
 import com.example.movielite.response.artistresponse.ArtistResponse
 import com.example.movielite.response.moviedetailresponse.MovieDetail
 import com.example.movielite.response.popularresponse.MovieResponse
+import com.example.movielite.response.search.Search
+import com.example.movielite.response.search.SearchResult
 import com.example.movielite.response.shows.Series
 import com.example.movielite.response.shows.SeriesResponse
 import com.example.movielite.response.toprated.TopRatedResponse
@@ -70,6 +72,15 @@ interface MovieApiService {
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
     ): SeriesResponse
+
+    /*Search*/
+    @GET("search/multi")
+    suspend fun search(
+        @Query("api_key") apiKey: String?,
+        @Query("query") query: String?,
+        @Query("page") page: Int?,
+        @Query("include_adult") isAdult: Boolean
+    ): Search
 
 }
 object MovieApi {
