@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -22,7 +23,7 @@ import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
 import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.viewmodel.MainViewModel
-import java.util.concurrent.Executor
+import com.rd.PageIndicatorView
 
 class MainFragment : Fragment() {
 
@@ -30,6 +31,8 @@ class MainFragment : Fragment() {
     private val sliderHandler = Handler()
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var pagerIndicator: PageIndicatorView
 
     private var movies = mutableListOf<Movie>()
     private val viewModel: MainViewModel by lazy {
@@ -75,6 +78,8 @@ class MainFragment : Fragment() {
                     sliderHandler.postDelayed(sliderRunnable, 3000)
                 }
             })
+            pagerIndicator = binding.viewPagerIndicator
+            pagerIndicator.setViewPager2(viewPager2)
         }
     }
 
@@ -83,6 +88,24 @@ class MainFragment : Fragment() {
 
     companion object {
         val ID_ARGS = MainFragment::class.java.simpleName
+    }
+
+    fun PageIndicatorView.setViewPager2(viewPager2: ViewPager2){
+        val adapter = (viewPager2.adapter as? ListAdapter<*, *>) ?: return
+
+        viewPager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                val realPosition = position % adapter.currentList.size
+                setSelected(realPosition)
+            }
+        })
+
+        adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() {
+                super.onChanged()
+                count = adapter.itemCount
+            }
+        })
     }
 
 }

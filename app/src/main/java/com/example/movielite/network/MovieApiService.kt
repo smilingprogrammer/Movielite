@@ -7,6 +7,7 @@ import com.example.movielite.response.popularresponse.MovieResponse
 import com.example.movielite.response.search.Search
 import com.example.movielite.response.search.SearchResult
 import com.example.movielite.response.shows.Series
+import com.example.movielite.response.shows.SeriesDetails
 import com.example.movielite.response.shows.SeriesResponse
 import com.example.movielite.response.toprated.TopRatedResponse
 import com.example.movielite.response.upcoming.UpcomingResponse
@@ -67,11 +68,19 @@ interface MovieApiService {
         @Query("append_to_response") appendToResponse: String
     ): ArtistInfo
 
+    /*TV Series*/
     @GET("tv/popular")
     suspend fun getPopularSeries(
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
     ): SeriesResponse
+
+    @GET("tv/{tv_id}")
+    suspend fun getSeriesByID(
+        @Path("tv_id") tvId: Int?,
+        @Query("api_key") apiKey: String?,
+        @Query("append_to_response") appendToResponse: String?
+    ): SeriesDetails
 
     /*Search*/
     @GET("search/multi")

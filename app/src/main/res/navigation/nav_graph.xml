@@ -48,10 +48,13 @@
         android:id="@+id/topSeriesFragment"
         android:name="com.example.movielite.ui.TvseriesFragment"
         android:label="TvseriesFragment" >
+        <action
+            android:id="@+id/action_topSeriesFragment_to_seriesDetailFragment"
+            app:destination="@id/seriesDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/artistDetailFragment"
-        android:name="com.example.movielite.viewmodel.ArtistDetailFragment"
+        android:name="com.example.movielite.ui.ArtistDetailFragment"
         android:label="fragment_artist_detail"
         tools:layout="@layout/fragment_artist_detail" >
         <argument
@@ -60,5 +63,17 @@
         <action
             android:id="@+id/action_artistDetailFragment_to_artistFragment"
             app:destination="@id/artistFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/seriesDetailFragment"
+        android:name="com.example.movielite.ui.SeriesDetailFragment"
+        android:label="fragment_series_detail"
+        tools:layout="@layout/fragment_series_detail" >
+        <argument
+            android:name="tvId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_seriesDetailFragment_to_topSeriesFragment"
+            app:destination="@id/topSeriesFragment" />
     </fragment>
 </navigation>

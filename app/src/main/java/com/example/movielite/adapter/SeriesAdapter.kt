@@ -7,16 +7,19 @@ import coil.load
 import com.example.movielite.databinding.ItemSeriesBinding
 import com.example.movielite.response.shows.Series
 
-class SeriesAdapter(private val series: List<Series>):
+class SeriesAdapter(private val series: List<Series>, private val listener: (Series) -> Unit):
     RecyclerView.Adapter<SeriesAdapter.SeriesViewHolder>() {
 
     inner class SeriesViewHolder(private val binding: ItemSeriesBinding):
             RecyclerView.ViewHolder(binding.root){
                 fun bind(series: Series){
-                    binding.seriesImage.load("https://image.tmdb.org/t/p/w342${series.backdropPath}")
+                    binding.seriesImage.load("https://image.tmdb.org/t/p/w780${series.backdropPath}")
                     binding.seriesTitle.text = series.name
                     binding.seriesAirDate.text = series.firstAirDate
 
+                    binding.seriesImage.setOnClickListener {
+                        listener.invoke(series)
+                    }
                 }
             }
 

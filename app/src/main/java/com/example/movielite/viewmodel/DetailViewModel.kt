@@ -8,17 +8,17 @@ import androidx.lifecycle.viewModelScope
 import com.example.movielite.response.moviedetailresponse.MovieDetail
 import com.example.movielite.network.repository.MovieDetailRepository
 import com.example.movielite.response.artistresponse.ArtistInfo
-import com.example.movielite.response.search.Search
 import com.example.movielite.response.search.SearchResult
+import com.example.movielite.response.shows.SeriesDetails
 import kotlinx.coroutines.launch
 
-class MovieDetailFragmentViewModel(private val movieDetailRepository: MovieDetailRepository): ViewModel() {
+class DetailViewModel(private val movieDetailRepository: MovieDetailRepository): ViewModel() {
 
-    private val TAG = MovieDetailFragmentViewModel::class.java.simpleName
+    private val TAG = DetailViewModel::class.java.simpleName
 
-    private val _popularMoviesDetailLiveData = MutableLiveData<MovieDetail>()
-    val popularMoviesDetailLiveData: LiveData<MovieDetail>
-        get() = _popularMoviesDetailLiveData
+    private val _moviesDetailLiveData = MutableLiveData<MovieDetail>()
+    val moviesDetailLiveData: LiveData<MovieDetail>
+        get() = _moviesDetailLiveData
 
     private val _artistDetailsLiveData = MutableLiveData<ArtistInfo>()
     val artistDetailsLiveData: LiveData<ArtistInfo>
@@ -28,20 +28,33 @@ class MovieDetailFragmentViewModel(private val movieDetailRepository: MovieDetai
     val searchLiveData: LiveData<List<SearchResult>>
             get() = _searchLiveData
 
-    init {
-        search()
-    }
+    private val _tvDetailLiveData = MutableLiveData<SeriesDetails>()
+    val tvDetailLiveData: LiveData<SeriesDetails>
+        get() = _tvDetailLiveData
 
 //    private val pagingConfig = PagingConfig(pageSize = 20, initialLoadSize = 10, enablePlaceholders = false)
 //    fun getSearchPaging(query: String, adult: Boolean) = Pager(pagingConfig) {
 //        getDataSource(query, adult)
 //    }.flow.cachedIn(viewModelScope)
 
-    fun getPopularMovieDetails(movieId: Int)  {
+    fun movieDetail(movieId: Int)  {
         try {
             viewModelScope.launch {
-                _popularMoviesDetailLiveData.value = movieDetailRepository.getMovieDetails(
-                    movieId, TMDB_API_KEY, "en-US", "images, reviews, credits, videos")
+                _moviesDetailLiveData.value = movieDetailRepository.getMovieDetails(
+                    movieId, TMDB_API_KEY, "en-US", "videos")
+                Log.d(TAG, "${_moviesDetailLiveData.value}")
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, e.message.toString())
+        }
+    }
+
+    fun getSeriesDetails(tvId: Int) {
+        try {
+            viewModelScope.launch {
+                _tvDetailLiveData.value = movieDetailRepository.getSeriesDetails(
+                    tvId, TMDB_API_KEY, "images,credits,videos"
+                )
             }
         } catch (e: Exception) {
             Log.e(TAG, e.message.toString())
@@ -60,11 +73,11 @@ class MovieDetailFragmentViewModel(private val movieDetailRepository: MovieDetai
         }
     }
 
-    fun search(){
+    fun search(query: String){
         try {
             viewModelScope.launch {
                 _searchLiveData.value = movieDetailRepository.search(
-                    TMDB_API_KEY, "", 1, true
+                    TMDB_API_KEY, query, 1, true
                 ).searchResult
             }
         }

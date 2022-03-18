@@ -3,8 +3,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url = uri("https://jitpack.io") }
     }
     dependencies {
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
@@ -15,6 +13,15 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+
+//allprojects {
+//    repositories {
+//
+//        maven {
+//            url = uri("https://jitpack.io")
+//        }
+//    }
+//}
 
 task clean(type: Delete) {
     delete rootProject.buildDir

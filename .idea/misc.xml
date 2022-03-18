@@ -28,6 +28,7 @@
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/drawable/ic_explore.xml" value="0.1275" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/font/montserrat.xml" value="0.23076923076923078" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/font/montserrat_bold.xml" value="0.23076923076923078" />
+        <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout-v23/fragment_main.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/activity_main.xml" value="0.1935185185185185" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/artist_item.xml" value="0.1935185185185185" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/carousel_view.xml" value="0.1935185185185185" />
@@ -38,12 +39,14 @@
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/fragment_main.xml" value="0.1" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/fragment_movie_detail.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/fragment_series_detail.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/fragment_top_rated.xml" value="0.2" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/fragment_tvseries.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/grid_view_item.xml" value="0.1935185185185185" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/horizontal_scroll_view.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/item_search.xml" value="0.2173076923076923" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/item_series.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/layout/series_detail_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/SAMSUNG/AndroidStudioProjects/Movielite/app/src/main/res/menu/buttom_navigation.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/layout/fragment_movie_detail.xml" value="0.1" />
       </map>

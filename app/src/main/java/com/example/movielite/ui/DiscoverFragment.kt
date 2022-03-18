@@ -13,7 +13,7 @@ import com.example.movielite.databinding.FragmentDiscoverBinding
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieDetailRepository
 import com.example.movielite.response.search.SearchResult
-import com.example.movielite.viewmodel.MovieDetailFragmentViewModel
+import com.example.movielite.viewmodel.DetailViewModel
 
 class DiscoverFragment : Fragment() {
 
@@ -21,9 +21,9 @@ class DiscoverFragment : Fragment() {
     private val binding get() = _binding!!
     private var searchResult = mutableListOf<SearchResult>()
 
-    private val viewModel: MovieDetailFragmentViewModel by lazy {
+    private val viewModel: DetailViewModel by lazy {
         ViewModelProvider(this, MovieDetailViewModelFactory(MovieDetailRepository(MovieApi.retrofitService)))
-            .get(MovieDetailFragmentViewModel::class.java)
+            .get(DetailViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -45,7 +45,7 @@ class DiscoverFragment : Fragment() {
             binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     query?.let {
-                        viewModel.search()
+                        viewModel.search(query)
                         return true
                     }
                     return false
@@ -53,11 +53,10 @@ class DiscoverFragment : Fragment() {
 
                 override fun onQueryTextChange(newText: String?): Boolean {
                     newText?.let {
-                        viewModel.search()
+                        viewModel.search(it)
                         when{
                             it.isEmpty() -> {
-                                adapter
-                                binding.searchDesc.visiblity = View.VISIBLE
+                                binding.searchDesc.visibility = View.VISIBLE
                             }
                         }
                     }

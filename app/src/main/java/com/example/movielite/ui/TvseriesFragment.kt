@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.movielite.R
 import com.example.movielite.ViewModelFactory.MainViewModelFactory
@@ -43,8 +45,17 @@ class TvseriesFragment : Fragment() {
             series.addAll(it)
             binding.series.layoutManager =
                 GridLayoutManager(activity, 2)
-            val adapter = SeriesAdapter(series)
+            val adapter = SeriesAdapter(series){
+                findNavController().navigate(
+                    R.id.action_topSeriesFragment_to_seriesDetailFragment,
+                    bundleOf(TV_ARGS to it)
+                )
+            }
             binding.series.adapter = adapter
         }
+    }
+
+    companion object{
+        val TV_ARGS = TvseriesFragment::class.java.simpleName
     }
 }

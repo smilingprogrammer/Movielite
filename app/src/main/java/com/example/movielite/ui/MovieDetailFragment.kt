@@ -13,7 +13,7 @@ import com.example.movielite.network.repository.MovieDetailRepository
 import com.example.movielite.response.moviedetailresponse.MovieDetail
 import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.ui.MainFragment.Companion.ID_ARGS
-import com.example.movielite.viewmodel.MovieDetailFragmentViewModel
+import com.example.movielite.viewmodel.DetailViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -26,9 +26,9 @@ class MovieDetailFragment : Fragment() {
     private var TAG = "Debug"
     private lateinit var movie:Movie
 
-    private val viewModel: MovieDetailFragmentViewModel by lazy {
+    private val viewModel: DetailViewModel by lazy {
         ViewModelProvider(this, MovieDetailViewModelFactory(MovieDetailRepository(MovieApi.retrofitService)))
-            .get(MovieDetailFragmentViewModel::class.java)
+            .get(DetailViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -49,7 +49,7 @@ class MovieDetailFragment : Fragment() {
         }
 
         activity?.title = movie.title
-        viewModel.popularMoviesDetailLiveData.observe(requireActivity()) {
+        viewModel.moviesDetailLiveData.observe(requireActivity()) {
 //            binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w780${it.backdrop_path}")
             binding?.textViewOverView?.text = it.overview
             binding?.more?.setOnClickListener {
@@ -69,7 +69,7 @@ class MovieDetailFragment : Fragment() {
                 }
             }
         }
-        viewModel.getPopularMovieDetails(movie.id!!)
+        viewModel.movieDetail(movie.id!!)
 
     }
 

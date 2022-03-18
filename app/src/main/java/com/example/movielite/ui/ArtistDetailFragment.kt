@@ -1,4 +1,4 @@
-package com.example.movielite.viewmodel
+package com.example.movielite.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import coil.load
 import com.example.movielite.R
 import com.example.movielite.ViewModelFactory.MovieDetailViewModelFactory
-import com.example.movielite.databinding.FragmentArtistBinding
 import com.example.movielite.databinding.FragmentArtistDetailBinding
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieDetailRepository
@@ -18,6 +17,7 @@ import com.example.movielite.response.artistresponse.Artist
 import com.example.movielite.response.castandcrew.MovieCast
 import com.example.movielite.response.castandcrew.SeriesCast
 import com.example.movielite.ui.ArtistFragment.Companion.PID_ARGS
+import com.example.movielite.viewmodel.DetailViewModel
 
 class ArtistDetailFragment : Fragment(), (Any) -> Unit {
 
@@ -25,9 +25,9 @@ class ArtistDetailFragment : Fragment(), (Any) -> Unit {
     private val binding get() = _binding!!
     private lateinit var artist: Artist
 
-    private val viewModel: MovieDetailFragmentViewModel by lazy {
+    private val viewModel: DetailViewModel by lazy {
         ViewModelProvider(this, MovieDetailViewModelFactory(MovieDetailRepository(MovieApi.retrofitService)))
-            .get(MovieDetailFragmentViewModel::class.java)
+            .get(DetailViewModel::class.java)
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
