@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.movielite.ViewModelFactory.MovieDetailViewModelFactory
 import com.example.movielite.adapter.SearchAdapter
 import com.example.movielite.databinding.FragmentDiscoverBinding
@@ -14,6 +15,7 @@ import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieDetailRepository
 import com.example.movielite.response.search.SearchResult
 import com.example.movielite.viewmodel.DetailViewModel
+import kotlinx.coroutines.launch
 
 class DiscoverFragment : Fragment() {
 
@@ -45,7 +47,7 @@ class DiscoverFragment : Fragment() {
             binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     query?.let {
-                        viewModel.search(query)
+                        viewModel.search(it)
                         return true
                     }
                     return false
@@ -56,6 +58,7 @@ class DiscoverFragment : Fragment() {
                         viewModel.search(it)
                         when{
                             it.isEmpty() -> {
+                                adapter.notifyDataSetChanged()
                                 binding.searchDesc.visibility = View.VISIBLE
                             }
                         }
@@ -64,6 +67,16 @@ class DiscoverFragment : Fragment() {
                 }
 
             })
+
+            viewModel.searchLiveData.observe(this){
+                viewModel.search(it.toString())
+            }
+
+            viewModel.searchLiveData.observe(this){
+                lifecycleScope.launch {
+                   // viewModel
+                }
+            }
         }
     }
 

@@ -59,10 +59,9 @@ class SeriesDetailFragment : Fragment() {
             binding.overView.text = it.overview
             binding.seasonNo.text = it.numberOfSeasons.toString()
             binding.episodesNo.text = it.numberOfEpisodes.toString()
-            binding.status.text = it.status.toString()
+            binding.status.text = it.status
         }
 
         viewModel.getSeriesDetails(series.id)
     }
-
 }

@@ -54,14 +54,14 @@ class ArtistDetailFragment : Fragment(), (Any) -> Unit {
 
         }
 
-        viewModel.artistDetailsLiveData.observe(requireActivity(), {
+        viewModel.artistDetailsLiveData.observe(requireActivity()) {
             binding.profileImage.load("https://image.tmdb.org/t/p/w780${it.profilePath}")
             binding.artistName.text = it.name
             binding.biography.text = it.biography
             binding.birthday.text = it.birthday
             binding.deathDay.text = it.deathday
             binding.homePage.text = it.homepage
-        })
+        }
 
         viewModel.getArtistDetails(artist.id!!)
     }
