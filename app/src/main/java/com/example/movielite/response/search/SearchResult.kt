@@ -1,5 +1,6 @@
 package com.example.movielite.response.search
 
+import com.example.movielite.service.Response
 import com.squareup.moshi.Json
 
 data class SearchResult(
@@ -49,4 +50,4 @@ data class SearchResult(
     val originCountry: List<String>?,
     @Json(name = "original_name")
     val originalName: String?
-) /*: Response*/
+) : Response

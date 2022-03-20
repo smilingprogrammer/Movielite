@@ -76,14 +76,20 @@ dependencies {
 
     //viewPager
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+    //Facebook Shimmer Effect
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    //Paging
+    implementation "androidx.paging:paging-runtime-ktx:3.0.0-alpha07"
 
     //coroutines
- //   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
 
 
     //Third Party Libraries
     implementation "com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5"
     implementation "com.jakewharton.timber:timber:4.7.1"
     implementation 'com.romandanylyk:pageindicatorview:1.0.3'
+    implementation "com.github.skydoves:powerspinner:1.1.7"
 }

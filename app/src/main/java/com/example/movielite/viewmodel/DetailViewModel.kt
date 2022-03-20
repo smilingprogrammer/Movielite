@@ -73,16 +73,16 @@ class DetailViewModel(private val movieDetailRepository: MovieDetailRepository):
         }
     }
 
-    fun search(query: String){
-        try {
-            viewModelScope.launch {
-                _searchLiveData.value = movieDetailRepository.search(
-                    TMDB_API_KEY, query, 1, true
-                ).searchResult
-            }
-        }
-        catch (e: Exception){
-            Log.e(TAG, e.message.toString())
-        }
-    }
+//    fun search(query: String){
+//        try {
+//            viewModelScope.launch {
+//                _searchLiveData.value = movieDetailRepository.search(
+//                    TMDB_API_KEY, query, 1, true
+//                ).searchResult
+//            }
+//        }
+//        catch (e: Exception){
+//            Log.e(TAG, e.message.toString())
+//        }
+//    }
 }

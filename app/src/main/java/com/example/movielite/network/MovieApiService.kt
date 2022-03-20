@@ -11,6 +11,7 @@ import com.example.movielite.response.shows.SeriesDetails
 import com.example.movielite.response.shows.SeriesResponse
 import com.example.movielite.response.toprated.TopRatedResponse
 import com.example.movielite.response.upcoming.UpcomingResponse
+import com.example.movielite.service.BaseResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -89,7 +90,7 @@ interface MovieApiService {
         @Query("query") query: String?,
         @Query("page") page: Int?,
         @Query("include_adult") isAdult: Boolean
-    ): Search
+    ): BaseResponse<SearchResult>
 
 }
 object MovieApi {
