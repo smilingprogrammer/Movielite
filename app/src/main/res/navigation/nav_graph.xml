@@ -30,6 +30,15 @@
         android:id="@+id/discoverFragment"
         android:name="com.example.movielite.ui.DiscoverFragment"
         android:label="DiscoverFragment" >
+        <action
+            android:id="@+id/action_discoverFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_discoverFragment_to_artistDetailFragment"
+            app:destination="@id/artistDetailFragment" />
+        <action
+            android:id="@+id/action_discoverFragment_to_seriesDetailFragment"
+            app:destination="@id/seriesDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/artistFragment"

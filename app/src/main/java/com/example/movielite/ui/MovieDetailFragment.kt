@@ -12,6 +12,8 @@ import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieDetailRepository
 import com.example.movielite.response.moviedetailresponse.MovieDetail
 import com.example.movielite.response.popularresponse.Movie
+import com.example.movielite.response.search.SearchResult
+import com.example.movielite.ui.DiscoverFragment.Companion.ID_AGS
 import com.example.movielite.ui.MainFragment.Companion.ID_ARGS
 import com.example.movielite.viewmodel.DetailViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -25,6 +27,7 @@ class MovieDetailFragment : Fragment() {
     private val movieDetail: MovieDetail? = null
     private var TAG = "Debug"
     private lateinit var movie:Movie
+//    private lateinit var searchResult: SearchResult
 
     private val viewModel: DetailViewModel by lazy {
         ViewModelProvider(this, MovieDetailViewModelFactory(MovieDetailRepository(MovieApi.retrofitService)))
@@ -48,7 +51,11 @@ class MovieDetailFragment : Fragment() {
             movie = it.get(ID_ARGS) as Movie
         }
 
-        activity?.title = movie.title
+//        arguments?.let {
+//            searchResult = it.get(ID_AGS) as SearchResult
+//        }
+
+//        activity?.title = movie.title
         viewModel.moviesDetailLiveData.observe(requireActivity()) {
 //            binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w780${it.backdrop_path}")
             binding?.textViewOverView?.text = it.overview
@@ -70,6 +77,7 @@ class MovieDetailFragment : Fragment() {
             }
         }
         viewModel.movieDetail(movie.id!!)
+//        viewModel.movieDetail(searchResult.id!!)
 
     }
 

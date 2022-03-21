@@ -90,7 +90,7 @@ interface MovieApiService {
         @Query("query") query: String?,
         @Query("page") page: Int?,
         @Query("include_adult") isAdult: Boolean
-    ): BaseResponse<SearchResult>
+    ): Search
 
 }
 object MovieApi {
