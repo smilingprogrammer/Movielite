@@ -27,7 +27,7 @@ class MovieDetailFragment : Fragment() {
     private val movieDetail: MovieDetail? = null
     private var TAG = "Debug"
     private lateinit var movie:Movie
-//    private lateinit var searchResult: SearchResult
+    private lateinit var searchResult: SearchResult
 
     private val viewModel: DetailViewModel by lazy {
         ViewModelProvider(this, MovieDetailViewModelFactory(MovieDetailRepository(MovieApi.retrofitService)))
@@ -38,24 +38,17 @@ class MovieDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this
-//        binding1 = DataBindingUtil.setContentView(this, R.layout.fragment_movie_detail)
-//        binding1.lifecycleOwner = this
         binding = FragmentMovieDetailBinding.inflate(layoutInflater)
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         arguments?.let {
             movie = it.get(ID_ARGS) as Movie
         }
 
-//        arguments?.let {
-//            searchResult = it.get(ID_AGS) as SearchResult
-//        }
-
-//        activity?.title = movie.title
         viewModel.moviesDetailLiveData.observe(requireActivity()) {
 //            binding?.imageViewBackdrop?.load("https://image.tmdb.org/t/p/w780${it.backdrop_path}")
             binding?.textViewOverView?.text = it.overview

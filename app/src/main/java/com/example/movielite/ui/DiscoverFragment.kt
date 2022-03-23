@@ -87,11 +87,11 @@ class DiscoverFragment : Fragment(), (SearchResult) -> Unit {
         data.let {
             when {
                 it.mediaType.equals("person") -> findNavController().navigate(
-                    R.id.action_discoverFragment_to_artistDetailFragment, bundleOf(PID_ARGS to it))
+                    R.id.action_discoverFragment_to_artistDetailFragment, bundleOf(PID_ARGS to data.id))
                 it.mediaType.equals("movie") -> findNavController().navigate(
-                    R.id.action_discoverFragment_to_movieDetailFragment, bundleOf(ID_AGS to it))
+                    R.id.action_discoverFragment_to_movieDetailFragment, bundleOf(ID_AGS to data.id))
                 it.mediaType.equals("tv") -> findNavController().navigate(
-                    R.id.action_discoverFragment_to_seriesDetailFragment, bundleOf(TV_ARGS to it))
+                    R.id.action_discoverFragment_to_seriesDetailFragment, bundleOf(TV_ARGS to data.id))
             }
         }
     }
