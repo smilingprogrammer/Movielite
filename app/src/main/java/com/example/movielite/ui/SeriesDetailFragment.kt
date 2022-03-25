@@ -14,7 +14,7 @@ import com.example.movielite.databinding.FragmentSeriesDetailBinding
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieDetailRepository
 import com.example.movielite.response.shows.Series
-import com.example.movielite.ui.TvseriesFragment.Companion.TV_ARGS
+import com.example.movielite.service.getGenre
 import com.example.movielite.viewmodel.DetailViewModel
 
 class SeriesDetailFragment : Fragment() {
@@ -39,9 +39,8 @@ class SeriesDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let {
-            series = it.get(TV_ARGS) as Series
-        }
+
+        val seriesResult = requireArguments().getInt("tv")
 
         binding.toolbar.setOnClickListener{
             findNavController().navigate(
@@ -53,15 +52,15 @@ class SeriesDetailFragment : Fragment() {
             binding.seriesImage.load("https://image.tmdb.org/t/p/w780${it.backdropPath}")
             binding.seriesName.text = it.name
             binding.releaseDate.text = it.firstAirDate
-            binding.runTime.text = it.episodeRunTime.toString()
             binding.voting.text = it.voteAverage.toString()
             binding.voteCount.text = it.voteCount.toString()
             binding.overView.text = it.overview
             binding.seasonNo.text = it.numberOfSeasons.toString()
             binding.episodesNo.text = it.numberOfEpisodes.toString()
             binding.status.text = it.status
+            binding.genre.text = getGenre(it.genres)
         }
 
-        viewModel.getSeriesDetails(series.id)
+        viewModel.getSeriesDetails(seriesResult)
     }
 }

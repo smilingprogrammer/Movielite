@@ -2,13 +2,26 @@ package com.example.movielite.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.movielite.databinding.ItemSeriesBinding
+import com.example.movielite.response.artistresponse.Artist
 import com.example.movielite.response.shows.Series
 
-class SeriesAdapter(private val series: List<Series>, private val listener: (Series) -> Unit):
-    RecyclerView.Adapter<SeriesAdapter.SeriesViewHolder>() {
+class SeriesAdapter(private val listener: (Series) -> Unit):
+    PagingDataAdapter<Series, SeriesAdapter.SeriesViewHolder>(SeriesCallBack()) {
+
+    private class SeriesCallBack : DiffUtil.ItemCallback<Series>() {
+        override fun areItemsTheSame(oldItem: Series, newItem: Series): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Series, newItem: Series): Boolean {
+            return oldItem == newItem
+        }
+    }
 
     inner class SeriesViewHolder(private val binding: ItemSeriesBinding):
             RecyclerView.ViewHolder(binding.root){
@@ -32,10 +45,7 @@ class SeriesAdapter(private val series: List<Series>, private val listener: (Ser
     }
 
     override fun onBindViewHolder(holder: SeriesViewHolder, position: Int) {
-        holder.bind(series[position])
+
     }
 
-    override fun getItemCount(): Int {
-        return series.size
-    }
 }

@@ -6,8 +6,6 @@ import com.example.movielite.ui.ArtistDetailFragment
 import com.example.movielite.ui.MovieDetailFragment
 import com.example.movielite.ui.SeriesDetailFragment
 
-class NavigationUtils {
-
     fun navigateSeriesDetails(context: Context?, series: Int?) {
         val intent = Intent(context, SeriesDetailFragment::class.java)
         intent.putExtra("series", series)
@@ -25,4 +23,3 @@ class NavigationUtils {
         intent.putExtra("artist", id)
         context?.startActivity(intent)
     }
-}

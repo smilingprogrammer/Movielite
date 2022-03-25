@@ -2,14 +2,26 @@ package com.example.movielite.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.movielite.databinding.ArtistItemBinding
 import com.example.movielite.response.artistresponse.Artist
-import com.example.movielite.response.artistresponse.KnownFor
 
-class ArtistAdapter(private val artist: List<Artist>, private val listener: (Artist) -> Unit
-        ): RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>() {
+class ArtistAdapter(private val listener: (Artist) -> Unit
+        ): ListAdapter<Artist, ArtistAdapter.ArtistViewHolder>(ArtistCallback()) {
+
+    private class ArtistCallback : DiffUtil.ItemCallback<Artist>() {
+        override fun areItemsTheSame(oldItem: Artist, newItem: Artist): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Artist, newItem: Artist): Boolean {
+            return oldItem == newItem
+        }
+    }
 
     inner class ArtistViewHolder(private val binding: ArtistItemBinding):
             RecyclerView.ViewHolder(binding.root){
@@ -32,11 +44,9 @@ class ArtistAdapter(private val artist: List<Artist>, private val listener: (Art
     }
 
     override fun onBindViewHolder(holder: ArtistViewHolder, position: Int) {
-        holder.bind(artist[position])
-    }
-
-    override fun getItemCount(): Int {
-        return artist.size
+        getItem(position)?.let {
+            holder.bind(it)
+        }
     }
 
 }

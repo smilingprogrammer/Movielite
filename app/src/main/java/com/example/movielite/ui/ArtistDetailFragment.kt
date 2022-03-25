@@ -13,17 +13,14 @@ import com.example.movielite.ViewModelFactory.MovieDetailViewModelFactory
 import com.example.movielite.databinding.FragmentArtistDetailBinding
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieDetailRepository
-import com.example.movielite.response.artistresponse.Artist
 import com.example.movielite.response.castandcrew.MovieCast
 import com.example.movielite.response.castandcrew.SeriesCast
-import com.example.movielite.ui.ArtistFragment.Companion.PID_ARGS
 import com.example.movielite.viewmodel.DetailViewModel
 
 class ArtistDetailFragment : Fragment(), (Any) -> Unit {
 
     private var _binding: FragmentArtistDetailBinding? = null
     private val binding get() = _binding!!
-    private lateinit var artist: Artist
 
     private val viewModel: DetailViewModel by lazy {
         ViewModelProvider(this, MovieDetailViewModelFactory(MovieDetailRepository(MovieApi.retrofitService)))
@@ -40,9 +37,8 @@ class ArtistDetailFragment : Fragment(), (Any) -> Unit {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let {
-            artist = it.get(PID_ARGS) as Artist
-        }
+
+        val artistResult = requireArguments().getInt("person")
 
         binding.toolbar.setNavigationOnClickListener {
             findNavController().navigate(R.id.action_artistDetailFragment_to_artistFragment)
@@ -63,7 +59,7 @@ class ArtistDetailFragment : Fragment(), (Any) -> Unit {
             binding.homePage.text = it.homepage
         }
 
-        viewModel.getArtistDetails(artist.id!!)
+        viewModel.getArtistDetails(artistResult)
     }
 
     override fun invoke(any: Any) {

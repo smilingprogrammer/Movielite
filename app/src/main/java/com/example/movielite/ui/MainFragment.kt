@@ -25,7 +25,7 @@ import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.viewmodel.MainViewModel
 import com.rd.PageIndicatorView
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), (Movie) -> Unit{
 
     private lateinit var viewPager2: ViewPager2
     private val sliderHandler = Handler()
@@ -53,12 +53,7 @@ class MainFragment : Fragment() {
         viewModel.popularMoviesLiveData.observe(/*this*/viewLifecycleOwner) {
             viewPager2 = binding.viewPager2
             movies.addAll(it)
-            viewPager2.adapter = MainAdapter(movies) {
-                findNavController().navigate(
-                    R.id.action_mainFragment_to_movieDetailFragment,
-                    bundleOf(ID_ARGS to it)
-                )
-            }
+            viewPager2.adapter = MainAdapter(movies, this)
             viewPager2.clipToPadding = false
             viewPager2.clipChildren = false
             viewPager2.offscreenPageLimit = 3
@@ -106,6 +101,12 @@ class MainFragment : Fragment() {
                 count = adapter.itemCount
             }
         })
+    }
+
+    override fun invoke(movie: Movie) {
+        findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,
+        Bundle().apply
+         { putInt("movie", movie.id!!)})
     }
 
 }

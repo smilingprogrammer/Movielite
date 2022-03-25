@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -15,9 +14,6 @@ import com.example.movielite.R
 import com.example.movielite.adapter.SearchAdapter
 import com.example.movielite.databinding.FragmentDiscoverBinding
 import com.example.movielite.response.search.SearchResult
-import com.example.movielite.ui.ArtistFragment.Companion.PID_ARGS
-import com.example.movielite.ui.MainFragment.Companion.ID_ARGS
-import com.example.movielite.ui.TvseriesFragment.Companion.TV_ARGS
 import com.example.movielite.viewmodel.MultiSearchViewModel
 import com.example.movielite.viewmodel.SearchViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -87,17 +83,20 @@ class DiscoverFragment : Fragment(), (SearchResult) -> Unit {
         data.let {
             when {
                 it.mediaType.equals("person") -> findNavController().navigate(
-                    R.id.action_discoverFragment_to_artistDetailFragment, bundleOf(PID_ARGS to data.id))
+                    R.id.action_discoverFragment_to_artistDetailFragment, Bundle().apply {
+                        putInt("person", data.id!!)
+                    })
                 it.mediaType.equals("movie") -> findNavController().navigate(
-                    R.id.action_discoverFragment_to_movieDetailFragment, bundleOf(ID_AGS to data.id))
+                    R.id.action_discoverFragment_to_movieDetailFragment, Bundle().apply{
+                        putInt("movie", data.id!!)
+                    })
                 it.mediaType.equals("tv") -> findNavController().navigate(
-                    R.id.action_discoverFragment_to_seriesDetailFragment, bundleOf(TV_ARGS to data.id))
+                    R.id.action_discoverFragment_to_seriesDetailFragment, Bundle().apply {
+                        putInt("tv", data.id!!)
+                    })
             }
         }
     }
 
-    companion object {
-        val ID_AGS = DiscoverFragment::class.java.simpleName
-    }
 
 }

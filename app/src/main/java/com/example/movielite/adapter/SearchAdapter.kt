@@ -45,13 +45,8 @@ class SearchAdapter(val listener: (SearchResult) -> Unit)
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
-//        holder.bind(searchResult[position])
         getItem(position)?.let {
             holder.bind(it)
         }
     }
-
-//    override fun getItemCount(): Int {
-//        return searchResult.size
-//    }
 }

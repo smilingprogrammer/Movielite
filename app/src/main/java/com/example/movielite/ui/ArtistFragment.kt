@@ -19,7 +19,7 @@ import com.example.movielite.network.repository.TopRatedRepository
 import com.example.movielite.response.artistresponse.Artist
 import com.example.movielite.viewmodel.TopRatedViewModel
 
-class ArtistFragment : Fragment() {
+class ArtistFragment : Fragment(), (Artist) -> Unit {
 
     private val TAG = "Debug"
     private var _binding: FragmentArtistBinding? = null
@@ -46,17 +46,16 @@ class ArtistFragment : Fragment() {
             artist.addAll(it!!)
             binding.artists.layoutManager =
                 StaggeredGridLayoutManager(3, RecyclerView.VERTICAL)
-            val adapter = ArtistAdapter(artist) {
-                findNavController().navigate(R.id.action_artistFragment_to_artistDetailFragment,
-                    bundleOf(PID_ARGS to it))
-            }
+            val adapter = ArtistAdapter(this)
             binding.artists.adapter = adapter
 
             adapter.notifyDataSetChanged()
         }
     }
 
-    companion object {
-        val PID_ARGS = ArtistFragment::class.java.simpleName
+    override fun invoke(artist: Artist) {
+        findNavController().navigate(R.id.action_artistFragment_to_artistDetailFragment, Bundle().apply {
+            putInt("person", artist.id!!)
+        })
     }
 }

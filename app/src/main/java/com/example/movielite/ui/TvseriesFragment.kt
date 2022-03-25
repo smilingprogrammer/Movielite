@@ -19,7 +19,7 @@ import com.example.movielite.network.repository.MovieRepository
 import com.example.movielite.response.shows.Series
 import com.example.movielite.viewmodel.MainViewModel
 
-class TvseriesFragment : Fragment() {
+class TvseriesFragment : Fragment(), (Series) -> Unit {
 
     private var _binding: FragmentTvseriesBinding? = null
     private val binding get() = _binding!!
@@ -45,17 +45,14 @@ class TvseriesFragment : Fragment() {
             series.addAll(it)
             binding.series.layoutManager =
                 GridLayoutManager(activity, 2)
-            val adapter = SeriesAdapter(series){
-                findNavController().navigate(
-                    R.id.action_topSeriesFragment_to_seriesDetailFragment,
-                    bundleOf(TV_ARGS to it)
-                )
-            }
+            val adapter = SeriesAdapter(series, this)
             binding.series.adapter = adapter
         }
     }
 
-    companion object{
-        val TV_ARGS = TvseriesFragment::class.java.simpleName
+    override fun invoke(series: Series) {
+        findNavController().navigate(R.id.action_topSeriesFragment_to_seriesDetailFragment,
+        Bundle().apply
+         { putInt("tv", series.id) })
     }
 }
