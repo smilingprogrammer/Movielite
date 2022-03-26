@@ -25,7 +25,7 @@ class ArtistFragment : Fragment(), (Artist) -> Unit {
     private var _binding: FragmentArtistBinding? = null
     private val binding get() = _binding!!
     private var artist = mutableListOf<Artist>()
-    private lateinit var adapter: ArtistAdapter
+
     private val viewModel: TopRatedViewModel by lazy {
         ViewModelProvider(this, TopRatedViewModelFactory(TopRatedRepository(MovieApi.retrofitService)))
             .get(TopRatedViewModel::class.java)

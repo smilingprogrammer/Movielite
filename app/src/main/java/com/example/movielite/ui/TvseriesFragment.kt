@@ -45,7 +45,7 @@ class TvseriesFragment : Fragment(), (Series) -> Unit {
             series.addAll(it)
             binding.series.layoutManager =
                 GridLayoutManager(activity, 2)
-            val adapter = SeriesAdapter(series, this)
+            val adapter = SeriesAdapter(this)
             binding.series.adapter = adapter
         }
     }

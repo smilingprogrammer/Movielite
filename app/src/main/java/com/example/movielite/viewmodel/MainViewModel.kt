@@ -1,13 +1,11 @@
 package com.example.movielite.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.network.repository.MovieRepository
 import com.example.movielite.response.shows.Series
+import com.example.movielite.service.SeriesType
 import kotlinx.coroutines.launch
 
 const val TMDB_API_KEY = "b7c2120334a858f18ce8ddd09946c6ad"
@@ -24,7 +22,7 @@ class MainViewModel(private val movieRepository: MovieRepository): ViewModel() {
 
     init {
         getPopularMovies()
-        getPopularSeries()
+//        getPopularSeries()
     }
     private fun getPopularMovies() {
         viewModelScope.launch {
@@ -37,16 +35,16 @@ class MainViewModel(private val movieRepository: MovieRepository): ViewModel() {
             }
         }
     }
-    private fun getPopularSeries() {
-        viewModelScope.launch {
-            try {
-                _popularSeriesLiveData.value = movieRepository.getPopularSeries(
-                    TMDB_API_KEY, 1
-                ).series
-                Log.d(TAG, "${_popularSeriesLiveData.value}")
-            } catch (e: Exception) {
-                Log.d(TAG, e.message.toString())
-            }
-        }
-    }
+//    private fun getPopularSeries() {
+//        viewModelScope.launch {
+//            try {
+//                _popularSeriesLiveData.value = movieRepository.getPopularSeries(
+//                    TMDB_API_KEY, 1
+//                ).series
+//                Log.d(TAG, "${_popularSeriesLiveData.value}")
+//            } catch (e: Exception) {
+//                Log.d(TAG, e.message.toString())
+//            }
+//        }
+//    }
 }

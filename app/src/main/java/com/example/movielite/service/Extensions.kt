@@ -12,6 +12,7 @@ import java.util.*
 import kotlin.math.floor
 import kotlin.time.Duration.Companion.hours
 
+val DEFAULT_SERIES_TYPE = SeriesType.POPULAR
 fun getGenre(id: List<Genre>): String {
         var genre = ""
         id.forEach {

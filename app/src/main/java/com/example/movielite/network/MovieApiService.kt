@@ -14,12 +14,15 @@ import com.example.movielite.response.upcoming.UpcomingResponse
 import com.example.movielite.service.BaseResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 //import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import java.util.concurrent.TimeUnit
 
 private const val BASE_URL = "https://api.themoviedb.org/3/"
 private val moshi = Moshi.Builder()
@@ -29,6 +32,20 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()
+
+private fun httpClient(): OkHttpClient {
+
+    val interceptor = HttpLoggingInterceptor().apply {
+        this.level = HttpLoggingInterceptor.Level.BODY
+    }
+
+    return OkHttpClient.Builder().apply {
+        this.addInterceptor(interceptor)
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .retryOnConnectionFailure(true)
+    }.build()
+}
 
 //calling the api
 interface MovieApiService {
@@ -72,6 +89,32 @@ interface MovieApiService {
     /*TV Series*/
     @GET("tv/popular")
     suspend fun getPopularSeries(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): SeriesResponse
+
+    @GET("tv/airing_today")
+    suspend fun getSeriesShowingToday(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): SeriesResponse
+
+    @GET("tv/on_the_air")
+    suspend fun getSeriesNowShowing(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): SeriesResponse
+
+    @GET("tv/top_rated")
+    suspend fun getTopRatedSeries(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): SeriesResponse
+
+    @GET("trending/{media_type}/{time_window}")
+    suspend fun getTrendingSeries(
+        @Path("media_type") mediaType: String,
+        @Path("time_window") timeWindow: String,
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
     ): SeriesResponse
