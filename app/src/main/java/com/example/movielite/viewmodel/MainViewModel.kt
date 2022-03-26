@@ -16,9 +16,9 @@ class MainViewModel(private val movieRepository: MovieRepository): ViewModel() {
     val popularMoviesLiveData:LiveData<List<Movie>>
     get() = _popularMoviesLiveData
 
-    private val _popularSeriesLiveData = MutableLiveData<List<Series>>()
-    val popularSeriesLiveData: LiveData<List<Series>>
-    get() = _popularSeriesLiveData
+//    private val _popularSeriesLiveData = MutableLiveData<List<Series>>()
+//    val popularSeriesLiveData: LiveData<List<Series>>
+//    get() = _popularSeriesLiveData
 
     init {
         getPopularMovies()
