@@ -4,8 +4,6 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.network.repository.MovieRepository
-import com.example.movielite.response.shows.Series
-import com.example.movielite.service.SeriesType
 import kotlinx.coroutines.launch
 
 const val TMDB_API_KEY = "b7c2120334a858f18ce8ddd09946c6ad"

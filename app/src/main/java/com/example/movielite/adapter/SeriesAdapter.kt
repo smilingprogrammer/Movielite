@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.movielite.databinding.ItemSeriesBinding
@@ -11,7 +12,7 @@ import com.example.movielite.response.artistresponse.Artist
 import com.example.movielite.response.shows.Series
 
 class SeriesAdapter(private val listener: (Series) -> Unit):
-    PagingDataAdapter<Series, SeriesAdapter.SeriesViewHolder>(SeriesCallBack()) {
+    ListAdapter<Series, SeriesAdapter.SeriesViewHolder>(SeriesCallBack()) {
 
     private class SeriesCallBack : DiffUtil.ItemCallback<Series>() {
         override fun areItemsTheSame(oldItem: Series, newItem: Series): Boolean {
@@ -45,7 +46,9 @@ class SeriesAdapter(private val listener: (Series) -> Unit):
     }
 
     override fun onBindViewHolder(holder: SeriesViewHolder, position: Int) {
-
+        getItem(position)?.let {
+            holder.bind(it)
+        }
     }
 
 }

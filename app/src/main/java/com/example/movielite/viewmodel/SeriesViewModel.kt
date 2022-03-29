@@ -1,9 +1,6 @@
 package com.example.movielite.viewmodel
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.movielite.network.repository.SeriesRepository
 import com.example.movielite.response.shows.Series
 import com.example.movielite.service.DEFAULT_SERIES_TYPE
@@ -16,6 +13,12 @@ class SeriesViewModel: ViewModel() {
     private val seriesRepository = SeriesRepository()
 
     private val seriesType = MutableLiveData(DEFAULT_SERIES_TYPE)
+    private val _seriesLiveData = MutableLiveData<List<Series>>()
+    val seriesLiveData: LiveData<List<Series>> get() = _seriesLiveData
+
+    init {
+        getAllSeries()
+    }
 
     fun getAllSeries() = Transformations.switchMap(seriesType) {
         val dataList = MutableLiveData<List<Series>>()
@@ -24,8 +27,8 @@ class SeriesViewModel: ViewModel() {
                 SeriesType.TOP_RATED -> getTopRatedSeries()
                 SeriesType.SHOWING_TODAY -> getSeriesShowingToday()
                 SeriesType.NOW_SHOWING -> getSeriesNowShowing()
-//                SeriesType.TRENDING_TODAY -> getTodayTrendingSeries()
-//                SeriesType.TRENDING_THIS_WEEK -> getWeekTrendingSeries()
+                SeriesType.TRENDING_TODAY -> getTodayTrendingSeries()
+                SeriesType.TRENDING_THIS_WEEK -> getWeekTrendingSeries()
                 else -> getPopularSeries()
             }
             when (result) {
@@ -51,11 +54,11 @@ class SeriesViewModel: ViewModel() {
     private suspend fun getPopularSeries() =
         seriesRepository.getPopularSeries(TMDB_API_KEY, 1)
 
-//    private suspend fun getTodayTrendingSeries() =
-//        trendingRepository.getTrendingSeries(TrendingRepository.TimeFrame.DAY, 1)
-//
-//    private suspend fun getWeekTrendingSeries() =
-//        trendingRepository.getTrendingSeries(TrendingRepository.TimeFrame.WEEK, 1)
+    private suspend fun getTodayTrendingSeries() =
+        seriesRepository.getTrendingSeries(SeriesRepository.TimeFrame.DAY, 1)
+
+    private suspend fun getWeekTrendingSeries() =
+        seriesRepository.getTrendingSeries(SeriesRepository.TimeFrame.WEEK, 1)
 
     fun updateSeriesType(type: SeriesType) {
         seriesType.postValue(type)
