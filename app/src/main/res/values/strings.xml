@@ -36,4 +36,5 @@
 
     <string name="runtime_mask" translatable="false">%s %s</string>
     <string name="revenue_amount" translatable="false">$ %s</string>
+    <string name="all_series">All Series</string>
 </resources>

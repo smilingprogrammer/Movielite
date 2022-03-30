@@ -93,7 +93,10 @@
         android:name="com.example.movielite.ui.AllSeriesFragment"
         android:label="AllSeriesFragment" >
         <argument
-            android:name="allseriesId"
+            android:name="allSeriesId"
             app:argType="com.example.movielite.service.SeriesType" />
+        <action
+            android:id="@+id/action_allSeriesFragment_to_seriesDetailFragment"
+            app:destination="@id/seriesDetailFragment" />
     </fragment>
 </navigation>

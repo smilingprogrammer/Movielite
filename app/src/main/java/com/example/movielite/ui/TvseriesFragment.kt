@@ -1,11 +1,10 @@
 package com.example.movielite.ui
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -18,8 +17,6 @@ import com.example.movielite.service.SeriesType
 import com.example.movielite.viewmodel.SeriesViewModel
 
 class TvseriesFragment : Fragment(), (Series) -> Unit {
-
-    private val TAG = "Debuger"
 
     private var _binding: FragmentTvseriesBinding? = null
     private val binding get() = _binding!!
@@ -74,7 +71,7 @@ class TvseriesFragment : Fragment(), (Series) -> Unit {
         }
         binding.viewAll.setOnClickListener {
             findNavController().navigate(R.id.action_topSeriesFragment_to_allSeriesFragment
-            , Bundle().apply { putSerializable("allSeries", seriesType) })
+            , Bundle().apply { putSerializable("allSeriesId", seriesType) })
         }
     }
 

@@ -34,15 +34,6 @@ public class nothing extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FragmentManager fm = getSupportFragmentManager();
-//        adapter = new FragmentAdapter(fm, getLifecycle());
-//        pager2.setAdapter(adapter);
-
-//        List<Movie> movie = new ArrayList<>();
-//        viewPager2.setAdapter(new MainAdapter(movie, viewPager2));
-//        viewPager2.setClipToPadding(false);
-//        viewPager2.setClipChildren(false);
-//        viewPager2.setOffscreenPageLimit(3);
-//        viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
 
         CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
