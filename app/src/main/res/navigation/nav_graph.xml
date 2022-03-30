@@ -60,6 +60,9 @@
         <action
             android:id="@+id/action_topSeriesFragment_to_seriesDetailFragment"
             app:destination="@id/seriesDetailFragment" />
+        <action
+            android:id="@+id/action_topSeriesFragment_to_allSeriesFragment"
+            app:destination="@id/allSeriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/artistDetailFragment"
@@ -84,5 +87,13 @@
         <action
             android:id="@+id/action_seriesDetailFragment_to_topSeriesFragment"
             app:destination="@id/topSeriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allSeriesFragment"
+        android:name="com.example.movielite.ui.AllSeriesFragment"
+        android:label="AllSeriesFragment" >
+        <argument
+            android:name="allseriesId"
+            app:argType="com.example.movielite.service.SeriesType" />
     </fragment>
 </navigation>

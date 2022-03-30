@@ -16,10 +16,6 @@ class SeriesViewModel: ViewModel() {
     private val _seriesLiveData = MutableLiveData<List<Series>>()
     val seriesLiveData: LiveData<List<Series>> get() = _seriesLiveData
 
-    init {
-        getAllSeries()
-    }
-
     fun getAllSeries() = Transformations.switchMap(seriesType) {
         val dataList = MutableLiveData<List<Series>>()
         viewModelScope.launch {

@@ -23,7 +23,6 @@ class TvseriesFragment : Fragment(), (Series) -> Unit {
 
     private var _binding: FragmentTvseriesBinding? = null
     private val binding get() = _binding!!
-    private var series = mutableListOf<Series>()
     private var seriesType = DEFAULT_SERIES_TYPE
 
     private val seriesViewModel by viewModels<SeriesViewModel>()
@@ -72,6 +71,10 @@ class TvseriesFragment : Fragment(), (Series) -> Unit {
         seriesViewModel.getAllSeries().observe(viewLifecycleOwner) {
             //submit list to list adapter
             adapter.submitList(it)
+        }
+        binding.viewAll.setOnClickListener {
+            findNavController().navigate(R.id.action_topSeriesFragment_to_allSeriesFragment
+            , Bundle().apply { putSerializable("allSeries", seriesType) })
         }
     }
 

@@ -30,7 +30,7 @@ class SeriesAdapter(private val listener: (Series) -> Unit):
                     binding.seriesImage.load("https://image.tmdb.org/t/p/w780${series.backdropPath}")
                     binding.seriesTitle.text = series.name
                     binding.seriesAirDate.text = series.firstAirDate
-
+                    binding.textView2.text = series.voteAverage.toString()
                     binding.seriesImage.setOnClickListener {
                         listener.invoke(series)
                     }

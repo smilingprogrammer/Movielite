@@ -1,4 +1,4 @@
-package com.example.movielite.ui
+package com.example.movielite.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -74,7 +74,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/montserrat"
-                android:text="@{String.valueOf(series.voteAverage)}"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
