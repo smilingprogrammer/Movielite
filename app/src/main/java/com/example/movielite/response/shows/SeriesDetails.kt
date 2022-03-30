@@ -1,5 +1,6 @@
 package com.example.movielite.response.shows
 
+import com.example.movielite.response.castandcrew.Credits
 import com.example.movielite.response.graphics.Graphic
 import com.example.movielite.response.moviedetailresponse.Genre
 import com.example.movielite.response.moviedetailresponse.ProductionCompany
@@ -96,8 +97,8 @@ data class SeriesDetails(
     @Json(name = "images")
     val images: Graphic,
 
-//    @Json(name = "credits")
-//    val credits: Credits,
+    @Json(name = "credits")
+    val credits: Credits,
 
     @Json(name = "videos")
     val videoResponse: VideoResponse

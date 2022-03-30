@@ -87,6 +87,9 @@
         <action
             android:id="@+id/action_seriesDetailFragment_to_topSeriesFragment"
             app:destination="@id/topSeriesFragment" />
+        <action
+            android:id="@+id/action_seriesDetailFragment_to_artistDetailFragment"
+            app:destination="@id/artistDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/allSeriesFragment"

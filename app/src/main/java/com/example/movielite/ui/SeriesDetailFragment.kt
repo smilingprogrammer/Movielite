@@ -10,14 +10,16 @@ import androidx.navigation.fragment.findNavController
 import coil.load
 import com.example.movielite.R
 import com.example.movielite.ViewModelFactory.MovieDetailViewModelFactory
+import com.example.movielite.adapter.CastAdapter
 import com.example.movielite.databinding.FragmentSeriesDetailBinding
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieDetailRepository
+import com.example.movielite.response.castandcrew.Cast
 import com.example.movielite.response.shows.Series
 import com.example.movielite.service.getGenre
 import com.example.movielite.viewmodel.DetailViewModel
 
-class SeriesDetailFragment : Fragment() {
+class SeriesDetailFragment : Fragment(), (Cast) -> Unit {
 
     private var _binding: FragmentSeriesDetailBinding? = null
     private val binding get() = _binding!!
@@ -48,6 +50,9 @@ class SeriesDetailFragment : Fragment() {
             )
         }
 
+        val castAdapter = CastAdapter(this)
+        binding.seriesCast.adapter = castAdapter
+
         viewModel.tvDetailLiveData.observe(requireActivity()) {
             binding.seriesImage.load("https://image.tmdb.org/t/p/w780${it.backdropPath}")
             binding.seriesName.text = it.name
@@ -59,8 +64,15 @@ class SeriesDetailFragment : Fragment() {
             binding.episodesNo.text = it.numberOfEpisodes.toString()
             binding.status.text = it.status
             binding.genre.text = getGenre(it.genres)
+            castAdapter.submitList(it.credits.casts)
         }
 
         viewModel.getSeriesDetails(seriesResult)
+    }
+
+    override fun invoke(cast: Cast) {
+        findNavController().navigate(R.id.action_seriesDetailFragment_to_artistDetailFragment,
+        Bundle().apply
+         { putInt("person", cast.id) })
     }
 }
