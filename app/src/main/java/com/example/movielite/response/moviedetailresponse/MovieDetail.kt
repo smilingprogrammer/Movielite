@@ -1,5 +1,8 @@
 package com.example.movielite.response.moviedetailresponse
 
+import com.example.movielite.response.castandcrew.Credits
+import com.squareup.moshi.Json
+
 data class MovieDetail(
     val adult: Boolean?,
     val backdrop_path: String?,
@@ -23,6 +26,7 @@ data class MovieDetail(
     val status: String?,
     val tagline: String?,
     val title: String?,
+    @Json(name = "credits") val credits: Credits,
     val video: Boolean?,
     val videos: Videos?,
     val vote_average: Double?,

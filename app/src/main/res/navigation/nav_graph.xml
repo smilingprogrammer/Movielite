@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_movieDetailFragment_to_mainFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_artistDetailFragment"
+            app:destination="@id/artistDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/discoverFragment"
