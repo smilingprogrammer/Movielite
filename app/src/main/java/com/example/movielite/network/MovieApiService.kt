@@ -1,5 +1,6 @@
 package com.example.movielite.network
 
+import com.example.movielite.response.artistresponse.Artist
 import com.example.movielite.response.artistresponse.ArtistInfo
 import com.example.movielite.response.artistresponse.ArtistResponse
 import com.example.movielite.response.moviedetailresponse.MovieDetail
@@ -73,11 +74,19 @@ interface MovieApiService {
         @Query("language") language: String,
         @Query("page") page: Int) : UpcomingResponse
 
+    /* Artist */
     @GET("person/popular")
     suspend fun getPopularArtist(
         @Query("api_key") apiKey: String,
-        @Query("language") language: String,
-        @Query("page") page: Int) : ArtistResponse
+        @Query("page") page: Int?) : ArtistResponse
+
+    @GET("trending/{media_type}/{time_window}")
+    suspend fun getTrendingArtists(
+        @Path("media_type") mediaType: String,
+        @Path("time_window") timeWindow: String,
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): ArtistResponse
 
     @GET("person/{person_id}")
     suspend fun getArtistDetails(

@@ -19,13 +19,13 @@ class TopRatedViewModel(private val topRatedRepository: TopRatedRepository) : Vi
     val topRatedLiveData: LiveData<List<TopRated>?>
     get() = _topRatedLiveData
 
-    private val _popularArtistData = MutableLiveData<List<Artist>?>()
-    val popularArtistData: LiveData<List<Artist>?>
-    get() = _popularArtistData
+//    private val _popularArtistData = MutableLiveData<List<Artist>?>()
+//    val popularArtistData: LiveData<List<Artist>?>
+//    get() = _popularArtistData
 
     init {
         getRecommendedMovies()
-        getPopularArtist()
+//        getPopularArtist()
     }
     private fun getRecommendedMovies() {
         viewModelScope.launch {
@@ -39,17 +39,17 @@ class TopRatedViewModel(private val topRatedRepository: TopRatedRepository) : Vi
             }
         }
     }
-    private fun getPopularArtist() {
-        viewModelScope.launch {
-            try {
-                _popularArtistData.value = topRatedRepository.getPopularArtist(
-                    TMDB_API_KEY, "en-US", 1
-                ).artist
-                Log.d(TAG, "${_popularArtistData.value}")
-            }
-            catch (e: Exception) {
-                Log.d(TAG, e.message.toString())
-            }
-        }
-    }
+//    private fun getPopularArtist() {
+//        viewModelScope.launch {
+//            try {
+//                _popularArtistData.value = topRatedRepository.getPopularArtist(
+//                    TMDB_API_KEY, "en-US", 1
+//                ).artist
+//                Log.d(TAG, "${_popularArtistData.value}")
+//            }
+//            catch (e: Exception) {
+//                Log.d(TAG, e.message.toString())
+//            }
+//        }
+//    }
 }

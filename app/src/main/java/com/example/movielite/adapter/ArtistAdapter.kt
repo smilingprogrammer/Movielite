@@ -11,7 +11,7 @@ import com.example.movielite.databinding.ArtistItemBinding
 import com.example.movielite.response.artistresponse.Artist
 
 class ArtistAdapter(private val listener: (Artist) -> Unit
-        ): ListAdapter<Artist, ArtistAdapter.ArtistViewHolder>(ArtistCallback()) {
+        ): PagingDataAdapter<Artist, ArtistAdapter.ArtistViewHolder>(ArtistCallback()) {
 
     private class ArtistCallback : DiffUtil.ItemCallback<Artist>() {
         override fun areItemsTheSame(oldItem: Artist, newItem: Artist): Boolean {

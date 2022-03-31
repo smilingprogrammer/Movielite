@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -17,7 +19,10 @@ import com.example.movielite.databinding.FragmentArtistBinding
 import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.TopRatedRepository
 import com.example.movielite.response.artistresponse.Artist
+import com.example.movielite.viewmodel.ArtistViewModel
 import com.example.movielite.viewmodel.TopRatedViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class ArtistFragment : Fragment(), (Artist) -> Unit {
 
@@ -26,10 +31,7 @@ class ArtistFragment : Fragment(), (Artist) -> Unit {
     private val binding get() = _binding!!
     private var artist = mutableListOf<Artist>()
 
-    private val viewModel: TopRatedViewModel by lazy {
-        ViewModelProvider(this, TopRatedViewModelFactory(TopRatedRepository(MovieApi.retrofitService)))
-            .get(TopRatedViewModel::class.java)
-    }
+    private val artistViewModel by viewModels<ArtistViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,14 +44,18 @@ class ArtistFragment : Fragment(), (Artist) -> Unit {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.popularArtistData.observe(viewLifecycleOwner) {
-            artist.addAll(it!!)
-            binding.artists.layoutManager =
-                StaggeredGridLayoutManager(3, RecyclerView.VERTICAL)
-            val adapter = ArtistAdapter(this)
-            binding.artists.adapter = adapter
 
-            adapter.notifyDataSetChanged()
+        val artistsAdapter = ArtistAdapter(this)
+        binding.artists.apply {
+            binding.artists.adapter = artistsAdapter
+            layoutManager = StaggeredGridLayoutManager(3, RecyclerView.VERTICAL)
+        }
+
+        lifecycleScope.launch {
+            artistViewModel.artistPaging.collectLatest {
+                //submit list to list adapter
+                artistsAdapter.submitData(it)
+            }
         }
     }
 
