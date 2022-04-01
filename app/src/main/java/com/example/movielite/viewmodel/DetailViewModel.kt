@@ -41,7 +41,7 @@ class DetailViewModel(private val movieDetailRepository: MovieDetailRepository):
         try {
             viewModelScope.launch {
                 _moviesDetailLiveData.value = movieDetailRepository.getMovieDetails(
-                    movieId, TMDB_API_KEY, "en-US", "videos")
+                    movieId, TMDB_API_KEY, "en-US", "images, reviews,credits,videos")
                 Log.d(TAG, "${_moviesDetailLiveData.value}")
             }
         } catch (e: Exception) {
@@ -53,7 +53,7 @@ class DetailViewModel(private val movieDetailRepository: MovieDetailRepository):
         try {
             viewModelScope.launch {
                 _tvDetailLiveData.value = movieDetailRepository.getSeriesDetails(
-                    tvId, TMDB_API_KEY, "credits,videos"
+                    tvId, TMDB_API_KEY, "images,credits,videos"
                 )
             }
         } catch (e: Exception) {

@@ -23,8 +23,8 @@ import timber.log.Timber
 
 
 class MovieDetailFragment : Fragment(), (Cast) -> Unit {
+
     private lateinit var binding: FragmentMovieDetailBinding
-    private var TAG = "Debug"
 
     private val viewModel: DetailViewModel by lazy {
         ViewModelProvider(this, MovieDetailViewModelFactory(MovieDetailRepository(MovieApi.retrofitService)))
@@ -42,7 +42,6 @@ class MovieDetailFragment : Fragment(), (Cast) -> Unit {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val result = requireArguments().getInt("movie")
 
         val castAdapter = CastAdapter(this)
@@ -51,9 +50,9 @@ class MovieDetailFragment : Fragment(), (Cast) -> Unit {
         viewModel.moviesDetailLiveData.observe(requireActivity()) {
             binding.movieDetail = it
             castAdapter.submitList(it.credits.casts)
-            binding.genre.text = getGenre(it.genres!!)
+            binding.genre.text = getGenre(it.genres)
             lifecycle.addObserver(binding.youTubePlayerView)
-            it.videos?.videoResponses?.forEach { video ->
+            it.videos.videoResponses?.forEach { video ->
                 when (video.name) {
                     "Official Main Trailler" -> {
                         handlePlayer(video.key!!)

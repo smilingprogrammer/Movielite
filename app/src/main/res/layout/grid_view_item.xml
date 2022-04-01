@@ -69,7 +69,7 @@
                 android:textColor="@color/white_100"
                 android:textStyle="italic"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/frameLayout"
+                app:layout_constraintTop_toBottomOf="@id/ratingBar"
                 tools:text="Documentary, Music" />
 
         </LinearLayout>
