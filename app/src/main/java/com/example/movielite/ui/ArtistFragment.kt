@@ -29,7 +29,6 @@ class ArtistFragment : Fragment(), (Artist) -> Unit {
     private val TAG = "Debug"
     private var _binding: FragmentArtistBinding? = null
     private val binding get() = _binding!!
-    private var artist = mutableListOf<Artist>()
 
     private val artistViewModel by viewModels<ArtistViewModel>()
 
@@ -55,6 +54,7 @@ class ArtistFragment : Fragment(), (Artist) -> Unit {
             artistViewModel.artistPaging.collectLatest {
                 //submit list to list adapter
                 artistsAdapter.submitData(it)
+                binding.artists.visibility = View.VISIBLE
             }
         }
     }

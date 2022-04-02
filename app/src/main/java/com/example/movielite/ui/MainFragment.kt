@@ -23,7 +23,6 @@ import com.example.movielite.network.MovieApi
 import com.example.movielite.network.repository.MovieRepository
 import com.example.movielite.response.popularresponse.Movie
 import com.example.movielite.viewmodel.MainViewModel
-import com.rd.PageIndicatorView
 
 class MainFragment : Fragment(), (Movie) -> Unit{
 
@@ -31,8 +30,6 @@ class MainFragment : Fragment(), (Movie) -> Unit{
     private val sliderHandler = Handler()
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var pagerIndicator: PageIndicatorView
 
     private var movies = mutableListOf<Movie>()
     private val viewModel: MainViewModel by lazy {
@@ -50,7 +47,7 @@ class MainFragment : Fragment(), (Movie) -> Unit{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.popularMoviesLiveData.observe(/*this*/viewLifecycleOwner) {
+        viewModel.popularMoviesLiveData.observe(viewLifecycleOwner) {
             viewPager2 = binding.viewPager2
             movies.addAll(it)
             viewPager2.adapter = MainAdapter(movies, this)
@@ -73,35 +70,11 @@ class MainFragment : Fragment(), (Movie) -> Unit{
                     sliderHandler.postDelayed(sliderRunnable, 3000)
                 }
             })
-            pagerIndicator = binding.viewPagerIndicator
-            pagerIndicator.setViewPager2(viewPager2)
         }
     }
 
     private val sliderRunnable =
         Runnable { viewPager2.currentItem = viewPager2.currentItem + 1 }
-
-    companion object {
-        val ID_ARGS = MainFragment::class.java.simpleName
-    }
-
-    fun PageIndicatorView.setViewPager2(viewPager2: ViewPager2){
-        val adapter = (viewPager2.adapter as? ListAdapter<*, *>) ?: return
-
-        viewPager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
-            override fun onPageSelected(position: Int) {
-                val realPosition = position % adapter.currentList.size
-                setSelected(realPosition)
-            }
-        })
-
-        adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
-            override fun onChanged() {
-                super.onChanged()
-                count = adapter.itemCount
-            }
-        })
-    }
 
     override fun invoke(movie: Movie) {
         findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,

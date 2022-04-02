@@ -66,8 +66,11 @@ class TvseriesFragment : Fragment(), (Series) -> Unit {
         }
 
         seriesViewModel.getAllSeries().observe(viewLifecycleOwner) {
+            binding.shimmerLayout.stopShimmer()
+            binding.shimmerLayout.visibility = View.GONE
             //submit list to list adapter
             adapter.submitList(it)
+            binding.series.visibility = View.VISIBLE
         }
         binding.viewAll.setOnClickListener {
             findNavController().navigate(R.id.action_topSeriesFragment_to_allSeriesFragment

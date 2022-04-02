@@ -53,10 +53,6 @@
             app:destination="@id/artistDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/downloadFragment"
-        android:name="com.example.movielite.ui.DownloadsFragment"
-        android:label="DownloadsFragment" />
-    <fragment
         android:id="@+id/topSeriesFragment"
         android:name="com.example.movielite.ui.TvseriesFragment"
         android:label="TvseriesFragment" >
@@ -105,4 +101,8 @@
             android:id="@+id/action_allSeriesFragment_to_seriesDetailFragment"
             app:destination="@id/seriesDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/comingSoonFragment"
+        android:name="com.example.movielite.ui.ComingSoonFragment"
+        android:label="ComingSoonFragment" />
 </navigation>
