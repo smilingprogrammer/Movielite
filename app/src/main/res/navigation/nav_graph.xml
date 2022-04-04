@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_movieDetailFragment_to_artistDetailFragment"
             app:destination="@id/artistDetailFragment" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_trailerFragment"
+            app:destination="@id/trailerFragment" />
     </fragment>
     <fragment
         android:id="@+id/discoverFragment"
@@ -102,7 +105,12 @@
             app:destination="@id/seriesDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/comingSoonFragment"
-        android:name="com.example.movielite.ui.ComingSoonFragment"
-        android:label="ComingSoonFragment" />
+        android:id="@+id/trailerFragment"
+        android:name="com.example.movielite.ui.TrailerFragment"
+        android:label="fragment_trailer"
+        tools:layout="@layout/fragment_trailer" >
+        <argument
+            android:name="trailerId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

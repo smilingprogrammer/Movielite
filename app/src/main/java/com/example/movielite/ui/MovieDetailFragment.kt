@@ -54,13 +54,19 @@ class MovieDetailFragment : Fragment(), (Cast) -> Unit {
             lifecycle.addObserver(binding.youTubePlayerView)
             it.videos.videoResponses?.forEach { video ->
                 when (video.name) {
-                    "Official Main Trailler" -> {
+                    "Official Main Trailer" -> {
                         handlePlayer(video.key!!)
                     }
                     else -> {
                         handlePlayer(video.key!!)
                     }
                 }
+            }
+            val movieDetail = it.id
+            binding.button1.setOnClickListener {
+                findNavController().navigate(R.id.action_movieDetailFragment_to_trailerFragment,
+                    Bundle().apply
+                    { putInt("trailerId", movieDetail) })
             }
         }
         viewModel.movieDetail(result)
