@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import coil.load
 import com.example.movielite.R
 import com.example.movielite.ViewModelFactory.MovieDetailViewModelFactory
 import com.example.movielite.adapter.CastAdapter
@@ -51,17 +52,7 @@ class MovieDetailFragment : Fragment(), (Cast) -> Unit {
             binding.movieDetail = it
             castAdapter.submitList(it.credits.casts)
             binding.genre.text = getGenre(it.genres)
-            lifecycle.addObserver(binding.youTubePlayerView)
-            it.videos.videoResponses?.forEach { video ->
-                when (video.name) {
-                    "Official Main Trailer" -> {
-                        handlePlayer(video.key!!)
-                    }
-                    else -> {
-                        handlePlayer(video.key!!)
-                    }
-                }
-            }
+            binding.movieImage.load("https://image.tmdb.org/t/p/w780${it.backdropPath}")
             val movieDetail = it.id
             binding.button1.setOnClickListener {
                 findNavController().navigate(R.id.action_movieDetailFragment_to_trailerFragment,
@@ -71,17 +62,6 @@ class MovieDetailFragment : Fragment(), (Cast) -> Unit {
         }
         viewModel.movieDetail(result)
 
-    }
-
-        private fun handlePlayer(key: String) {
-
-            binding.youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener(){
-                override fun onReady(youTubePlayer: YouTubePlayer) {
-                    super.onReady(youTubePlayer)
-                    youTubePlayer.cueVideo(key, 0f)
-                    Timber.d("Player key $key")
-                }
-            })
     }
 
     override fun invoke(cast: Cast) {

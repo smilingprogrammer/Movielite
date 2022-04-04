@@ -7,8 +7,4 @@ class TopRatedRepository(private val movieApiService: MovieApiService) {
     suspend fun getTopRatedMovies(apiKey: String, language: String, page: Int) = movieApiService.getTopRatedMovies(
         apiKey, language, page
     )
-
-//    suspend fun getPopularArtist(apiKey: String, language: String, page: Int) = movieApiService.getPopularArtist(
-//        apiKey, language, page
-//    )
 }

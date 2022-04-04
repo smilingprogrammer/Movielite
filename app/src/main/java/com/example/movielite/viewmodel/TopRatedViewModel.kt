@@ -25,7 +25,6 @@ class TopRatedViewModel(private val topRatedRepository: TopRatedRepository) : Vi
 
     init {
         getRecommendedMovies()
-//        getPopularArtist()
     }
     private fun getRecommendedMovies() {
         viewModelScope.launch {
@@ -39,17 +38,4 @@ class TopRatedViewModel(private val topRatedRepository: TopRatedRepository) : Vi
             }
         }
     }
-//    private fun getPopularArtist() {
-//        viewModelScope.launch {
-//            try {
-//                _popularArtistData.value = topRatedRepository.getPopularArtist(
-//                    TMDB_API_KEY, "en-US", 1
-//                ).artist
-//                Log.d(TAG, "${_popularArtistData.value}")
-//            }
-//            catch (e: Exception) {
-//                Log.d(TAG, e.message.toString())
-//            }
-//        }
-//    }
 }

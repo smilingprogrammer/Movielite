@@ -96,4 +96,5 @@ dependencies {
     implementation "com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5"
     implementation "com.jakewharton.timber:timber:4.7.1"
     implementation "com.github.skydoves:powerspinner:1.1.7"
+    implementation "com.github.smarteist:autoimageslider:1.4.0"
 }

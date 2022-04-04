@@ -6,16 +6,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.TrailerFragment">
 
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:gravity="center"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/trailers"
+        android:textColor="?colorOnBackground"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/coming_soon"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         tools:listitem="@layout/trailer_item"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="1"/>
+        app:spanCount="1"
+        app:layout_constraintTop_toBottomOf="@id/text_home"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
