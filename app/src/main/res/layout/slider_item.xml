@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
         android:textSize="18sp"
+        android:textStyle="bold"
         android:textColor="@color/white"
         android:layout_marginBottom="16dp"
         android:layout_marginStart="8dp"
