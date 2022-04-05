@@ -7,13 +7,17 @@ import com.example.movielite.databinding.SliderItemBinding
 import com.example.movielite.response.upcoming.Upcoming
 import com.smarteist.autoimageslider.SliderViewAdapter
 
-class ImageSliderAdapter(private val upcoming: List<Upcoming>)
+class ImageSliderAdapter(private val upcoming: List<Upcoming>, private val listener: (Upcoming) -> Unit)
     : SliderViewAdapter<ImageSliderAdapter.SliderViewHolder>() {
 
     inner class SliderViewHolder(private val binding: SliderItemBinding)
         :SliderViewAdapter.ViewHolder(binding.root) {
             fun bind(upcoming: Upcoming) {
                 binding.imageView.load("https://image.tmdb.org/t/p/w780${upcoming.backdrop_path}")
+                binding.movieName.text = upcoming.title
+                binding.sliderAll.setOnClickListener {
+                    listener.invoke(upcoming)
+                }
             }
     }
 

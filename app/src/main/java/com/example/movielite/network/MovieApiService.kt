@@ -68,7 +68,7 @@ interface MovieApiService {
     @Query("language") language: String,
     @Query("page") page: Int) : TopRatedResponse
 
-    @GET("/movie/upcoming")
+    @GET("movie/upcoming")
     suspend fun getUpcomingMovies(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,

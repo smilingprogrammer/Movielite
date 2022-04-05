@@ -2,6 +2,7 @@ package com.example.movielite.ui
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,8 +27,9 @@ import com.example.movielite.viewmodel.MainViewModel
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
+import timber.log.Timber
 
-class MainFragment : Fragment(), (Movie) -> Unit{
+class MainFragment : Fragment(), (Any) -> Unit{
 
     private lateinit var viewPager2: ViewPager2
     private val sliderHandler = Handler()
@@ -53,8 +55,11 @@ class MainFragment : Fragment(), (Movie) -> Unit{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.upcomingLiveData.observe(viewLifecycleOwner) {
+            Timber.d("${viewModel.upcomingLiveData.value}")
+            upcoming.addAll(it)
+            val upcomingId = it[0].id
             sliderView = binding.imageSlider
-            val imageSliderAdapter = ImageSliderAdapter(upcoming)
+            val imageSliderAdapter = ImageSliderAdapter(upcoming, this)
             sliderView.setSliderAdapter(imageSliderAdapter)
             sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM)
             sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION)
@@ -89,10 +94,19 @@ class MainFragment : Fragment(), (Movie) -> Unit{
     private val sliderRunnable =
         Runnable { viewPager2.currentItem = viewPager2.currentItem + 1 }
 
-    override fun invoke(movie: Movie) {
-        findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,
-        Bundle().apply
-         { putInt("movie", movie.id!!)})
+    override fun invoke(any: Any) {
+        when (any) {
+            is Upcoming -> {
+                findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,
+                Bundle().apply
+                 { putInt("movie", any.id!!) })
+            }
+            is Movie -> {
+                findNavController().navigate(R.id.action_mainFragment_to_movieDetailFragment,
+                Bundle().apply
+                 { putInt("movie", any.id!!) })
+            }
+        }
     }
 
 }

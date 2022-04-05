@@ -28,6 +28,7 @@ import java.util.List;
 public class nothing extends AppCompatActivity {
 
 //    FragmentAdapter adapter;
+    SliderView sliderView;
     ViewPager2 viewPager2;
     TabLayout tabLayout;
     private YouTubePlayerView youTubePlayerView;
@@ -35,6 +36,9 @@ public class nothing extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_main);
+        sliderView = findViewById(R.id.image_slider);
+
         FragmentManager fm = getSupportFragmentManager();
 
         CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
