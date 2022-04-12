@@ -1,10 +1,14 @@
 package com.example.movielite.ui
 
+import android.app.Dialog
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -81,19 +85,30 @@ class DiscoverFragment : Fragment(), (SearchResult) -> Unit {
 
     override fun invoke(data: SearchResult) {
         data.let {
-            when {
-                it.mediaType.equals("person") -> findNavController().navigate(
-                    R.id.action_discoverFragment_to_artistDetailFragment, Bundle().apply {
-                        putInt("person", data.id!!)
-                    })
-                it.mediaType.equals("movie") -> findNavController().navigate(
-                    R.id.action_discoverFragment_to_movieDetailFragment, Bundle().apply{
-                        putInt("movie", data.id!!)
-                    })
-                it.mediaType.equals("tv") -> findNavController().navigate(
-                    R.id.action_discoverFragment_to_seriesDetailFragment, Bundle().apply {
-                        putInt("tv", data.id!!)
-                    })
+            val manager = requireActivity().applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE)
+                    as ConnectivityManager
+            val networkInfo = manager.activeNetworkInfo
+            if(networkInfo != null){
+                when {
+                    it.mediaType.equals("person") -> findNavController().navigate(
+                        R.id.action_discoverFragment_to_artistDetailFragment, Bundle().apply {
+                            putInt("person", data.id!!)
+                        })
+                    it.mediaType.equals("movie") -> findNavController().navigate(
+                        R.id.action_discoverFragment_to_movieDetailFragment, Bundle().apply{
+                            putInt("movie", data.id!!)
+                        })
+                    it.mediaType.equals("tv") -> findNavController().navigate(
+                        R.id.action_discoverFragment_to_seriesDetailFragment, Bundle().apply {
+                            putInt("tv", data.id!!)
+                        })
+                }
+            } else {
+                val dialog = Dialog(requireActivity())
+                dialog.setContentView(R.layout.no_internet)
+                dialog.setCancelable(true)
+                dialog.window!!.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT)
+                dialog.show()
             }
         }
     }

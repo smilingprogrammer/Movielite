@@ -1,10 +1,14 @@
 package com.example.movielite.ui
 
+import android.app.Dialog
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -54,10 +58,21 @@ class AllSeriesFragment : Fragment(), (Series) -> Unit {
     }
 
     override fun invoke(series: Series) {
-        findNavController().navigate(
-            R.id.action_allSeriesFragment_to_seriesDetailFragment,
-        Bundle().apply
-         { putInt("tv", series.id) })
+        val manager = requireActivity().applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE)
+                as ConnectivityManager
+        val networkInfo = manager.activeNetworkInfo
+        if(networkInfo != null){
+            findNavController().navigate(
+                R.id.action_allSeriesFragment_to_seriesDetailFragment,
+                Bundle().apply
+                { putInt("tv", series.id) })
+        } else {
+            val dialog = Dialog(requireActivity())
+            dialog.setContentView(R.layout.no_internet)
+            dialog.setCancelable(true)
+            dialog.window!!.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT)
+            dialog.show()
+        }
     }
 
 }

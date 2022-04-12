@@ -1,9 +1,13 @@
 package com.example.movielite.ui
 
+import android.app.Dialog
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -73,14 +77,38 @@ class TvseriesFragment : Fragment(), (Series) -> Unit {
             binding.series.visibility = View.VISIBLE
         }
         binding.viewAll.setOnClickListener {
-            findNavController().navigate(R.id.action_topSeriesFragment_to_allSeriesFragment
-            , Bundle().apply { putSerializable("allSeriesId", seriesType) })
+            val manager = requireActivity().applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE)
+                    as ConnectivityManager
+            val networkInfo = manager.activeNetworkInfo
+            if (networkInfo != null){
+                findNavController().navigate(R.id.action_topSeriesFragment_to_allSeriesFragment
+                    , Bundle().apply { putSerializable("allSeriesId", seriesType) })
+            } else {
+                val dialog = Dialog(requireActivity())
+                dialog.setContentView(R.layout.no_internet)
+                dialog.setCancelable(true)
+                dialog.window!!.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT)
+                dialog.show()
+            }
         }
     }
 
     override fun invoke(series: Series) {
-        findNavController().navigate(R.id.action_topSeriesFragment_to_seriesDetailFragment,
-        Bundle().apply
-         { putInt("tv", series.id) })
+
+        val manager = requireActivity().applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE)
+                as ConnectivityManager
+        val networkInfo = manager.activeNetworkInfo
+        if(networkInfo != null){
+            findNavController().navigate(R.id.action_topSeriesFragment_to_seriesDetailFragment,
+                Bundle().apply
+                { putInt("tv", series.id) })
+        } else {
+            val dialog = Dialog(requireActivity())
+            dialog.setContentView(R.layout.no_internet)
+            dialog.setCancelable(true)
+            dialog.window!!.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT)
+            dialog.show()
+        }
     }
+
 }
